@@ -12,8 +12,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -29,7 +28,6 @@ import org.junit.Test
 class ChecklistViewModelTest {
 
     private val dispatcher = StandardTestDispatcher()
-    private val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
 
     @Before
     fun setUp() {
@@ -42,14 +40,15 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `tasks are grouped by cadence`() = runBlockingTest {
+    fun `tasks are grouped by cadence`() = runTest {
+        val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         val items = listOf(
             item("a", ResetCadence.DAILY),
             item("b", ResetCadence.WEEKLY),
             item("c", ResetCadence.DAILY),
             item("d", ResetCadence.NONE, isCustom = true),
         )
-        val viewModel = viewModelWith(items = items)
+        val viewModel = viewModelWith(resetCalculator, items = items)
 
         advanceUntilIdle()
         val state = viewModel.uiState.first()
@@ -60,7 +59,8 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `completed today task is excluded from daily pending list`() = runBlockingTest {
+    fun `completed today task is excluded from daily pending list`() = runTest {
+        val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         // Fixed time: 2026-10-18 12:00 Asia/Shanghai (well after 04:00 reset)
         val now = Calendar.getInstance(TimeZone.getTimeZone("Asia/Shanghai")).apply {
             clear()
@@ -72,7 +72,7 @@ class ChecklistViewModelTest {
             item("done", ResetCadence.DAILY, completedAt = now),
             item("pending", ResetCadence.DAILY, completedAt = null),
         )
-        val viewModel = viewModelWith(items = items, timeProvider = { now })
+        val viewModel = viewModelWith(resetCalculator, items = items, timeProvider = { now })
 
         advanceUntilIdle()
         val state = viewModel.uiState.first()
@@ -81,9 +81,10 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `never completed custom task stays visible`() = runBlockingTest {
+    fun `never completed custom task stays visible`() = runTest {
+        val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         val items = listOf(item("todo", ResetCadence.NONE, isCustom = true))
-        val viewModel = viewModelWith(items = items)
+        val viewModel = viewModelWith(resetCalculator, items = items)
 
         advanceUntilIdle()
         val state = viewModel.uiState.first()
@@ -92,9 +93,10 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `blank custom task is rejected`() = runBlockingTest {
+    fun `blank custom task is rejected`() = runTest {
+        val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         var added: String? = "unset"
-        val viewModel = viewModelWith(items = emptyList(), onAdd = { title -> added = title })
+        val viewModel = viewModelWith(resetCalculator, items = emptyList(), onAdd = { title -> added = title })
 
         viewModel.onAddCustomTask("   ")
         advanceUntilIdle()
@@ -103,9 +105,10 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `custom task title is trimmed before being added`() = runBlockingTest {
+    fun `custom task title is trimmed before being added`() = runTest {
+        val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         var added: String? = null
-        val viewModel = viewModelWith(items = emptyList(), onAdd = { title -> added = title })
+        val viewModel = viewModelWith(resetCalculator, items = emptyList(), onAdd = { title -> added = title })
 
         viewModel.onAddCustomTask("  Kumpulkan mora  ")
         advanceUntilIdle()
@@ -114,6 +117,7 @@ class ChecklistViewModelTest {
     }
 
     private fun viewModelWith(
+        resetCalculator: ChecklistResetCalculator,
         items: List<ChecklistItem>,
         onAdd: (String) -> Unit = {},
         timeProvider: () -> Long = { System.currentTimeMillis() },
