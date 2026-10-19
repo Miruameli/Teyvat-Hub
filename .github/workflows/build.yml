@@ -30,7 +30,6 @@ jobs:
         uses: android-actions/setup-android@v3
         with:
           api-level: 36
-          ndk-version: r27c
           build-tools-version: '36.0.0'
           cache-key: android-sdk-${{ runner.os }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
