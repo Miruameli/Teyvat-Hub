@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Named
 import javax.inject.Singleton
 
 /**
@@ -21,4 +22,9 @@ object DomainServiceModule {
     @Singleton
     fun provideChecklistResetCalculator(): ChecklistResetCalculator =
         ChecklistResetCalculator()
+
+    @Provides
+    @Named("timeProvider")
+    @Singleton
+    fun provideTimeProvider(): () -> Long = { System.currentTimeMillis() }
 }

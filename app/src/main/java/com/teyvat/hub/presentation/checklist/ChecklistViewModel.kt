@@ -8,6 +8,7 @@ import com.teyvat.hub.domain.model.ResetCadence
 import com.teyvat.hub.domain.service.ChecklistResetCalculator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import javax.inject.Named
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -32,7 +33,7 @@ data class ChecklistUiState(
 class ChecklistViewModel @Inject constructor(
     private val repository: ChecklistRepository,
     private val resetCalculator: ChecklistResetCalculator,
-    private val timeProvider: () -> Long = { System.currentTimeMillis() },
+    @Named("timeProvider") private val timeProvider: () -> Long,
 ) : ViewModel() {
 
     val uiState: StateFlow<ChecklistUiState> =
