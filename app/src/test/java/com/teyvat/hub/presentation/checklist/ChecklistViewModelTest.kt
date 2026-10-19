@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -42,7 +42,7 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `tasks are grouped by cadence`() = runTest {
+    fun `tasks are grouped by cadence`() = runBlockingTest {
         val items = listOf(
             item("a", ResetCadence.DAILY),
             item("b", ResetCadence.WEEKLY),
@@ -60,7 +60,7 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `completed today task is excluded from daily pending list`() = runTest {
+    fun `completed today task is excluded from daily pending list`() = runBlockingTest {
         // Fixed time: 2026-10-18 12:00 Asia/Shanghai (well after 04:00 reset)
         val now = Calendar.getInstance(TimeZone.getTimeZone("Asia/Shanghai")).apply {
             clear()
@@ -81,7 +81,7 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `never completed custom task stays visible`() = runTest {
+    fun `never completed custom task stays visible`() = runBlockingTest {
         val items = listOf(item("todo", ResetCadence.NONE, isCustom = true))
         val viewModel = viewModelWith(items = items)
 
@@ -92,7 +92,7 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `blank custom task is rejected`() = runTest {
+    fun `blank custom task is rejected`() = runBlockingTest {
         var added: String? = "unset"
         val viewModel = viewModelWith(items = emptyList(), onAdd = { title -> added = title })
 
@@ -103,7 +103,7 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `custom task title is trimmed before being added`() = runTest {
+    fun `custom task title is trimmed before being added`() = runBlockingTest {
         var added: String? = null
         val viewModel = viewModelWith(items = emptyList(), onAdd = { title -> added = title })
 
