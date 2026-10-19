@@ -7,6 +7,7 @@ import com.teyvat.hub.domain.service.ChecklistResetCalculator
 import java.util.TimeZone
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -50,7 +51,7 @@ class ChecklistViewModelTest {
         val viewModel = viewModelWith(items)
 
         advanceUntilIdle()
-        val state = viewModel.uiState.value
+        val state = viewModel.uiState.first()
 
         assertEquals(listOf("a", "c"), state.daily.map { it.id })
         assertEquals(listOf("b"), state.weekly.map { it.id })
@@ -67,7 +68,7 @@ class ChecklistViewModelTest {
         val viewModel = viewModelWith(items)
 
         advanceUntilIdle()
-        val state = viewModel.uiState.value
+        val state = viewModel.uiState.first()
 
         assertEquals(listOf("pending"), state.daily.map { it.id })
     }
@@ -78,7 +79,7 @@ class ChecklistViewModelTest {
         val viewModel = viewModelWith(items)
 
         advanceUntilIdle()
-        val state = viewModel.uiState.value
+        val state = viewModel.uiState.first()
 
         assertTrue(state.custom.isNotEmpty())
     }
