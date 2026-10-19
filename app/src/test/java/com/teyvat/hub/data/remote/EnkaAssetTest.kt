@@ -32,8 +32,9 @@ class EnkaAssetTest {
 
     @Test
     fun `multi word name uses first token`() {
+        // "kaedehara kazuha" alias resolves to "kazuha" (lowercase, like other aliases)
         assertEquals(
-            "https://enka.network/ui/UI_AvatarIcon_Side_Kazuha.png",
+            "https://enka.network/ui/UI_AvatarIcon_Side_kazuha.png",
             EnkaAsset.avatarSide("Kaedehara Kazuha"),
         )
     }
