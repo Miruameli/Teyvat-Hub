@@ -65,7 +65,7 @@ class ChecklistViewModelTest {
             item("done", ResetCadence.DAILY, completedAt = now),
             item("pending", ResetCadence.DAILY, completedAt = null),
         )
-        val viewModel = viewModelWith(items)
+        val viewModel = viewModelWith(items, timeProvider = { now })
 
         advanceUntilIdle()
         val state = viewModel.uiState.first()
@@ -109,6 +109,7 @@ class ChecklistViewModelTest {
     private fun viewModelWith(
         items: List<ChecklistItem>,
         onAdd: (String) -> Unit = {},
+        timeProvider: () -> Long = { System.currentTimeMillis() },
     ): ChecklistViewModel {
         val repository = object : ChecklistRepository {
             override fun observePending() = flow { emit(items) }
@@ -117,7 +118,7 @@ class ChecklistViewModelTest {
             override suspend fun addCustomTask(title: String) { onAdd(title) }
             override suspend fun delete(id: String) = Unit
         }
-        return ChecklistViewModel(repository, resetCalculator)
+        return ChecklistViewModel(repository, resetCalculator, timeProvider)
     }
 
     private fun item(

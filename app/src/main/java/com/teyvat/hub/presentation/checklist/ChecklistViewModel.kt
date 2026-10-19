@@ -32,6 +32,7 @@ data class ChecklistUiState(
 class ChecklistViewModel @Inject constructor(
     private val repository: ChecklistRepository,
     private val resetCalculator: ChecklistResetCalculator,
+    private val timeProvider: () -> Long = { System.currentTimeMillis() },
 ) : ViewModel() {
 
     val uiState: StateFlow<ChecklistUiState> =
@@ -44,7 +45,7 @@ class ChecklistViewModel @Inject constructor(
             )
 
     private fun splitByCadence(items: List<ChecklistItem>): ChecklistUiState {
-        val now = System.currentTimeMillis()
+        val now = timeProvider()
         return ChecklistUiState(
             daily = items.filterPending(ResetCadence.DAILY, now),
             weekly = items.filterPending(ResetCadence.WEEKLY, now),
@@ -63,7 +64,7 @@ class ChecklistViewModel @Inject constructor(
 
     fun onTaskCompleted(item: ChecklistItem) {
         viewModelScope.launch {
-            repository.markCompleted(item.id, System.currentTimeMillis())
+            repository.markCompleted(item.id, timeProvider())
         }
     }
 
