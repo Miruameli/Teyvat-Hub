@@ -70,8 +70,9 @@ class ChecklistViewModel @Inject constructor(
     }
 
     fun onAddCustomTask(title: String) {
-        if (title.isBlank()) return
-        viewModelScope.launch { repository.addCustomTask(title) }
+        val trimmed = title.trim()
+        if (trimmed.isBlank()) return
+        viewModelScope.launch { repository.addCustomTask(trimmed) }
     }
 
     fun onDeleteTask(item: ChecklistItem) {
