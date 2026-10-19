@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import com.teyvat.hub.application.LocalCharacterRepository;
 import com.teyvat.hub.application.LocalChecklistRepository;
 import com.teyvat.hub.data.DatabaseSeeder;
@@ -617,6 +618,7 @@ public final class DaggerTeyvatHubApplication_HiltComponents_SingletonC {
       return new ServiceCBuilder(singletonCImpl);
     }
 
+    @CanIgnoreReturnValue
     private TeyvatHubApplication injectTeyvatHubApplication2(TeyvatHubApplication instance) {
       TeyvatHubApplication_MembersInjector.injectSeeder(instance, databaseSeederProvider.get());
       return instance;

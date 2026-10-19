@@ -46,15 +46,14 @@ class ChecklistResetCalculator(
     }
 
     private fun startOfWeek(calendar: Calendar, now: Long): Long {
-        // ISO weeks start on Monday, so Sunday must roll back one day.
-        var dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
-        if (dayOfWeek == Calendar.SUNDAY) {
-            dayOfWeek = Calendar.MONDAY + 7
+        // ISO weeks start on Monday. Sunday rolls back 6 days to the prior Monday.
+        val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+        val daysFromMonday = when (dayOfWeek) {
+            Calendar.SUNDAY -> 6
+            else -> dayOfWeek - Calendar.MONDAY
         }
-        val daysFromMonday = dayOfWeek - Calendar.MONDAY
         calendar.add(Calendar.DAY_OF_YEAR, -daysFromMonday)
-        val weekStart = startOfDay(calendar, now)
-        return weekStart
+        return startOfDay(calendar, now)
     }
 
     private companion object {

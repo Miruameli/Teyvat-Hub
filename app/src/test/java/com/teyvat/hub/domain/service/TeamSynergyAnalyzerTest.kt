@@ -58,7 +58,7 @@ class TeamSynergyAnalyzerTest {
 
         val insights = analyzer.analyze(team)
 
-        assertTrue(insights.any { it.headline.contains("Penyembih") })
+        assertTrue(insights.any { it.headline.contains("Penyembuh") })
     }
 
     @Test

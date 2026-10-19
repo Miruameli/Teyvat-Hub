@@ -16,6 +16,7 @@ object EnkaAsset {
         "raiden shogun" to "raiden",
         "kaedehara kazuha" to "kazuha",
         "baal" to "raiden",
+        "hu tao" to "hutao",
     )
 
     /**
