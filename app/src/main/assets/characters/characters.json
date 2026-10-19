@@ -7,7 +7,9 @@
     "rarity": 5,
     "region": "mondstadt",
     "role": "main-dps",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_traveler_anemo_side",
+    "imageIcon": "char_traveler_anemo_icon"
   },
   {
     "id": "traveler_geo",
@@ -17,7 +19,9 @@
     "rarity": 5,
     "region": "liyue",
     "role": "support",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_traveler_geo_side",
+    "imageIcon": "char_traveler_geo_icon"
   },
   {
     "id": "traveler_electro",
@@ -27,7 +31,9 @@
     "rarity": 5,
     "region": "inazuma",
     "role": "sub-dps",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_traveler_electro_side",
+    "imageIcon": "char_traveler_electro_icon"
   },
   {
     "id": "traveler_dendro",
@@ -37,7 +43,9 @@
     "rarity": 5,
     "region": "sumeru",
     "role": "support",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_traveler_dendro_side",
+    "imageIcon": "char_traveler_dendro_icon"
   },
   {
     "id": "traveler_hydro",
@@ -47,7 +55,9 @@
     "rarity": 5,
     "region": "fontaine",
     "role": "support",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_traveler_hydro_side",
+    "imageIcon": "char_traveler_hydro_icon"
   },
   {
     "id": "traveler_pyro",
@@ -57,7 +67,9 @@
     "rarity": 5,
     "region": "natlan",
     "role": "main-dps",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_traveler_pyro_side",
+    "imageIcon": "char_traveler_pyro_icon"
   },
   {
     "id": "amber",
@@ -67,7 +79,9 @@
     "rarity": 4,
     "region": "mondstadt",
     "role": "support",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_amber_side",
+    "imageIcon": "char_amber_icon"
   },
   {
     "id": "kaeya",
@@ -77,7 +91,9 @@
     "rarity": 4,
     "region": "mondstadt",
     "role": "sub-dps",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_kaeya_side",
+    "imageIcon": "char_kaeya_icon"
   },
   {
     "id": "lisa",
@@ -87,7 +103,9 @@
     "rarity": 4,
     "region": "mondstadt",
     "role": "support",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_lisa_side",
+    "imageIcon": "char_lisa_icon"
   },
   {
     "id": "barbara",
@@ -97,7 +115,9 @@
     "rarity": 4,
     "region": "mondstadt",
     "role": "healer",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_barbara_side",
+    "imageIcon": "char_barbara_icon"
   },
   {
     "id": "razor",
@@ -107,7 +127,9 @@
     "rarity": 4,
     "region": "mondstadt",
     "role": "main-dps",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_razor_side",
+    "imageIcon": "char_razor_icon"
   },
   {
     "id": "bennett",
@@ -117,7 +139,9 @@
     "rarity": 4,
     "region": "mondstadt",
     "role": "support",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_bennett_side",
+    "imageIcon": "char_bennett_icon"
   },
   {
     "id": "noelle",
@@ -127,7 +151,9 @@
     "rarity": 4,
     "region": "mondstadt",
     "role": "shield",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_noelle_side",
+    "imageIcon": "char_noelle_icon"
   },
   {
     "id": "fischl",
@@ -137,7 +163,9 @@
     "rarity": 4,
     "region": "mondstadt",
     "role": "sub-dps",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_fischl_side",
+    "imageIcon": "char_fischl_icon"
   },
   {
     "id": "sucrose",
@@ -147,7 +175,9 @@
     "rarity": 4,
     "region": "mondstadt",
     "role": "support",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_sucrose_side",
+    "imageIcon": "char_sucrose_icon"
   },
   {
     "id": "jean",
@@ -157,7 +187,9 @@
     "rarity": 5,
     "region": "mondstadt",
     "role": "healer",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_jean_side",
+    "imageIcon": "char_jean_icon"
   },
   {
     "id": "diluc",
@@ -167,7 +199,9 @@
     "rarity": 5,
     "region": "mondstadt",
     "role": "main-dps",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_diluc_side",
+    "imageIcon": "char_diluc_icon"
   },
   {
     "id": "venti",
@@ -177,7 +211,9 @@
     "rarity": 5,
     "region": "mondstadt",
     "role": "support",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_venti_side",
+    "imageIcon": "char_venti_icon"
   },
   {
     "id": "klee",
@@ -187,7 +223,9 @@
     "rarity": 5,
     "region": "mondstadt",
     "role": "main-dps",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_klee_side",
+    "imageIcon": "char_klee_icon"
   },
   {
     "id": "mona",
@@ -197,7 +235,9 @@
     "rarity": 5,
     "region": "mondstadt",
     "role": "sub-dps",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_mona_side",
+    "imageIcon": "char_mona_icon"
   },
   {
     "id": "qiqi",
@@ -207,7 +247,9 @@
     "rarity": 5,
     "region": "liyue",
     "role": "healer",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_qiqi_side",
+    "imageIcon": "char_qiqi_icon"
   },
   {
     "id": "keqing",
@@ -217,6 +259,8 @@
     "rarity": 5,
     "region": "liyue",
     "role": "main-dps",
-    "isFavorite": false
+    "isFavorite": false,
+    "imageSide": "char_keqing_side",
+    "imageIcon": "char_keqing_icon"
   }
 ]

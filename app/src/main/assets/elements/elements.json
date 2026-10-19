@@ -3,56 +3,56 @@
     "key": "anemo",
     "name": "Anemo",
     "color": "#5EC9E6",
-    "icon": "assets/elements/anemo.png",
+    "icon": "element_anemo",
     "reaction": "swirl"
   },
   {
     "key": "geo",
     "name": "Geo",
     "color": "#E6C75E",
-    "icon": "assets/elements/geo.png",
+    "icon": "element_geo",
     "reaction": "crystallize"
   },
   {
     "key": "electro",
     "name": "Electro",
     "color": "#B46CEA",
-    "icon": "assets/elements/electro.png",
+    "icon": "element_electro",
     "reaction": "overload"
   },
   {
     "key": "dendro",
     "name": "Dendro",
     "color": "#58C95E",
-    "icon": "assets/elements/dendro.png",
+    "icon": "element_dendro",
     "reaction": "bloom"
   },
   {
     "key": "hydro",
     "name": "Hydro",
     "color": "#5E8FEA",
-    "icon": "assets/elements/hydro.png",
+    "icon": "element_hydro",
     "reaction": "vaporize"
   },
   {
     "key": "pyro",
     "name": "Pyro",
     "color": "#E65E5E",
-    "icon": "assets/elements/pyro.png",
+    "icon": "element_pyro",
     "reaction": "melt"
   },
   {
     "key": "cryo",
     "name": "Cryo",
     "color": "#6EC6E6",
-    "icon": "assets/elements/cryo.png",
+    "icon": "element_cryo",
     "reaction": "melt"
   },
   {
     "key": "physical",
     "name": "Physical",
     "color": "#FFFFFF",
-    "icon": "assets/elements/physical.png",
+    "icon": "element_physical",
     "reaction": "none"
   }
 ]

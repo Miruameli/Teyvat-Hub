@@ -8,7 +8,8 @@
     "subStat": "energy_recharge",
     "subStatValue": "10.0%",
     "bestFor": ["Bennett", "Jean", "Traveler"],
-    "passive": "Refined: Normal or Charged Attack hits have a 50% chance to trigger Everfrost Icicle above the opponent, dealing 80% AoE ATK DMG. Can only occur once every 10s."
+    "passive": "Refined: Normal or Charged Attack hits have a 50% chance to trigger Everfrost Icicle above the opponent, dealing 80% AoE ATK DMG. Can only occur once every 10s.",
+    "image": "weapon_prototypestarglitter"
   },
   {
     "id": "prototyperancour",
@@ -19,7 +20,8 @@
     "subStat": "physical_dmg_bonus",
     "subStatValue": "7.5%",
     "bestFor": ["Keqing", "Bennett", "Kaeya"],
-    "passive": "Refined: On hit, Base ATK and DEF increased by 4% for 6s. Max 4 stacks. Can only occur once every 0.3s."
+    "passive": "Refined: On hit, Base ATK and DEF increased by 4% for 6s. Max 4 stacks. Can only occur once every 0.3s.",
+    "image": "weapon_prototyperancour"
   },
   {
     "id": "prototypeamber",
@@ -30,7 +32,8 @@
     "subStat": "hp",
     "subStatValue": "9.0%",
     "bestFor": ["Barbara", "Mona", "Traveler"],
-    "passive": "Refined: Using Elemental Burst regenerates 4 Energy every 2s for 6s. All party members regenerate 4% HP every 2s for 6s."
+    "passive": "Refined: Using Elemental Burst regenerates 4 Energy every 2s for 6s. All party members regenerate 4% HP every 2s for 6s.",
+    "image": "weapon_prototypeamber"
   },
   {
     "id": "prototypearchaic",
@@ -41,7 +44,8 @@
     "subStat": "atk",
     "subStatValue": "6.0%",
     "bestFor": ["Diluc", "Razor", "Noelle"],
-    "passive": "Refined: On hit, Normal or Charged Attacks increase ATK by 4% and SPD by 1.2% for 6s. Max 4 stacks. Can only occur once every 0.3s."
+    "passive": "Refined: On hit, Normal or Charged Attacks increase ATK by 4% and SPD by 1.2% for 6s. Max 4 stacks. Can only occur once every 0.3s.",
+    "image": "weapon_prototypearchaic"
   },
   {
     "id": "prototypecrescent",
@@ -52,7 +56,8 @@
     "subStat": "atk",
     "subStatValue": "9.0%",
     "bestFor": ["Amber", "Fischl", "Venti"],
-    "passive": "Refined: Charged Attack hit on weak spot increases Movement SPD by 10% and ATK by 36% for 10s."
+    "passive": "Refined: Charged Attack hit on weak spot increases Movement SPD by 10% and ATK by 36% for 10s.",
+    "image": "weapon_prototypecrescent"
   },
   {
     "id": "sacrificialsword",
@@ -63,7 +68,8 @@
     "subStat": "energy_recharge",
     "subStatValue": "6.7%",
     "bestFor": ["Xingqiu", "Traveler", "Bennett"],
-    "passive": "Refined: Elemental Skill DMG increased by 40%. After Elemental Skill hits, 40% chance to end its CD. Can only occur once every 30s."
+    "passive": "Refined: Elemental Skill DMG increased by 40%. After Elemental Skill hits, 40% chance to end its CD. Can only occur once every 30s.",
+    "image": "weapon_sacrificialsword"
   },
   {
     "id": "favoniussword",
@@ -74,7 +80,8 @@
     "subStat": "energy_recharge",
     "subStatValue": "6.7%",
     "bestFor": ["Bennett", "Traveler", "Jean"],
-    "passive": "Refined: CRIT hits have 60% chance to generate 1 Elemental Orb, regenerating 6 Energy. Can only occur once every 12s."
+    "passive": "Refined: CRIT hits have 60% chance to generate 1 Elemental Orb, regenerating 6 Energy. Can only occur once every 12s.",
+    "image": "weapon_favoniussword"
   },
   {
     "id": "skywardblade",
@@ -85,7 +92,8 @@
     "subStat": "energy_recharge",
     "subStatValue": "12.0%",
     "bestFor": ["Jean", "Bennett", "Traveler"],
-    "passive": "Refined: CRIT Rate increased by 20%. Gains Skypiercing Might on Elemental Burst: Movement SPD +10%, ATK +20%, Normal/Charged Attack DMG +20% for 12s."
+    "passive": "Refined: CRIT Rate increased by 20%. Gains Skypiercing Might on Elemental Burst: Movement SPD +10%, ATK +20%, Normal/Charged Attack DMG +20% for 12s.",
+    "image": "weapon_skywardblade"
   },
   {
     "id": "primordialjadecutter",
@@ -96,7 +104,8 @@
     "subStat": "crit_rate",
     "subStatValue": "9.6%",
     "bestFor": ["Keqing", "Jean", "Traveler"],
-    "passive": "Refined: HP increased by 20%. Provides ATK Bonus based on 1.2% of Max HP."
+    "passive": "Refined: HP increased by 20%. Provides ATK Bonus based on 1.2% of Max HP.",
+    "image": "weapon_primordialjadecutter"
   },
   {
     "id": "amossbow",
@@ -107,6 +116,7 @@
     "subStat": "atk",
     "subStatValue": "10.8%",
     "bestFor": ["Ganyu", "Amber", "Venti"],
-    "passive": "Refined: Normal/Charged Attack DMG increased by 12%. After a Normal/Charged Attack hits, DMG increases by 8% per 0.1s (max 5 times)."
+    "passive": "Refined: Normal/Charged Attack DMG increased by 12%. After a Normal/Charged Attack hits, DMG increases by 8% per 0.1s (max 5 times).",
+    "image": "weapon_amossbow"
   }
 ]
