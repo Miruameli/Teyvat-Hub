@@ -7,7 +7,7 @@ import org.junit.Test
 /** Verifies ranking order and edge cases of the search service. */
 class SearchRankerTest {
 
-    private val ranker = SearchRanker { it }
+    private val ranker = SearchRanker<String> { it }
 
     @Test
     fun `empty query returns no results`() {

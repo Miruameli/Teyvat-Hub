@@ -5,7 +5,7 @@ import com.teyvat.hub.data.local.checklist.ChecklistItemEntity
 import com.teyvat.hub.domain.model.ResetCadence
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.flow.take
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
