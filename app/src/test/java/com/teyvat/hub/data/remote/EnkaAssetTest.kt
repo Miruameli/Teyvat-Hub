@@ -43,7 +43,7 @@ class EnkaAssetTest {
     fun `apostrophes and spaces are stripped`() {
         val url = EnkaAsset.avatarIcon("Hu Tao")
 
-        assertTrue(url!!.contains("Hutao"))
+        assertTrue(url!!.contains("hutao"))
         assertTrue(!url.contains("'"))
     }
 

@@ -8,9 +8,10 @@ import dagger.internal.Provider;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.annotation.processing.Generated;
+import kotlin.jvm.functions.Function0;
 
 @ScopeMetadata
-@QualifierMetadata
+@QualifierMetadata("javax.inject.Named")
 @DaggerGenerated
 @Generated(
     value = "dagger.internal.codegen.ComponentProcessor",
@@ -30,24 +31,29 @@ public final class ChecklistViewModel_Factory implements Factory<ChecklistViewMo
 
   private final Provider<ChecklistResetCalculator> resetCalculatorProvider;
 
+  private final Provider<Function0<Long>> timeProvider;
+
   private ChecklistViewModel_Factory(Provider<ChecklistRepository> repositoryProvider,
-      Provider<ChecklistResetCalculator> resetCalculatorProvider) {
+      Provider<ChecklistResetCalculator> resetCalculatorProvider,
+      Provider<Function0<Long>> timeProvider) {
     this.repositoryProvider = repositoryProvider;
     this.resetCalculatorProvider = resetCalculatorProvider;
+    this.timeProvider = timeProvider;
   }
 
   @Override
   public ChecklistViewModel get() {
-    return newInstance(repositoryProvider.get(), resetCalculatorProvider.get());
+    return newInstance(repositoryProvider.get(), resetCalculatorProvider.get(), timeProvider.get());
   }
 
   public static ChecklistViewModel_Factory create(Provider<ChecklistRepository> repositoryProvider,
-      Provider<ChecklistResetCalculator> resetCalculatorProvider) {
-    return new ChecklistViewModel_Factory(repositoryProvider, resetCalculatorProvider);
+      Provider<ChecklistResetCalculator> resetCalculatorProvider,
+      Provider<Function0<Long>> timeProvider) {
+    return new ChecklistViewModel_Factory(repositoryProvider, resetCalculatorProvider, timeProvider);
   }
 
   public static ChecklistViewModel newInstance(ChecklistRepository repository,
-      ChecklistResetCalculator resetCalculator) {
-    return new ChecklistViewModel(repository, resetCalculator);
+      ChecklistResetCalculator resetCalculator, Function0<Long> timeProvider) {
+    return new ChecklistViewModel(repository, resetCalculator, timeProvider);
   }
 }

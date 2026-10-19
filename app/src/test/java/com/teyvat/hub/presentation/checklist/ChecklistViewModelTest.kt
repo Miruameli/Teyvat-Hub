@@ -4,6 +4,7 @@ import com.teyvat.hub.application.ChecklistRepository
 import com.teyvat.hub.domain.model.ChecklistItem
 import com.teyvat.hub.domain.model.ResetCadence
 import com.teyvat.hub.domain.service.ChecklistResetCalculator
+import java.util.Calendar
 import java.util.TimeZone
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -60,7 +61,13 @@ class ChecklistViewModelTest {
 
     @Test
     fun `completed today task is excluded from daily pending list`() = runTest {
-        val now = System.currentTimeMillis()
+        // Fixed time: 2026-10-18 12:00 Asia/Shanghai (well after 04:00 reset)
+        val now = Calendar.getInstance(TimeZone.getTimeZone("Asia/Shanghai")).apply {
+            clear()
+            set(2026, Calendar.OCTOBER, 18, 12, 0, 0)
+            set(Calendar.MILLISECOND, 0)
+        }.timeInMillis
+
         val items = listOf(
             item("done", ResetCadence.DAILY, completedAt = now),
             item("pending", ResetCadence.DAILY, completedAt = null),

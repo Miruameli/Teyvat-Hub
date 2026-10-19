@@ -20,6 +20,7 @@ import com.teyvat.hub.injection.DaoModule_ProvideChecklistDaoFactory;
 import com.teyvat.hub.injection.DaoModule_ProvideEventDaoFactory;
 import com.teyvat.hub.injection.DatabaseModule_ProvideDatabaseFactory;
 import com.teyvat.hub.injection.DomainServiceModule_ProvideChecklistResetCalculatorFactory;
+import com.teyvat.hub.injection.DomainServiceModule_ProvideTimeProviderFactory;
 import com.teyvat.hub.presentation.checklist.ChecklistViewModel;
 import com.teyvat.hub.presentation.checklist.ChecklistViewModel_HiltModules;
 import com.teyvat.hub.presentation.checklist.ChecklistViewModel_HiltModules_BindsModule_Binds_LazyMapKey;
@@ -53,6 +54,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 import javax.annotation.processing.Generated;
+import kotlin.jvm.functions.Function0;
 
 @DaggerGenerated
 @Generated(
@@ -479,7 +481,7 @@ public final class DaggerTeyvatHubApplication_HiltComponents_SingletonC {
       public T get() {
         switch (id) {
           case 0: // com.teyvat.hub.presentation.checklist.ChecklistViewModel
-          return (T) new ChecklistViewModel(singletonCImpl.localChecklistRepositoryProvider.get(), singletonCImpl.provideChecklistResetCalculatorProvider.get());
+          return (T) new ChecklistViewModel(singletonCImpl.localChecklistRepositoryProvider.get(), singletonCImpl.provideChecklistResetCalculatorProvider.get(), singletonCImpl.provideTimeProvider.get());
 
           case 1: // com.teyvat.hub.presentation.roster.RosterViewModel
           return (T) new RosterViewModel(singletonCImpl.localCharacterRepositoryProvider.get());
@@ -578,6 +580,8 @@ public final class DaggerTeyvatHubApplication_HiltComponents_SingletonC {
 
     Provider<ChecklistResetCalculator> provideChecklistResetCalculatorProvider;
 
+    Provider<Function0<Long>> provideTimeProvider;
+
     Provider<LocalCharacterRepository> localCharacterRepositoryProvider;
 
     SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
@@ -595,7 +599,8 @@ public final class DaggerTeyvatHubApplication_HiltComponents_SingletonC {
       this.databaseSeederProvider = DoubleCheck.provider(new SwitchingProvider<DatabaseSeeder>(singletonCImpl, 0));
       this.localChecklistRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<LocalChecklistRepository>(singletonCImpl, 5));
       this.provideChecklistResetCalculatorProvider = DoubleCheck.provider(new SwitchingProvider<ChecklistResetCalculator>(singletonCImpl, 6));
-      this.localCharacterRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<LocalCharacterRepository>(singletonCImpl, 7));
+      this.provideTimeProvider = DoubleCheck.provider(new SwitchingProvider<Function0<Long>>(singletonCImpl, 7));
+      this.localCharacterRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<LocalCharacterRepository>(singletonCImpl, 8));
     }
 
     @Override
@@ -659,7 +664,10 @@ public final class DaggerTeyvatHubApplication_HiltComponents_SingletonC {
           case 6: // com.teyvat.hub.domain.service.ChecklistResetCalculator
           return (T) DomainServiceModule_ProvideChecklistResetCalculatorFactory.provideChecklistResetCalculator();
 
-          case 7: // com.teyvat.hub.application.LocalCharacterRepository
+          case 7: // @javax.inject.Named("timeProvider") kotlin.jvm.functions.Function0<java.lang.Long>
+          return (T) DomainServiceModule_ProvideTimeProviderFactory.provideTimeProvider();
+
+          case 8: // com.teyvat.hub.application.LocalCharacterRepository
           return (T) new LocalCharacterRepository(singletonCImpl.provideCharacterDaoProvider.get());
 
           default: throw new AssertionError(id);
