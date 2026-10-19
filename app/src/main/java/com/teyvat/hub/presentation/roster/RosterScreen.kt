@@ -22,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -117,12 +116,11 @@ private fun CharacterRow(
                 )
             }
             Text(
-                // LocalContext keeps the favorite star reading from resources so the
-                // string can be translated without touching layout code.
+                // Use stringResource() instead of LocalContext.current.getString() to avoid lint error
                 text = if (character.isFavorite) {
-                    LocalContext.current.getString(R.string.marker_favorite_on)
+                    stringResource(R.string.marker_favorite_on)
                 } else {
-                    LocalContext.current.getString(R.string.marker_favorite_off)
+                    stringResource(R.string.marker_favorite_off)
                 },
             )
         }
