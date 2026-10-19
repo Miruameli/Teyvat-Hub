@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -52,7 +53,8 @@ class ChecklistViewModelTest {
         val viewModel = viewModelWith(resetCalculator, items = items)
 
         advanceUntilIdle()
-        val state = viewModel.uiState.first()
+        // Skip initial empty state, get first emitted value
+        val state = viewModel.uiState.drop(1).first()
 
         assertEquals(listOf("a", "c"), state.daily.map { it.id })
         assertEquals(listOf("b"), state.weekly.map { it.id })
@@ -76,7 +78,7 @@ class ChecklistViewModelTest {
         val viewModel = viewModelWith(resetCalculator, items = items, timeProvider = { now })
 
         advanceUntilIdle()
-        val state = viewModel.uiState.first()
+        val state = viewModel.uiState.drop(1).first()
 
         assertEquals(listOf("pending"), state.daily.map { it.id })
     }
@@ -88,7 +90,7 @@ class ChecklistViewModelTest {
         val viewModel = viewModelWith(resetCalculator, items = items)
 
         advanceUntilIdle()
-        val state = viewModel.uiState.first()
+        val state = viewModel.uiState.drop(1).first()
 
         assertTrue(state.custom.isNotEmpty())
     }
