@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
@@ -50,6 +51,7 @@ class ChecklistViewModelTest {
         )
         val viewModel = viewModelWith(resetCalculator, items = items)
 
+        advanceUntilIdle()
         val state = viewModel.uiState.first()
 
         assertEquals(listOf("a", "c"), state.daily.map { it.id })
@@ -73,6 +75,7 @@ class ChecklistViewModelTest {
         )
         val viewModel = viewModelWith(resetCalculator, items = items, timeProvider = { now })
 
+        advanceUntilIdle()
         val state = viewModel.uiState.first()
 
         assertEquals(listOf("pending"), state.daily.map { it.id })
@@ -84,6 +87,7 @@ class ChecklistViewModelTest {
         val items = listOf(item("todo", ResetCadence.NONE, isCustom = true))
         val viewModel = viewModelWith(resetCalculator, items = items)
 
+        advanceUntilIdle()
         val state = viewModel.uiState.first()
 
         assertTrue(state.custom.isNotEmpty())
@@ -96,6 +100,7 @@ class ChecklistViewModelTest {
         val viewModel = viewModelWith(resetCalculator, items = emptyList(), onAdd = { title -> added = title })
 
         viewModel.onAddCustomTask("   ")
+        advanceUntilIdle()
 
         assertEquals(null, added)
     }
@@ -107,6 +112,7 @@ class ChecklistViewModelTest {
         val viewModel = viewModelWith(resetCalculator, items = emptyList(), onAdd = { title -> added = title })
 
         viewModel.onAddCustomTask("  Kumpulkan mora  ")
+        advanceUntilIdle()
 
         assertEquals("Kumpulkan mora", added)
     }
