@@ -105,7 +105,7 @@ class ChecklistViewModelTest {
         viewModel.onAddCustomTask("   ")
         advanceUntilIdle()
 
-        assertEquals(null, added)
+        assertEquals("unset", added)
     }
 
     @Test
