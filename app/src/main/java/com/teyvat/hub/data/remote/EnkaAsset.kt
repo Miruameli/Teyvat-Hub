@@ -36,12 +36,13 @@ object EnkaAsset {
     }
 
     private fun normalize(rawName: String): String? {
-        val key = rawName.trim().lowercase()
-        if (key.isEmpty()) return null
-        val alias = ALIASES[key]
+        val trimmed = rawName.trim()
+        if (trimmed.isBlank()) return null
+        val keyLower = trimmed.lowercase()
+        val alias = ALIASES[keyLower]
         if (alias != null) return encodeSlug(alias)
-        // "First Last" assets on Enka only use the first token.
-        val firstToken = key.split(' ').firstOrNull { it.isNotBlank() } ?: return null
+        // "First Last" assets on Enka only use the first token, preserving original case.
+        val firstToken = trimmed.split(' ').firstOrNull { it.isNotBlank() } ?: return null
         return encodeSlug(firstToken)
     }
 
