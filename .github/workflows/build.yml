@@ -31,6 +31,7 @@ jobs:
         with:
           api-level: 36
           build-tools-version: '36.0.0'
+          cmdline-tools-version: 'latest'
           cache-key: android-sdk-${{ runner.os }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
       - name: Grant execute permission for gradlew
@@ -67,6 +68,7 @@ jobs:
         with:
           api-level: 36
           build-tools-version: '36.0.0'
+          cmdline-tools-version: 'latest'
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -103,6 +105,7 @@ jobs:
         with:
           api-level: 36
           build-tools-version: '36.0.0'
+          cmdline-tools-version: 'latest'
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
