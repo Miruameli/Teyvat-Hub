@@ -11,8 +11,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.runBlockingTest
-import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -40,7 +39,7 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `tasks are grouped by cadence`() = runBlockingTest {
+    fun `tasks are grouped by cadence`() = runTest {
         val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         val items = listOf(
             item("a", ResetCadence.DAILY),
@@ -58,7 +57,7 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `completed today task is excluded from daily pending list`() = runBlockingTest {
+    fun `completed today task is excluded from daily pending list`() = runTest {
         val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         // Fixed time: 2026-10-18 12:00 Asia/Shanghai (well after 04:00 reset)
         val now = Calendar.getInstance(TimeZone.getTimeZone("Asia/Shanghai")).apply {
@@ -79,7 +78,7 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `never completed custom task stays visible`() = runBlockingTest {
+    fun `never completed custom task stays visible`() = runTest {
         val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         val items = listOf(item("todo", ResetCadence.NONE, isCustom = true))
         val viewModel = viewModelWith(resetCalculator, items = items)
@@ -90,7 +89,7 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `blank custom task is rejected`() = runBlockingTest {
+    fun `blank custom task is rejected`() = runTest {
         val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         var added: String? = "unset"
         val viewModel = viewModelWith(resetCalculator, items = emptyList(), onAdd = { title -> added = title })
@@ -101,7 +100,7 @@ class ChecklistViewModelTest {
     }
 
     @Test
-    fun `custom task title is trimmed before being added`() = runBlockingTest {
+    fun `custom task title is trimmed before being added`() = runTest {
         val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         var added: String? = null
         val viewModel = viewModelWith(resetCalculator, items = emptyList(), onAdd = { title -> added = title })
