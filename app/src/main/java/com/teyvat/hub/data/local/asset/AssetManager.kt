@@ -7,6 +7,7 @@ import com.teyvat.hub.domain.model.Character
 import com.teyvat.hub.domain.model.Element
 import com.teyvat.hub.domain.model.Region
 import com.teyvat.hub.domain.model.Weapon
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.lang.reflect.Type
 

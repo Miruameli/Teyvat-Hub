@@ -104,7 +104,8 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
 
-    implementation(libs.coroutines.android)
+
+    implementation(libs.gson)
     implementation(libs.coroutines.core)
 
     testImplementation(libs.junit)
