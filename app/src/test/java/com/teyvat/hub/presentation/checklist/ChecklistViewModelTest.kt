@@ -48,7 +48,7 @@ class ChecklistViewModelTest {
             item("c", ResetCadence.DAILY),
             item("d", ResetCadence.NONE, isCustom = true),
         )
-        val viewModel = viewModelWith(items)
+        val viewModel = viewModelWith(items = items)
 
         advanceUntilIdle()
         val state = viewModel.uiState.first()
@@ -65,7 +65,7 @@ class ChecklistViewModelTest {
             item("done", ResetCadence.DAILY, completedAt = now),
             item("pending", ResetCadence.DAILY, completedAt = null),
         )
-        val viewModel = viewModelWith(items, timeProvider = { now })
+        val viewModel = viewModelWith(items = items, timeProvider = { now })
 
         advanceUntilIdle()
         val state = viewModel.uiState.first()
@@ -76,7 +76,7 @@ class ChecklistViewModelTest {
     @Test
     fun `never completed custom task stays visible`() = runTest {
         val items = listOf(item("todo", ResetCadence.NONE, isCustom = true))
-        val viewModel = viewModelWith(items)
+        val viewModel = viewModelWith(items = items)
 
         advanceUntilIdle()
         val state = viewModel.uiState.first()
@@ -87,7 +87,7 @@ class ChecklistViewModelTest {
     @Test
     fun `blank custom task is rejected`() = runTest {
         var added: String? = "unset"
-        val viewModel = viewModelWith(emptyList()) { title -> added = title }
+        val viewModel = viewModelWith(items = emptyList(), onAdd = { title -> added = title })
 
         viewModel.onAddCustomTask("   ")
         advanceUntilIdle()
@@ -98,7 +98,7 @@ class ChecklistViewModelTest {
     @Test
     fun `custom task title is trimmed before being added`() = runTest {
         var added: String? = null
-        val viewModel = viewModelWith(emptyList()) { title -> added = title }
+        val viewModel = viewModelWith(items = emptyList(), onAdd = { title -> added = title })
 
         viewModel.onAddCustomTask("  Kumpulkan mora  ")
         advanceUntilIdle()
