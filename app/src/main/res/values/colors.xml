@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Matches the Compose dark surface so no white flash appears at cold start. -->
+    <color name="window_background">#FF12101C</color>
+</resources>

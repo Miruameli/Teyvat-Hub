@@ -1,0 +1,7 @@
+com.teyvat.hub.app-pngs-0 /root/Teyvat-Hub/app/build/generated/res/pngs/debug
+com.teyvat.hub.app-updated_navigation_xml-1 /root/Teyvat-Hub/app/build/generated/updated_navigation_xml/debug
+com.teyvat.hub.app-packageDebugResources-2 /root/Teyvat-Hub/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.teyvat.hub.app-packageDebugResources-3 /root/Teyvat-Hub/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.teyvat.hub.app-debug-4 /root/Teyvat-Hub/app/build/intermediates/merged_res/debug/mergeDebugResources
+com.teyvat.hub.app-debug-5 /root/Teyvat-Hub/app/src/debug/res
+com.teyvat.hub.app-main-6 /root/Teyvat-Hub/app/src/main/res

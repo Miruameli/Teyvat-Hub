@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      Visual styling lives in Compose (see presentation/theme/Theme.kt).
+      This XML theme only needs to let the activity draw edge to edge and
+      avoid an abrupt white flash before the first frame.
+    -->
+    <style name="Theme.TeyvatHub" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+
+    <style name="Theme.TeyvatHub.NoActionBar" parent="Theme.TeyvatHub" />
+
+</resources>

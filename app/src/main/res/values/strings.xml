@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Teyvat Hub</string>
+
+    <!-- Bottom navigation tabs -->
+    <string name="tab_roster">Karakter</string>
+    <string name="tab_checklist">Checklist</string>
+    <string name="tab_teams">Tim</string>
+    <string name="tab_events">Event</string>
+    <string name="tab_settings">Pengaturan</string>
+
+    <!-- Roster -->
+    <string name="roster_title">Karakter</string>
+    <string name="roster_empty">Tidak ada karakter yang cocok.</string>
+    <string name="action_search">Cari karakter</string>
+    <string name="filter_favorites">Favorit</string>
+    <string name="marker_favorite_on">&#9733;</string>
+    <string name="marker_favorite_off">&#9734;</string>
+
+    <!-- Checklist -->
+    <string name="checklist_title">Checklist Farming</string>
+    <string name="section_daily">Harian</string>
+    <string name="section_weekly">Mingguan</string>
+    <string name="section_custom">Tugas Sendiri</string>
+    <string name="action_add_task">Tambah tugas sendiri</string>
+</resources>

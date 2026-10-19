@@ -1,0 +1,22 @@
+R_DEF: Internal format may change without notice
+local
+color window_background
+string action_add_task
+string action_search
+string app_name
+string checklist_title
+string filter_favorites
+string marker_favorite_off
+string marker_favorite_on
+string roster_empty
+string roster_title
+string section_custom
+string section_daily
+string section_weekly
+string tab_checklist
+string tab_events
+string tab_roster
+string tab_settings
+string tab_teams
+style Theme.TeyvatHub
+style Theme.TeyvatHub.NoActionBar

@@ -1,0 +1,1 @@
+-keep,allowobfuscation,allowshrinking class com.teyvat.hub.presentation.roster.RosterViewModel
