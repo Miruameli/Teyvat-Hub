@@ -1,0 +1,44 @@
+[
+  {
+    "key": "mondstadt",
+    "name": "Mondstadt",
+    "element": "anemo",
+    "description": "City of Freedom, governed by the Anemo Archon Barbatos (Venti)."
+  },
+  {
+    "key": "liyue",
+    "name": "Liyue",
+    "element": "geo",
+    "description": "Harbor of Contracts, governed by the Geo Archon Morax (Zhongli)."
+  },
+  {
+    "key": "inazuma",
+    "name": "Inazuma",
+    "element": "electro",
+    "description": "Land of Eternity, governed by the Electro Archon Beelzebul (Raiden Shogun)."
+  },
+  {
+    "key": "sumeru",
+    "name": "Sumeru",
+    "element": "dendro",
+    "description": "Nation of Wisdom, governed by the Dendro Archon Buer (Nahida)."
+  },
+  {
+    "key": "fontaine",
+    "name": "Fontaine",
+    "element": "hydro",
+    "description": "Nation of Justice, governed by the Hydro Archon Focalors (Furina)."
+  },
+  {
+    "key": "natlan",
+    "name": "Natlan",
+    "element": "pyro",
+    "description": "Nation of War, governed by the Pyro Archon Mavuika."
+  },
+  {
+    "key": "snezhnaya",
+    "name": "Snezhnaya",
+    "element": "cryo",
+    "description": "Nation of Love, governed by the Cryo Archon Tsaritsa."
+  }
+]

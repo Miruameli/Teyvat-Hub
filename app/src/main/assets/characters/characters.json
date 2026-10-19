@@ -1,0 +1,222 @@
+[
+  {
+    "id": "traveler_anemo",
+    "name": "Traveler (Anemo)",
+    "element": "anemo",
+    "weaponType": "sword",
+    "rarity": 5,
+    "region": "mondstadt",
+    "role": "main-dps",
+    "isFavorite": false
+  },
+  {
+    "id": "traveler_geo",
+    "name": "Traveler (Geo)",
+    "element": "geo",
+    "weaponType": "sword",
+    "rarity": 5,
+    "region": "liyue",
+    "role": "support",
+    "isFavorite": false
+  },
+  {
+    "id": "traveler_electro",
+    "name": "Traveler (Electro)",
+    "element": "electro",
+    "weaponType": "sword",
+    "rarity": 5,
+    "region": "inazuma",
+    "role": "sub-dps",
+    "isFavorite": false
+  },
+  {
+    "id": "traveler_dendro",
+    "name": "Traveler (Dendro)",
+    "element": "dendro",
+    "weaponType": "sword",
+    "rarity": 5,
+    "region": "sumeru",
+    "role": "support",
+    "isFavorite": false
+  },
+  {
+    "id": "traveler_hydro",
+    "name": "Traveler (Hydro)",
+    "element": "hydro",
+    "weaponType": "sword",
+    "rarity": 5,
+    "region": "fontaine",
+    "role": "support",
+    "isFavorite": false
+  },
+  {
+    "id": "traveler_pyro",
+    "name": "Traveler (Pyro)",
+    "element": "pyro",
+    "weaponType": "sword",
+    "rarity": 5,
+    "region": "natlan",
+    "role": "main-dps",
+    "isFavorite": false
+  },
+  {
+    "id": "amber",
+    "name": "Amber",
+    "element": "pyro",
+    "weaponType": "bow",
+    "rarity": 4,
+    "region": "mondstadt",
+    "role": "support",
+    "isFavorite": false
+  },
+  {
+    "id": "kaeya",
+    "name": "Kaeya",
+    "element": "cryo",
+    "weaponType": "sword",
+    "rarity": 4,
+    "region": "mondstadt",
+    "role": "sub-dps",
+    "isFavorite": false
+  },
+  {
+    "id": "lisa",
+    "name": "Lisa",
+    "element": "electro",
+    "weaponType": "catalyst",
+    "rarity": 4,
+    "region": "mondstadt",
+    "role": "support",
+    "isFavorite": false
+  },
+  {
+    "id": "barbara",
+    "name": "Barbara",
+    "element": "hydro",
+    "weaponType": "catalyst",
+    "rarity": 4,
+    "region": "mondstadt",
+    "role": "healer",
+    "isFavorite": false
+  },
+  {
+    "id": "razor",
+    "name": "Razor",
+    "element": "electro",
+    "weaponType": "claymore",
+    "rarity": 4,
+    "region": "mondstadt",
+    "role": "main-dps",
+    "isFavorite": false
+  },
+  {
+    "id": "bennett",
+    "name": "Bennett",
+    "element": "pyro",
+    "weaponType": "sword",
+    "rarity": 4,
+    "region": "mondstadt",
+    "role": "support",
+    "isFavorite": false
+  },
+  {
+    "id": "noelle",
+    "name": "Noelle",
+    "element": "geo",
+    "weaponType": "claymore",
+    "rarity": 4,
+    "region": "mondstadt",
+    "role": "shield",
+    "isFavorite": false
+  },
+  {
+    "id": "fischl",
+    "name": "Fischl",
+    "element": "electro",
+    "weaponType": "bow",
+    "rarity": 4,
+    "region": "mondstadt",
+    "role": "sub-dps",
+    "isFavorite": false
+  },
+  {
+    "id": "sucrose",
+    "name": "Sucrose",
+    "element": "anemo",
+    "weaponType": "catalyst",
+    "rarity": 4,
+    "region": "mondstadt",
+    "role": "support",
+    "isFavorite": false
+  },
+  {
+    "id": "jean",
+    "name": "Jean",
+    "element": "anemo",
+    "weaponType": "sword",
+    "rarity": 5,
+    "region": "mondstadt",
+    "role": "healer",
+    "isFavorite": false
+  },
+  {
+    "id": "diluc",
+    "name": "Diluc",
+    "element": "pyro",
+    "weaponType": "claymore",
+    "rarity": 5,
+    "region": "mondstadt",
+    "role": "main-dps",
+    "isFavorite": false
+  },
+  {
+    "id": "venti",
+    "name": "Venti",
+    "element": "anemo",
+    "weaponType": "bow",
+    "rarity": 5,
+    "region": "mondstadt",
+    "role": "support",
+    "isFavorite": false
+  },
+  {
+    "id": "klee",
+    "name": "Klee",
+    "element": "pyro",
+    "weaponType": "catalyst",
+    "rarity": 5,
+    "region": "mondstadt",
+    "role": "main-dps",
+    "isFavorite": false
+  },
+  {
+    "id": "mona",
+    "name": "Mona",
+    "element": "hydro",
+    "weaponType": "catalyst",
+    "rarity": 5,
+    "region": "mondstadt",
+    "role": "sub-dps",
+    "isFavorite": false
+  },
+  {
+    "id": "qiqi",
+    "name": "Qiqi",
+    "element": "cryo",
+    "weaponType": "sword",
+    "rarity": 5,
+    "region": "liyue",
+    "role": "healer",
+    "isFavorite": false
+  },
+  {
+    "id": "keqing",
+    "name": "Keqing",
+    "element": "electro",
+    "weaponType": "sword",
+    "rarity": 5,
+    "region": "liyue",
+    "role": "main-dps",
+    "isFavorite": false
+  }
+]
