@@ -8,7 +8,6 @@ plugins {
 android {
     namespace = "com.teyvat.hub"
     compileSdk = libs.versions.compileSdk.get().toInt()
-    buildToolsVersion = "35.0.0"
 
     defaultConfig {
         applicationId = "com.teyvat.hub"
