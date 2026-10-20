@@ -23,4 +23,13 @@
     <string name="section_weekly">Mingguan</string>
     <string name="section_custom">Tugas Sendiri</string>
     <string name="action_add_task">Tambah tugas sendiri</string>
+
+    <!-- Events -->
+    <string name="events_title">Event &amp; Banner</string>
+    <string name="events_active">Sedang Berlangsung</string>
+    <string name="events_upcoming">Akan Datang</string>
+    <string name="events_empty">Tidak ada event untuk filter ini.</string>
+    <string name="filter_all">Semua</string>
+    <string name="filter_events_only">Event saja</string>
+    <string name="filter_banners_only">Banner saja</string>
 </resources>

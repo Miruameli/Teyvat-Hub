@@ -18,6 +18,9 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/) dan
   (`docs/adr/0003-optimized-genshin-digital-assets.md`).
 - Penggabungan konten awal saat pertama install melalui `DatabaseSeeder`.
 - Layar daftar karakter dengan pencarian, filter favorit, dan avatar asli.
+- Layar kalender event dan banner yang membaca baris Room, memisahkan
+  event berlangsung, akan datang, dan selesai berdasarkan jam perangkat
+  (`EventRepository`, `EventCalendarViewModel`).
 - Aturan domain yang teruji: reset checklist harian/mingguan, peringkat
   pencarian, validasi tim, dan analisis sinergi tim.
 - Dokumentasi: README, CONTRIBUTING, SECURITY, LICENSE, CODE_OF_CONDUCT,
