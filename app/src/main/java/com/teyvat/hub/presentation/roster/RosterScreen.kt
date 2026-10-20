@@ -30,6 +30,7 @@ import coil3.compose.AsyncImage
 import com.teyvat.hub.R
 import com.teyvat.hub.data.remote.EnkaAsset
 import com.teyvat.hub.domain.model.Character
+import com.teyvat.hub.presentation.theme.labelRes
 
 /**
  * Character roster list with search and favorite filtering.
@@ -107,16 +108,15 @@ private fun CharacterRow(
                     style = MaterialTheme.typography.titleMedium,
                 )
                 Text(
-                    text = buildString {
-                        append(character.element.key)
-                        append(" - ")
-                        append(character.region)
-                    },
+                    text = stringResource(
+                        R.string.element_region_pair,
+                        stringResource(character.element.labelRes()),
+                        character.region,
+                    ),
                     style = MaterialTheme.typography.bodySmall,
                 )
             }
             Text(
-                // Use stringResource() instead of LocalContext.current.getString() to avoid lint error
                 text = if (character.isFavorite) {
                     stringResource(R.string.marker_favorite_on)
                 } else {
