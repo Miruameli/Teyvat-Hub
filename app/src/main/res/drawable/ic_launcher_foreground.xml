@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Launcher icon foreground: a stylised wind sigil, the element the app is
+  named after. Drawn as a vector so one file covers every screen density and
+  the launcher can scale it without a second raster set.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Outer ring, the emblem of the Anemo element -->
+    <path
+        android:fillColor="#7FD4C1"
+        android:pathData="M54,28C68.36,28 80,39.64 80,54C80,68.36 68.36,80 54,80C39.64,80 28,68.36 28,54C28,39.64 39.64,28 54,28ZM54,33C42.4,33 33,42.4 33,54C33,65.6 42.4,75 54,75C65.6,75 75,65.6 75,54C75,42.4 65.6,33 54,33Z" />
+
+    <!-- Inner swirl, the wind motif -->
+    <path
+        android:fillColor="#4FBFA5"
+        android:pathData="M63,47C58,43 50,43 46,47C43,50 43,54 45,57C47,60 51,61 54,59C56,58 57,55 55,54C54,53 52,53 51,54L49,51C51,49 55,49 57,51C60,54 59,59 55,61C51,64 45,62 43,58C41,53 44,48 49,45C54,42 60,43 63,47Z" />
+
+    <!-- Wind streaks -->
+    <path
+        android:fillColor="#B8EDE0"
+        android:pathData="M38,66C43,70 50,71 55,69L56,72C50,74 42,73 36,69Z" />
+    <path
+        android:fillColor="#B8EDE0"
+        android:pathData="M40,38C45,35 52,35 56,38L55,41C51,38 46,38 41,41Z" />
+</vector>

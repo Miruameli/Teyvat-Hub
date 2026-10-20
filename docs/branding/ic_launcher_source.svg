@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Master artwork for the launcher icon. This SVG is the single source of the
+  emblem; the adaptive icon uses the vector drawable and the legacy PNGs for
+  API 24 and 25 are rendered from this file.
+
+  The artwork is the Anemo sigil: a wind ring with a swirl inside, drawn on
+  the deep night blue of Teyvat. The shapes are deliberately bold so the
+  emblem stays readable at the smallest launcher size.
+
+  The background colour matches ic_launcher_background.xml, so the legacy
+  raster icon and the adaptive icon show the same emblem on the same sky.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="432" viewBox="0 0 432 432">
+  <rect width="432" height="432" fill="#16233F" />
+
+  <g transform="translate(216 216)">
+    <circle r="104" fill="none" stroke="#7FD4C1" stroke-width="22" />
+    <path
+      d="M44,-26C24,-46 -20,-46 -40,-24C-56,-6 -50,18 -32,32C-14,46 14,44 30,28C42,16 42,-4 30,-14C20,-22 4,-20 -4,-6L-22,-18C-8,-38 22,-42 40,-26C60,-8 56,22 34,38C10,56 -22,52 -40,32C-58,12 -54,-16 -36,-34C-16,-54 12,-54 30,-40Z"
+      fill="#4FBFA5" />
+    <path d="M-78,72C-58,90 -22,96 6,86L12,102C-20,112 -60,104 -86,86Z" fill="#B8EDE0" />
+  </g>
+</svg>
