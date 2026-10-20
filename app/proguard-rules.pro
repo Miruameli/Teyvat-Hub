@@ -17,7 +17,18 @@
 -keep class javax.inject.** { *; }
 -dontwarn javax.annotation.**
 
-# Moshi builds its adapters reflectively from the annotated classes.
+# Gson reads and writes the domain models reflectively, matching the fields
+# of the bundled JSON assets by name. Obfuscating those fields would break
+# the parsing at runtime while the build still succeeds, so the models and
+# their field names are kept.
+-keep class com.teyvat.hub.domain.character.** { *; }
+-keep class com.teyvat.hub.domain.equipment.** { *; }
+-keepclassmembers,allowobfuscation class * {
+    @com.google.gson.annotations.SerializedName <fields>;
+}
+-dontwarn sun.misc.**
+
+# The remote layer parses the Enka asset descriptors.
 -keep class com.teyvat.hub.data.remote.** { *; }
 -keepclassmembers class com.teyvat.hub.data.remote.** { *; }
 -dontwarn okhttp3.**
