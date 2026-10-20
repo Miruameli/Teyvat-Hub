@@ -1,1 +1,0 @@
--keep,allowobfuscation,allowshrinking class com.teyvat.hub.presentation.checklist.ChecklistViewModel
