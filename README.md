@@ -96,16 +96,23 @@ penyediaan kunci tersebut; lihat [issue #17](https://github.com/Miruameli/Teyvat
 app/src/main/java/com/teyvat/hub/
 ├── MainActivity.kt              aktivitas Compose host
 ├── TeyvatHubApplication.kt       entry point: Hilt, seeding, Coil loader
-├── domain/
-│   ├── model/                   entitas murni (Character, Weapon, Team, ...)
-│   └── service/                 aturan bisnis (reset checklist, pencarian)
+├── domain/                      model dan aturan, satu folder per domain
+│   ├── character/               Character, Region, SearchRanker
+│   ├── equipment/               Weapon, ArtifactSet
+│   ├── team/                    Team, TeamValidator, TeamSynergyAnalyzer
+│   ├── event/                   GameEvent
+│   └── checklist/               ChecklistItem, ChecklistResetCalculator
 ├── data/
 │   ├── local/<domain>/          entitas Room + DAO per domain
+│   ├── content/                 pembaca aset dan dataset seed
+│   ├── mapper/                  konversi baris tersimpan ke model domain
 │   ├── remote/                  URL aset digital Genshin
 │   ├── DatabaseSeeder.kt        seed konten saat pertama install
 │   └── TeyvatHubDatabase.kt     database Room
 ├── application/                 repository (antarmuka + implementasi)
-├── presentation/                layar Compose dan tema
+├── presentation/
+│   ├── feature/<layar>/         satu folder per layar
+│   └── core/                    navigasi dan tema, dipakai semua layar
 └── injection/                   modul Hilt
 ```
 
