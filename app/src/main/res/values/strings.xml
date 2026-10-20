@@ -34,4 +34,15 @@
     <string name="filter_all">Semua</string>
     <string name="filter_events_only">Event saja</string>
     <string name="filter_banners_only">Banner saja</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_language">Bahasa</string>
+    <string name="settings_language_value">Indonesia (bawaan aplikasi)</string>
+    <string name="settings_version">Versi Aplikasi</string>
+    <string name="settings_data_source">Sumber Data</string>
+    <string name="settings_data_source_value">Data karakter dan aset dari Enka Network; jadwal event dapat berubah sewaktu-waktu.</string>
+    <string name="settings_privacy">Kebijakan Privasi</string>
+    <string name="settings_privacy_value">Semua data tersimpan lokal di perangkat. Tidak ada akun, tidak ada pelacakan, tidak ada data yang dikirim ke server kami.</string>
+    <string name="settings_disclaimer">Teyvat Hub adalah proyek fan-made dan tidak berafiliasi dengan HoYoverse. Genshin Impact adalah merek dagang HoYoverse. Semua panduan bersifat informasional dan dapat berubah mengikuti pembaruan game.</string>
 </resources>
