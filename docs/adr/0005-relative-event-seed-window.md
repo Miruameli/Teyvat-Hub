@@ -51,12 +51,12 @@ Positif:
 - Kalender selalu memuat event berjalan, akan datang, dan selesai, berapa pun
   tanggal aplikasi dijalankan.
 - Tidak ada tanggal seed yang perlu digeser secara manual.
-- Kegagalan 类似 ini tertangkap test, bukan oleh pemeriksaan manual.
+- Kegagalan seperti ini tertangkap test, bukan oleh pemeriksaan manual.
 
 Negatif:
 
 - Baris event berubah setiap aplikasi dibuka, sehingga isi tabel tidak
-  identik antar waktu. Ini tidak influential karena event tidak menyimpan
+  identik antar waktu. Ini tidak berpengaruh karena event tidak menyimpan
   state pengguna.
 - Tampilan "berakhir" tidak bisa merujuk pada tanggal historis yang tetap.
 
@@ -64,8 +64,8 @@ Negatif:
 
 | Alternatif | Alasan ditolak |
 | --- | --- |
-| Men geser tanggal anchor ke masa depan | Memindahkan masalah beberapa minggu ke depan; masalah yang sama berulang tanpa akhir |
-| Membiarkan tanggal absolut dan memperbarui manual tiap bulan | Membutuhkankiematan pemeliharaan berkala dan kembali ke keadaan yang sama saat deadline terlewat |
+| Menggeser tanggal anchor ke masa depan | Memindahkan masalah beberapa minggu ke depan; masalah yang sama berulang tanpa akhir |
+| Membiarkan tanggal absolut dan memperbarui manual tiap bulan | Membutuhkan pemeliharaan berkala dan kembali ke keadaan yang sama saat deadline terlewat |
 | Membuang baris yang sudah berakhir saat seed | Menghapus riwayat event dari pengguna; pengguna tidak bisa melihat event yang baru saja selesai |
 
 ## Verifikasi
