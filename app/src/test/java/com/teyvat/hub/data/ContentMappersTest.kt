@@ -3,8 +3,8 @@ package com.teyvat.hub.data.mapper
 import com.teyvat.hub.data.local.checklist.ChecklistItemEntity
 import com.teyvat.hub.data.local.event.GameEventEntity
 import com.teyvat.hub.data.local.team.TeamEntity
-import com.teyvat.hub.domain.model.EventStatus
-import com.teyvat.hub.domain.model.ResetCadence
+import com.teyvat.hub.domain.checklist.ResetCadence
+import com.teyvat.hub.domain.event.EventStatus
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -59,7 +59,7 @@ class ContentMappersTest {
 
     @Test
     fun `team member ids survive delimiter round trip`() {
-        val team = com.teyvat.hub.domain.model.Team(
+        val team = com.teyvat.hub.domain.team.Team(
             id = "t1",
             name = "Vaporize",
             characterIds = listOf("a", "b", "c", "d"),

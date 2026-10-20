@@ -1,14 +1,14 @@
 package com.teyvat.hub.injection
 
-import com.teyvat.hub.domain.service.ChecklistResetCalculator
-import com.teyvat.hub.domain.service.TeamSynergyAnalyzer
-import com.teyvat.hub.domain.service.TeamValidator
+import javax.inject.Named
+import javax.inject.Singleton
+import com.teyvat.hub.domain.checklist.ChecklistResetCalculator
+import com.teyvat.hub.domain.team.TeamSynergyAnalyzer
+import com.teyvat.hub.domain.team.TeamValidator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Named
-import javax.inject.Singleton
 
 /**
  * Supplies domain services that carry non-trivial constructor arguments.

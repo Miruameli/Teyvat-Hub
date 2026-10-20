@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.teyvat.hub.R
-import com.teyvat.hub.domain.model.Character
-import com.teyvat.hub.domain.service.SynergyInsight
+import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.domain.team.SynergyInsight
 import com.teyvat.hub.presentation.theme.labelRes
 
 /** Heading above the party slots. */

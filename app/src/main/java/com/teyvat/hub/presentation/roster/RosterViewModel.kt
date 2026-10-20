@@ -1,10 +1,5 @@
 package com.teyvat.hub.presentation.roster
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.teyvat.hub.application.CharacterRepository
-import com.teyvat.hub.domain.model.Character
-import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -12,6 +7,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.teyvat.hub.application.CharacterRepository
+import com.teyvat.hub.domain.character.Character
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 /** Roster list state: filtered characters plus search text. */
 data class RosterUiState(

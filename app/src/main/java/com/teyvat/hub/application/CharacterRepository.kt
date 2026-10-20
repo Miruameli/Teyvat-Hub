@@ -1,13 +1,13 @@
 package com.teyvat.hub.application
 
-import com.teyvat.hub.data.local.character.CharacterDao
-import com.teyvat.hub.data.mapper.toDomain
-import com.teyvat.hub.domain.model.Character
-import com.teyvat.hub.domain.service.SearchRanker
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import com.teyvat.hub.data.local.character.CharacterDao
+import com.teyvat.hub.data.mapper.toDomain
+import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.domain.character.SearchRanker
 
 /**
  * Single source of truth for the character roster.

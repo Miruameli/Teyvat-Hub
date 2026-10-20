@@ -1,12 +1,5 @@
 package com.teyvat.hub.presentation.checklist
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.teyvat.hub.application.ChecklistRepository
-import com.teyvat.hub.domain.model.ChecklistItem
-import com.teyvat.hub.domain.model.ResetCadence
-import com.teyvat.hub.domain.service.ChecklistResetCalculator
-import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import javax.inject.Named
 import kotlinx.coroutines.flow.SharingStarted
@@ -14,6 +7,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.teyvat.hub.application.ChecklistRepository
+import com.teyvat.hub.domain.checklist.ChecklistItem
+import com.teyvat.hub.domain.checklist.ChecklistResetCalculator
+import com.teyvat.hub.domain.checklist.ResetCadence
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 /** Checklist state split by cadence, with pending flags already resolved. */
 data class ChecklistUiState(

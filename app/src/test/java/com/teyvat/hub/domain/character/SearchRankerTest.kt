@@ -1,4 +1,4 @@
-package com.teyvat.hub.domain.service
+package com.teyvat.hub.domain.character
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue

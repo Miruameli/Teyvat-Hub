@@ -3,12 +3,12 @@ package com.teyvat.hub.data.mapper
 import com.teyvat.hub.data.local.checklist.ChecklistItemEntity
 import com.teyvat.hub.data.local.event.GameEventEntity
 import com.teyvat.hub.data.local.team.TeamEntity
-import com.teyvat.hub.domain.model.ChecklistItem
-import com.teyvat.hub.domain.model.EventKind
-import com.teyvat.hub.domain.model.EventStatus
-import com.teyvat.hub.domain.model.GameEvent
-import com.teyvat.hub.domain.model.ResetCadence
-import com.teyvat.hub.domain.model.Team
+import com.teyvat.hub.domain.checklist.ChecklistItem
+import com.teyvat.hub.domain.checklist.ResetCadence
+import com.teyvat.hub.domain.event.EventKind
+import com.teyvat.hub.domain.event.EventStatus
+import com.teyvat.hub.domain.event.GameEvent
+import com.teyvat.hub.domain.team.Team
 
 /**
  * Maps stored rows to domain models and back.

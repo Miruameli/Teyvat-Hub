@@ -1,7 +1,5 @@
-package com.teyvat.hub.domain.service
+package com.teyvat.hub.domain.checklist
 
-import com.teyvat.hub.domain.model.ChecklistItem
-import com.teyvat.hub.domain.model.ResetCadence
 import java.util.Calendar
 import java.util.TimeZone
 

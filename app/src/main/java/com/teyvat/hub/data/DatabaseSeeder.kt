@@ -1,5 +1,7 @@
 package com.teyvat.hub.data
 
+import javax.inject.Inject
+import javax.inject.Singleton
 import com.teyvat.hub.data.local.character.CharacterDao
 import com.teyvat.hub.data.local.checklist.ChecklistDao
 import com.teyvat.hub.data.local.event.GameEventDao
@@ -8,8 +10,6 @@ import com.teyvat.hub.data.seeding.CharacterSeedContent
 import com.teyvat.hub.data.seeding.ChecklistSeedContent
 import com.teyvat.hub.data.seeding.EventSeedContent
 import com.teyvat.hub.data.seeding.TeamSeedContent
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Seeds offline content on first launch.

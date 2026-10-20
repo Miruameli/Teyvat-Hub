@@ -1,17 +1,17 @@
 package com.teyvat.hub.presentation.team
 
-import com.teyvat.hub.application.CharacterRepository
-import com.teyvat.hub.application.TeamRepository
-import com.teyvat.hub.domain.model.Character
-import com.teyvat.hub.domain.model.CharacterRole
-import com.teyvat.hub.domain.model.Element
-import com.teyvat.hub.domain.model.Rarity
-import com.teyvat.hub.domain.model.Team
-import com.teyvat.hub.domain.model.WeaponType
-import com.teyvat.hub.domain.service.TeamSynergyAnalyzer
-import com.teyvat.hub.domain.service.TeamValidator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import com.teyvat.hub.application.CharacterRepository
+import com.teyvat.hub.application.TeamRepository
+import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.domain.character.CharacterRole
+import com.teyvat.hub.domain.character.Element
+import com.teyvat.hub.domain.character.Rarity
+import com.teyvat.hub.domain.character.WeaponType
+import com.teyvat.hub.domain.team.Team
+import com.teyvat.hub.domain.team.TeamSynergyAnalyzer
+import com.teyvat.hub.domain.team.TeamValidator
 
 /**
  * Shared fixtures for the team builder tests.

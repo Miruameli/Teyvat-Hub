@@ -1,8 +1,8 @@
-package com.teyvat.hub.domain.service
+package com.teyvat.hub.domain.team
 
-import com.teyvat.hub.domain.model.Character
-import com.teyvat.hub.domain.model.CharacterRole
-import com.teyvat.hub.domain.model.Element
+import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.domain.character.CharacterRole
+import com.teyvat.hub.domain.character.Element
 
 /** Insight about one team, surfaced on the team builder screen. */
 data class SynergyInsight(

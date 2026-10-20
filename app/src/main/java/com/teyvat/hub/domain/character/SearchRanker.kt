@@ -1,4 +1,4 @@
-package com.teyvat.hub.domain.service
+package com.teyvat.hub.domain.character
 
 /** A single search result with its relevance score. */
 data class SearchHit<T>(val item: T, val score: Int)
