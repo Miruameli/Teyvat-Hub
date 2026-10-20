@@ -1,6 +1,8 @@
 package com.teyvat.hub.injection
 
 import com.teyvat.hub.domain.service.ChecklistResetCalculator
+import com.teyvat.hub.domain.service.TeamSynergyAnalyzer
+import com.teyvat.hub.domain.service.TeamValidator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +29,13 @@ object DomainServiceModule {
     @Named("timeProvider")
     @Singleton
     fun provideTimeProvider(): () -> Long = { System.currentTimeMillis() }
+
+    /** Stateless team rules; shared so the screen and ViewModel agree. */
+    @Provides
+    @Singleton
+    fun provideTeamValidator(): TeamValidator = TeamValidator()
+
+    @Provides
+    @Singleton
+    fun provideTeamSynergyAnalyzer(): TeamSynergyAnalyzer = TeamSynergyAnalyzer()
 }

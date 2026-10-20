@@ -6,6 +6,8 @@ import com.teyvat.hub.application.EventRepository
 import com.teyvat.hub.application.LocalCharacterRepository
 import com.teyvat.hub.application.LocalChecklistRepository
 import com.teyvat.hub.application.LocalEventRepository
+import com.teyvat.hub.application.LocalTeamRepository
+import com.teyvat.hub.application.TeamRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -38,4 +40,10 @@ interface RepositoryModule {
     fun bindEventRepository(
         implementation: LocalEventRepository,
     ): EventRepository
+
+    /** Room-backed saved teams and built-in templates. */
+    @Binds
+    fun bindTeamRepository(
+        implementation: LocalTeamRepository,
+    ): TeamRepository
 }

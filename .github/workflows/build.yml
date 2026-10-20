@@ -38,7 +38,19 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew :app:assembleDebug --no-daemon
 
+      - name: Place APK at repository root
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk ./TeyvatHub-debug.apk
+          ls -lh ./TeyvatHub-debug.apk
+
       - name: Upload Debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: TeyvatHub-debug-apk
+          path: TeyvatHub-debug.apk
+          retention-days: 7
+
+      - name: Upload raw build output APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug-apk
