@@ -58,4 +58,34 @@
     <string name="teams_saved">Tim Tersimpan</string>
     <string name="teams_templates">Template Tim</string>
     <string name="teams_delete">Hapus tim</string>
+
+    <!-- Elements -->
+    <string name="element_anemo">Anemo</string>
+    <string name="element_geo">Geo</string>
+    <string name="element_electro">Elektro</string>
+    <string name="element_dendro">Dendro</string>
+    <string name="element_hydro">Hydro</string>
+    <string name="element_pyro">Pyro</string>
+    <string name="element_cryo">Cryo</string>
+    <string name="element_physical">Fisik</string>
+    <string name="element_unknown">Elemen</string>
+    <string name="element_role_pair">%1$s · %2$s</string>
+    <string name="element_region_pair">%1$s - %2$s</string>
+
+    <!-- Roles -->
+    <string name="role_main_dps">DPS Utama</string>
+    <string name="role_sub_dps">DPS Pendukung</string>
+    <string name="role_support">Support</string>
+    <string name="role_shield">Pelindung</string>
+    <string name="role_healer">Healer</string>
+    <string name="role_utility">Utility</string>
+    <string name="role_unknown">Peran</string>
+
+    <!-- Weapons -->
+    <string name="weapon_sword">Pedang</string>
+    <string name="weapon_claymore">Claymore</string>
+    <string name="weapon_polearm">Tombak</string>
+    <string name="weapon_bow">Busur</string>
+    <string name="weapon_catalyst">Katalis</string>
+    <string name="weapon_unknown">Senjata</string>
 </resources>

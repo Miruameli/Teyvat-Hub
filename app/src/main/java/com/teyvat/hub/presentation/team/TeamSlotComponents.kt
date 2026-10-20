@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.teyvat.hub.R
 import com.teyvat.hub.domain.model.Character
 import com.teyvat.hub.domain.service.SynergyInsight
+import com.teyvat.hub.presentation.theme.labelRes
 
 /** Heading above the party slots. */
 @Composable
@@ -43,7 +44,13 @@ fun SelectedTeamRow(
     ListItem(
         headlineContent = { Text(character.name) },
         supportingContent = {
-            Text("${character.element.key} · ${character.role.key}")
+            Text(
+                stringResource(
+                    R.string.element_role_pair,
+                    stringResource(character.element.labelRes()),
+                    stringResource(character.role.labelRes()),
+                ),
+            )
         },
         trailingContent = {
             IconButton(onClick = onRemove) {
@@ -104,7 +111,13 @@ fun RosterRow(
     ListItem(
         headlineContent = { Text(character.name) },
         supportingContent = {
-            Text("${character.element.key} · ${character.role.key}")
+            Text(
+                stringResource(
+                    R.string.element_role_pair,
+                    stringResource(character.element.labelRes()),
+                    stringResource(character.role.labelRes()),
+                ),
+            )
         },
         leadingContent = {
             Checkbox(
