@@ -65,7 +65,10 @@ fun EventCalendarScreen(
                     item { SectionTitle(stringResource(R.string.events_upcoming)) }
                     items(state.upcoming, key = { it.id }) { row -> EventRowCard(row) }
                 }
-                items(state.ended, key = { it.id }) { row -> EventRowCard(row) }
+                if (state.ended.isNotEmpty()) {
+                    item { SectionTitle(stringResource(R.string.events_ended)) }
+                    items(state.ended, key = { it.id }) { row -> EventRowCard(row) }
+                }
             }
         }
     }
@@ -76,7 +79,15 @@ private fun EventRowCard(row: EventRow) {
     ListItem(
         headlineContent = { Text(row.title) },
         supportingContent = {
-            Text("${row.kindLabel} · ${row.rangeLabel}")
+            Column {
+                Text("${row.kindLabel} · ${row.rangeLabel}")
+                if (row.description.isNotBlank()) {
+                    Text(
+                        text = row.description,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+            }
         },
     )
 }

@@ -118,6 +118,17 @@ class EventCalendarUiStateTest {
         assertEquals("Banner", state.active.single().kindLabel)
     }
 
+    @Test
+    fun `row keeps description so the screen can render it`() {
+        val state = buildEventCalendarState(
+            events = listOf(active.copy(description = "Hadiah resin")),
+            now = now,
+            formatter = formatter,
+        )
+
+        assertEquals("Hadiah resin", state.active.single().description)
+    }
+
     private fun event(
         id: String,
         startsAt: Long,

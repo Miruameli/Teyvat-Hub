@@ -28,6 +28,7 @@
     <string name="events_title">Event &amp; Banner</string>
     <string name="events_active">Sedang Berlangsung</string>
     <string name="events_upcoming">Akan Datang</string>
+    <string name="events_ended">Sudah Selesai</string>
     <string name="events_empty">Tidak ada event untuk filter ini.</string>
     <string name="filter_all">Semua</string>
     <string name="filter_events_only">Event saja</string>
