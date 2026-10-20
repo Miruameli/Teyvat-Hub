@@ -1,6 +1,8 @@
 package com.teyvat.hub.data.seeding
 
+import com.teyvat.hub.data.mapper.toDomain
 import com.teyvat.hub.domain.model.EventStatus
+import com.teyvat.hub.domain.model.GameEvent
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -11,31 +13,35 @@ import org.junit.Test
  * A hard-coded anchor silently pushed every row into the "ended" section once
  * the anchor fell behind the wall clock, which left the calendar with no
  * running or upcoming content. These assertions pin the intended mix.
+ *
+ * Statuses are resolved through the real domain model rather than a local
+ * copy of the rule, so the test fails if the production logic drifts.
  */
 class EventSeedContentTest {
 
-    private val events = EventSeedContent.all(EventSeedContent.REFERENCE_NOW)
+    private val referenceNow = EventSeedContent.REFERENCE_NOW
+
+    private val events: List<GameEvent> =
+        EventSeedContent.all(referenceNow).map { it.toDomain() }
 
     @Test
     fun `seed produces a running event`() {
-        assertTrue(
-            events.any { it.startsAt <= now && (it.endsAt == null || it.endsAt > now) },
-        )
+        assertTrue(events.any { it.statusAt(referenceNow) == EventStatus.ACTIVE })
     }
 
     @Test
     fun `seed produces an upcoming event`() {
-        assertTrue(events.any { it.startsAt > now })
+        assertTrue(events.any { it.statusAt(referenceNow) == EventStatus.UPCOMING })
     }
 
     @Test
     fun `seed produces a finished event`() {
-        assertTrue(events.any { it.endsAt != null && it.endsAt <= now })
+        assertTrue(events.any { it.statusAt(referenceNow) == EventStatus.ENDED })
     }
 
     @Test
     fun `every section of the calendar is populated`() {
-        val statuses = events.map { statusAt(it.startsAt, it.endsAt) }
+        val statuses = events.map { it.statusAt(referenceNow) }
 
         assertTrue(statuses.contains(EventStatus.ACTIVE))
         assertTrue(statuses.contains(EventStatus.UPCOMING))
@@ -52,18 +58,11 @@ class EventSeedContentTest {
 
     @Test
     fun `windows stay inside the announced range for any seed moment`() {
-        val later = EventSeedContent.all(EventSeedContent.REFERENCE_NOW + 365L * 24L * 60L * 60L * 1000L)
+        val laterNow = referenceNow + 365L * 24L * 60L * 60L * 1000L
+        val later = EventSeedContent.all(laterNow).map { it.toDomain() }
 
-        val statuses = later.map { statusAt(it.startsAt, it.endsAt) }
+        val statuses = later.map { it.statusAt(laterNow) }
         assertTrue(statuses.contains(EventStatus.ACTIVE))
         assertTrue(statuses.contains(EventStatus.UPCOMING))
-    }
-
-    private val now = EventSeedContent.REFERENCE_NOW
-
-    private fun statusAt(startsAt: Long, endsAt: Long?): EventStatus = when {
-        now < startsAt -> EventStatus.UPCOMING
-        endsAt != null && now >= endsAt -> EventStatus.ENDED
-        else -> EventStatus.ACTIVE
     }
 }
