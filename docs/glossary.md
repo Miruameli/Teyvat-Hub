@@ -8,7 +8,7 @@ sebagaimana adanya untuk menghindari terjemahan yang membingungkan.
 
 | Istilah | Arti |
 | --- | --- |
-| **Banner** | Periode gacha berbatas waktu untuk karakter atau senjata tertentu |
+| **Banner** | Periode wish banner berbatas waktu untuk karakter atau senjata tertentu; memakai aturan tampilan yang sama dengan event |
 | **Artifak** | Perlengkapan lima slot: Bunga Bulu, Ujung Ekor, Topi Waktu, Piala Cahaya, Jam Pasir |
 | **Build** | Kombinasi senjata, artifak, dan prioritas talenta yang direkomendasikan untuk satu karakter |
 | **Talent** | Kemampuan karakter: biasa, skill, burst, serta alternatif sprint/explorasi (constelasi) |
@@ -16,7 +16,6 @@ sebagaimana adanya untuk menghindari terjemahan yang membingungkan.
 | **Reset harian** | Batas harian yang direset server setiap pukul 04.00 UTC+8 (waktu server resmi) |
 | **Farm** | Aktivitas mengumpulkan sumber daya berulang (domain, resin, boss) |
 | **Event** | Periode event dalam game dengan tanggal mulai dan, bila diumumkan, tanggal berakhir |
-| **Banner** | Periode wish banner; memakai aturan tampilan yang sama dengan event |
 | **Party** | Susunan karakter yang sedang dimainkan, maksimal empat anggota |
 | **Berlangsung** | Status event yang sudah mulai dan belum melewati tanggal berakhirnya |
 | **Akan datang** | Status event yang tanggal mulainya belum tercapai |
