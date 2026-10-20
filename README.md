@@ -65,6 +65,11 @@ menyalinnya ke root project guna mudah dipindahkan ke penyimpanan perangkat:
 ./scripts/copy-apk-to-storage.sh    # menghasilkan ./TeyvatHub-debug.apk
 ```
 
+Alternatif tanpa build lokal: CI juga membangun dan mengunggah APK. Pada
+halaman Actions, ambil artifact `TeyvatHub-debug-apk`; isinya sudah bernama
+`TeyvatHub-debug.apk` dan bisa langsung disalin ke perangkat. Rinciannya ada
+di [docs/runbook.md](docs/runbook.md).
+
 > Catatan lingkungan: beberapa host (PRoot) tidak mengekspos `/sdcard`,
 > sehingga salinan langsung ke penyimpanan bersama harus dijalankan dari
 > lingkungan Android/Termux.
@@ -92,8 +97,16 @@ app/src/main/java/com/teyvat/hub/
 ## Pengujian
 
 Unit test ditulis untuk semua aturan pada lapisan `domain` — reset checklist,
-sinergi tim, peringkat pencarian — karena itu bagian yang paling mungkin
-berubah sekaligus paling mudah divalidasi tanpa perangkat.
+sinergi tim, peringkat pencarian, validasi tim — karena itu bagian yang paling
+mungkin berubah sekaligus paling mudah divalidasi tanpa perangkat.
+
+Lapisan `presentation` juga diuji di JVM: state builder event dipisah dari
+composable sebagai fungsi murni, dan jamnya di-inject, sehingga aturan
+"event yang sedang berjalan" bisa diverifikasi tanpa perangkat.
+
+> Penting: CI yang hijau tidak menjamin sebuah layar punya isi. Konten seed
+> pernah membuat semua event berstatus "selesai" tanpa gagalkan satu pun test.
+> Karena itu ada test yang memeriksa seed mengisi tiap bagian layar.
 
 ```bash
 ./gradlew :app:testDebugUnitTest
