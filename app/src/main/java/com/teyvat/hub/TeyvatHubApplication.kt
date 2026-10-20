@@ -1,5 +1,10 @@
 package com.teyvat.hub
 
+import javax.inject.Inject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import android.app.Application
 import coil3.ImageLoader
 import coil3.PlatformContext
@@ -10,11 +15,6 @@ import coil3.request.allowHardware
 import com.teyvat.hub.data.DatabaseSeeder
 import com.teyvat.hub.shared.AppConstants
 import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 import okio.Path.Companion.toOkioPath
 
 /**

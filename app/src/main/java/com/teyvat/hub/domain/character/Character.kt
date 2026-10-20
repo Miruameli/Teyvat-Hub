@@ -1,4 +1,4 @@
-package com.teyvat.hub.domain.model
+package com.teyvat.hub.domain.character
 
 /** Elemental affinity of a character or reaction. */
 enum class Element(val key: String) {

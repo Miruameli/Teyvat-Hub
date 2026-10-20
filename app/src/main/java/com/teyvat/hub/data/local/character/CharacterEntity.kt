@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 /**
  * Persisted form of a character.
  *
- * Enum values are stored as their stable string [com.teyvat.hub.domain.model]
+ * Enum values are stored as their stable string [com.teyvat.hub.domain.character]
  * keys, not ordinals, so that reordering the enum cannot corrupt saved rows.
  */
 @Entity(tableName = "characters")

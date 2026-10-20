@@ -2,9 +2,9 @@ package com.teyvat.hub.presentation.theme
 
 import androidx.annotation.StringRes
 import com.teyvat.hub.R
-import com.teyvat.hub.domain.model.CharacterRole
-import com.teyvat.hub.domain.model.Element
-import com.teyvat.hub.domain.model.WeaponType
+import com.teyvat.hub.domain.character.CharacterRole
+import com.teyvat.hub.domain.character.Element
+import com.teyvat.hub.domain.character.WeaponType
 
 /**
  * Indonesian labels for the domain enums.

@@ -1,10 +1,5 @@
 package com.teyvat.hub.presentation.event
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.teyvat.hub.application.EventRepository
-import com.teyvat.hub.domain.model.EventKind
-import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import javax.inject.Named
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,6 +7,11 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.teyvat.hub.application.EventRepository
+import com.teyvat.hub.domain.event.EventKind
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 /**
  * Drives the event and banner calendar.

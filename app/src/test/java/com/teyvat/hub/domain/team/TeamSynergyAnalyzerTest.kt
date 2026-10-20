@@ -1,10 +1,10 @@
-package com.teyvat.hub.domain.service
+package com.teyvat.hub.domain.team
 
-import com.teyvat.hub.domain.model.Character
-import com.teyvat.hub.domain.model.CharacterRole
-import com.teyvat.hub.domain.model.Element
-import com.teyvat.hub.domain.model.Rarity
-import com.teyvat.hub.domain.model.WeaponType
+import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.domain.character.CharacterRole
+import com.teyvat.hub.domain.character.Element
+import com.teyvat.hub.domain.character.Rarity
+import com.teyvat.hub.domain.character.WeaponType
 import org.junit.Assert.assertTrue
 import org.junit.Test
 

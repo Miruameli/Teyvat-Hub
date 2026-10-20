@@ -1,15 +1,15 @@
 package com.teyvat.hub.data.local.asset
 
+import java.lang.reflect.Type
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.teyvat.hub.domain.model.Character
-import com.teyvat.hub.domain.model.Element
-import com.teyvat.hub.domain.model.Region
-import com.teyvat.hub.domain.model.Weapon
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import java.lang.reflect.Type
+import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.domain.character.Element
+import com.teyvat.hub.domain.character.Region
+import com.teyvat.hub.domain.equipment.Weapon
 
 /**
  * Loads all game data from local JSON assets - no network required.

@@ -1,11 +1,11 @@
 package com.teyvat.hub.data.mapper
 
 import com.teyvat.hub.data.local.character.CharacterEntity
-import com.teyvat.hub.domain.model.Character
-import com.teyvat.hub.domain.model.CharacterRole
-import com.teyvat.hub.domain.model.Element
-import com.teyvat.hub.domain.model.Rarity
-import com.teyvat.hub.domain.model.WeaponType
+import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.domain.character.CharacterRole
+import com.teyvat.hub.domain.character.Element
+import com.teyvat.hub.domain.character.Rarity
+import com.teyvat.hub.domain.character.WeaponType
 
 /**
  * Converts a stored row into the domain model.

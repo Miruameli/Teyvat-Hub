@@ -1,10 +1,9 @@
-package com.teyvat.hub.domain.service
+package com.teyvat.hub.domain.team
 
-import com.teyvat.hub.domain.model.Character
-import com.teyvat.hub.domain.model.Element
-import com.teyvat.hub.domain.model.Rarity
-import com.teyvat.hub.domain.model.Team
-import com.teyvat.hub.domain.model.WeaponType
+import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.domain.character.Element
+import com.teyvat.hub.domain.character.Rarity
+import com.teyvat.hub.domain.character.WeaponType
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -21,7 +20,7 @@ class TeamValidatorTest {
         weaponType = WeaponType.SWORD,
         rarity = Rarity.FIVE,
         region = "Mondstadt",
-        role = com.teyvat.hub.domain.model.CharacterRole.MAIN_DPS,
+        role = com.teyvat.hub.domain.character.CharacterRole.MAIN_DPS,
     )
 
     private fun team(name: String, vararg ids: String) = Team(

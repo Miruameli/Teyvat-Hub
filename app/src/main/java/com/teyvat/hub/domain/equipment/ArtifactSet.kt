@@ -1,4 +1,4 @@
-package com.teyvat.hub.domain.model
+package com.teyvat.hub.domain.equipment
 
 /**
  * An artifact set with its piece bonuses.

@@ -1,4 +1,4 @@
-package com.teyvat.hub.domain.model
+package com.teyvat.hub.domain.event
 
 /** Lifecycle state of an event or banner at a given moment. */
 enum class EventStatus(val key: String) {

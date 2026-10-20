@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.teyvat.hub.R
-import com.teyvat.hub.domain.model.EventKind
+import com.teyvat.hub.domain.event.EventKind
 
 /**
  * Event and wish banner calendar.

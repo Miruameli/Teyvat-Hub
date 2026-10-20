@@ -1,4 +1,4 @@
-package com.teyvat.hub.domain.model
+package com.teyvat.hub.domain.team
 
 /** Maximum party size allowed in Genshin Impact. */
 const val MAX_TEAM_SIZE: Int = 4

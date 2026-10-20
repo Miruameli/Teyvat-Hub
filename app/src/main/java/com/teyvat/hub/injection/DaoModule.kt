@@ -1,5 +1,6 @@
 package com.teyvat.hub.injection
 
+import javax.inject.Singleton
 import com.teyvat.hub.data.TeyvatHubDatabase
 import com.teyvat.hub.data.local.character.CharacterDao
 import com.teyvat.hub.data.local.checklist.ChecklistDao
@@ -10,7 +11,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 /** Exposes one DAO per content table so screens depend on narrow interfaces. */
 @Module

@@ -1,19 +1,19 @@
 package com.teyvat.hub.application
 
+import javax.inject.Inject
+import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import com.teyvat.hub.data.local.team.TeamDao
 import com.teyvat.hub.data.mapper.toDomain
 import com.teyvat.hub.data.mapper.toEntity
-import com.teyvat.hub.domain.model.Team
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.teyvat.hub.domain.team.Team
 
 /**
  * Single source of truth for saved teams and built-in templates.
  *
  * Validation lives in the domain layer, so this repository only persists
- * teams that already passed [com.teyvat.hub.domain.service.TeamValidator].
+ * teams that already passed [com.teyvat.hub.domain.team.TeamValidator].
  */
 interface TeamRepository {
     fun observeSaved(): Flow<List<Team>>

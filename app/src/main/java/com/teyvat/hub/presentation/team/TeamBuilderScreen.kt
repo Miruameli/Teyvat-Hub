@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.teyvat.hub.R
-import com.teyvat.hub.domain.service.TeamValidation
+import com.teyvat.hub.domain.team.TeamValidation
 import com.teyvat.hub.presentation.team.saved.SavedTeamRow
 import com.teyvat.hub.presentation.team.saved.SavedTeamsHeader
 import com.teyvat.hub.presentation.team.saved.TemplateRow

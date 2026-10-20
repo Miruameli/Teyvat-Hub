@@ -1,4 +1,4 @@
-package com.teyvat.hub.domain.model
+package com.teyvat.hub.domain.checklist
 
 /** How often a checklist item resets to its unchecked state. */
 enum class ResetCadence(val key: String) {

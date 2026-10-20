@@ -1,5 +1,6 @@
 package com.teyvat.hub.data.local.team
 
+import kotlinx.coroutines.flow.Flow
 import androidx.room.ColumnInfo
 import androidx.room.Dao
 import androidx.room.Entity
@@ -7,7 +8,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
 
 /**
  * A saved team.

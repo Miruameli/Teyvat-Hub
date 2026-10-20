@@ -1,4 +1,7 @@
-package com.teyvat.hub.domain.model
+package com.teyvat.hub.domain.equipment
+
+import com.teyvat.hub.domain.character.Rarity
+import com.teyvat.hub.domain.character.WeaponType
 
 /**
  * A weapon entry from the database.

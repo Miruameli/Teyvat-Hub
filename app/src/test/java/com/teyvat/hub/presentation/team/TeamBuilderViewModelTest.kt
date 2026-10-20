@@ -1,7 +1,5 @@
 package com.teyvat.hub.presentation.team
 
-import com.teyvat.hub.domain.model.Element
-import com.teyvat.hub.domain.service.TeamValidation
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.drop
@@ -11,6 +9,8 @@ import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import com.teyvat.hub.domain.character.Element
+import com.teyvat.hub.domain.team.TeamValidation
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue

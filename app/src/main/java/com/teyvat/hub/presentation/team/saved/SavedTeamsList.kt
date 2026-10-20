@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.teyvat.hub.R
-import com.teyvat.hub.domain.model.Team
+import com.teyvat.hub.domain.team.Team
 
 /**
  * Teams the player already saved, with a delete action.

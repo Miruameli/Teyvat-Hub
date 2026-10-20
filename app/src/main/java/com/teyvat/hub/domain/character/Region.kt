@@ -1,4 +1,5 @@
-package com.teyvat.hub.domain.model
+package com.teyvat.hub.domain.character
+
 
 /**
  * A nation/region in Teyvat with its associated element.

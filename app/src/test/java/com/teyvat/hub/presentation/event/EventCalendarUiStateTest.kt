@@ -1,8 +1,8 @@
 package com.teyvat.hub.presentation.event
 
-import com.teyvat.hub.domain.model.EventKind
-import com.teyvat.hub.domain.model.EventStatus
-import com.teyvat.hub.domain.model.GameEvent
+import com.teyvat.hub.domain.event.EventKind
+import com.teyvat.hub.domain.event.EventStatus
+import com.teyvat.hub.domain.event.GameEvent
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

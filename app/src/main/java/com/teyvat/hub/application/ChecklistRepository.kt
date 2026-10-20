@@ -1,13 +1,13 @@
 package com.teyvat.hub.application
 
+import javax.inject.Inject
+import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import com.teyvat.hub.data.local.checklist.ChecklistDao
 import com.teyvat.hub.data.mapper.toDomain
 import com.teyvat.hub.data.mapper.toEntity
-import com.teyvat.hub.domain.model.ChecklistItem
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.teyvat.hub.domain.checklist.ChecklistItem
 
 /**
  * Single source of truth for farming tasks.
@@ -45,7 +45,7 @@ class LocalChecklistRepository @Inject constructor(
         val item = ChecklistItem(
             id = CUSTOM_PREFIX + System.currentTimeMillis(),
             title = trimmed,
-            cadence = com.teyvat.hub.domain.model.ResetCadence.NONE,
+            cadence = com.teyvat.hub.domain.checklist.ResetCadence.NONE,
             isCustom = true,
         )
         dao.insert(item.toEntity())

@@ -1,13 +1,13 @@
 package com.teyvat.hub.application
 
-import com.teyvat.hub.data.local.event.GameEventDao
-import com.teyvat.hub.data.mapper.toDomain
-import com.teyvat.hub.domain.model.EventKind
-import com.teyvat.hub.domain.model.GameEvent
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import com.teyvat.hub.data.local.event.GameEventDao
+import com.teyvat.hub.data.mapper.toDomain
+import com.teyvat.hub.domain.event.EventKind
+import com.teyvat.hub.domain.event.GameEvent
 
 /**
  * Single source of truth for events and wish banners.

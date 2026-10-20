@@ -1,8 +1,6 @@
-package com.teyvat.hub.domain.service
+package com.teyvat.hub.domain.team
 
-import com.teyvat.hub.domain.model.MAX_TEAM_SIZE
-import com.teyvat.hub.domain.model.Character
-import com.teyvat.hub.domain.model.Team
+import com.teyvat.hub.domain.character.Character
 
 /** Outcome of validating a team before it is saved. */
 sealed interface TeamValidation {
