@@ -3,9 +3,11 @@ package com.teyvat.hub.data
 import com.teyvat.hub.data.local.character.CharacterDao
 import com.teyvat.hub.data.local.checklist.ChecklistDao
 import com.teyvat.hub.data.local.event.GameEventDao
+import com.teyvat.hub.data.local.team.TeamDao
 import com.teyvat.hub.data.seeding.CharacterSeedContent
 import com.teyvat.hub.data.seeding.ChecklistSeedContent
 import com.teyvat.hub.data.seeding.EventSeedContent
+import com.teyvat.hub.data.seeding.TeamSeedContent
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,12 +24,14 @@ class DatabaseSeeder @Inject constructor(
     private val characterDao: CharacterDao,
     private val checklistDao: ChecklistDao,
     private val eventDao: GameEventDao,
+    private val teamDao: TeamDao,
 ) {
 
     suspend fun seedIfEmpty() {
         seedCharactersIfEmpty()
         seedChecklistIfEmpty()
         seedEvents()
+        seedTeamTemplates()
     }
 
     private suspend fun seedCharactersIfEmpty() {
@@ -50,5 +54,15 @@ class DatabaseSeeder @Inject constructor(
      */
     private suspend fun seedEvents() {
         eventDao.upsertAll(EventSeedContent.all(System.currentTimeMillis()))
+    }
+
+    /**
+     * Writes the built-in team templates.
+     *
+     * Templates carry no user state, so refreshing them on every launch is
+     * safe and keeps them in step with the character roster.
+     */
+    private suspend fun seedTeamTemplates() {
+        teamDao.upsertAll(TeamSeedContent.all())
     }
 }
