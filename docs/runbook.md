@@ -21,6 +21,22 @@ Catatan: `/sdcard` hanya dapat diakses ketika build dijalankan dari lingkungan
 Android/Termux. Di lingkungan PRoot shared storage tidak di-mount, jadi gunakan
 salinan di root project lalu copy manual.
 
+## Mengambil APK dari CI
+
+Build lokal tidak menjadi jalur distribusi; CI yang membangun dan mengunggah
+APK. Pada halaman Actions, pilih run terbaru untuk branch yang diinginkan,
+buka job **Build Debug APK**, lalu unduh artifact:
+
+| Artifact | Isi | Dipakai untuk |
+| --- | --- | --- |
+| `TeyvatHub-debug-apk` | `TeyvatHub-debug.apk` (sudah di root project) | disalin ke perangkat |
+| `app-debug-apk` | `app-debug.apk` (output mentah Gradle) | pemeriksaan teknis |
+
+Artifact `TeyvatHub-debug-apk` memakai nama file yang sama dengan hasil
+`scripts/copy-apk-to-storage.sh`, jadi langkah penisipannya ke perangkat
+identik. File di root project tidak ikut ter-commit karena `.gitignore`
+mengecualikan `*.apk`.
+
 ## Environment Terbatas RAM
 
 Jika build mati mendadak (proses Java dibunuh tanpa pesan error Kotlin):
