@@ -37,6 +37,43 @@ Artifact `TeyvatHub-debug-apk` memakai nama file yang sama dengan hasil
 identik. File di root project tidak ikut ter-commit karena `.gitignore`
 mengecualikan `*.apk`.
 
+## Paket Rilis
+
+Job **Release Package** menyusun satu paket berisi APK, checksum, dan SBOM:
+
+| File | Isi |
+| --- | --- |
+| `TeyvatHub-debug.apk` | binary debug |
+| `TeyvatHub-debug.apk.sha256` | checksum SHA-256 untuk verifikasi unduhan |
+| `TeyvatHub-debug.apk.sbom.json` | SBOM CycloneDX 1.5 |
+
+SBOM dibuat oleh `scripts/generate-sbom.mjs` dari `gradle/libs.versions.toml`,
+yang sudah mem-pin setiap versi secara eksak. Karena sumbernya file di repo,
+hasilnya deterministik dan dapat diverifikasi dengan diff. Komponen yang
+versinya dikelola BOM platform tidak diklaim versinya; komponen tersebut
+ditandai dengan `bom-ref` berakhiran `?version-managed` beserta properti
+yang menjelaskan asalnya.
+
+Untuk memperbarui SBOM secara lokal:
+
+```bash
+node scripts/generate-sbom.mjs ./sbom.json
+```
+
+## Logo Aplikasi
+
+Emblem launcher berasal dari satu sumber: `docs/branding/ic_launcher_source.svg`.
+Berkas SVG **tidak boleh** diletakkan di `app/src/main/res` karena AAPT2
+menolak SVG dan build akan gagal.
+
+```bash
+scripts/render-launcher-icons.sh    # menghasilkan ulang PNG tiap density
+```
+
+API 26 ke atas memakai adaptive icon dari `mipmap-anydpi-v26`, sedangkan API
+24 dan 25 memakai PNG hasil render. Keduanya memakai warna latar yang sama
+(`#16233F`), jadi ikon tidak berbeda antar versi Android.
+
 ## Environment Terbatas RAM
 
 Jika build mati mendadak (proses Java dibunuh tanpa pesan error Kotlin):

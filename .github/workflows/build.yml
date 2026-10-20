@@ -57,6 +57,57 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 7
 
+  release:
+    name: Release Package
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'gradle'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: 'latest'
+          packages: 'platforms;android-36 build-tools;36.0.0'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew :app:assembleDebug --no-daemon
+
+      - name: Collect release artifacts
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk ./TeyvatHub-debug.apk
+          node scripts/generate-sbom.mjs ./TeyvatHub-debug.apk.sbom.json
+          sha256sum TeyvatHub-debug.apk > TeyvatHub-debug.apk.sha256
+          cat TeyvatHub-debug.apk.sha256
+          ls -lh TeyvatHub-debug.apk TeyvatHub-debug.apk.sbom.json TeyvatHub-debug.apk.sha256
+
+      - name: Upload release package
+        uses: actions/upload-artifact@v4
+        with:
+          name: TeyvatHub-release-package
+          path: |
+            TeyvatHub-debug.apk
+            TeyvatHub-debug.apk.sha256
+            TeyvatHub-debug.apk.sbom.json
+          retention-days: 30
+
   lint:
     name: Lint & Static Analysis
     runs-on: ubuntu-latest
