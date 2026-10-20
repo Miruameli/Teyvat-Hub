@@ -2,14 +2,14 @@ package com.teyvat.hub.data
 
 import javax.inject.Inject
 import javax.inject.Singleton
+import com.teyvat.hub.data.content.seeding.CharacterSeedContent
+import com.teyvat.hub.data.content.seeding.ChecklistSeedContent
+import com.teyvat.hub.data.content.seeding.EventSeedContent
+import com.teyvat.hub.data.content.seeding.TeamSeedContent
 import com.teyvat.hub.data.local.character.CharacterDao
 import com.teyvat.hub.data.local.checklist.ChecklistDao
 import com.teyvat.hub.data.local.event.GameEventDao
 import com.teyvat.hub.data.local.team.TeamDao
-import com.teyvat.hub.data.seeding.CharacterSeedContent
-import com.teyvat.hub.data.seeding.ChecklistSeedContent
-import com.teyvat.hub.data.seeding.EventSeedContent
-import com.teyvat.hub.data.seeding.TeamSeedContent
 
 /**
  * Seeds offline content on first launch.

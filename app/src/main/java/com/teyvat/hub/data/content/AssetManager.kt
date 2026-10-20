@@ -1,4 +1,4 @@
-package com.teyvat.hub.data.local.asset
+package com.teyvat.hub.data.content
 
 import java.lang.reflect.Type
 import kotlinx.coroutines.flow.Flow
