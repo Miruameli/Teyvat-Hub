@@ -55,4 +55,7 @@
     <string name="teams_remove">Hapus dari tim</string>
     <string name="teams_pick_character">Pilih Karakter</string>
     <string name="teams_synergy">Catatan Sinergi</string>
+    <string name="teams_saved">Tim Tersimpan</string>
+    <string name="teams_templates">Template Tim</string>
+    <string name="teams_delete">Hapus tim</string>
 </resources>

@@ -24,6 +24,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.teyvat.hub.R
 import com.teyvat.hub.domain.model.Character
 import com.teyvat.hub.domain.service.TeamValidation
+import com.teyvat.hub.presentation.team.saved.SavedTeamsList
+import com.teyvat.hub.presentation.team.saved.TeamTemplates
 
 /**
  * Team builder for up to four characters.
@@ -72,6 +74,13 @@ fun TeamBuilderScreen(
             }
 
             SynergyNotes(insights = state.insights)
+
+            SavedTeamsList(
+                savedTeams = state.savedTeams,
+                onDelete = viewModel::onDeleteTeam,
+            )
+
+            TeamTemplates(templates = state.templates)
 
             CharacterPicker(
                 roster = state.roster,

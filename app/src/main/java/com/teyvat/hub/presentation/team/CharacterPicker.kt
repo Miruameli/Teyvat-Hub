@@ -1,6 +1,7 @@
 package com.teyvat.hub.presentation.team
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,11 +20,13 @@ import com.teyvat.hub.domain.model.Character
 /**
  * Scrollable roster picker for team slots.
  *
- * A character already in the team is shown as selected; the disabled state
- * keeps the list readable once the party is full instead of hiding rows.
+ * The list takes the remaining height with a weight instead of filling the
+ * parent, because the slots, name field, and notes already consume the space
+ * above it. A full-height list inside that column would leave no room to
+ * pick anyone.
  */
 @Composable
-fun CharacterPicker(
+fun ColumnScope.CharacterPicker(
     roster: List<Character>,
     selected: List<Character>,
     onToggle: (Character) -> Unit,
@@ -36,7 +39,7 @@ fun CharacterPicker(
         modifier = Modifier.padding(start = 16.dp, top = 12.dp),
     )
 
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+    LazyColumn(modifier = Modifier.fillMaxSize().weight(1f)) {
         items(roster, key = { it.id }) { character ->
             val isSelected = character.id in selectedIds
             ListItem(
