@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.checklist
+package com.teyvat.hub.presentation.feature.checklist
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

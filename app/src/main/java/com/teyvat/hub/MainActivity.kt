@@ -5,8 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
-import com.teyvat.hub.presentation.navigation.TeyvatHubScaffold
-import com.teyvat.hub.presentation.theme.TeyvatHubTheme
+import com.teyvat.hub.presentation.presentation.core.navigation.TeyvatHubScaffold
+import com.teyvat.hub.presentation.presentation.core.theme.TeyvatHubTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

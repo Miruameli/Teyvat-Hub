@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.roster
+package com.teyvat.hub.presentation.feature.roster
 
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

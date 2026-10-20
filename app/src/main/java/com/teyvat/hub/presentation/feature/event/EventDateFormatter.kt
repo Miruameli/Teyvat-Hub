@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.event
+package com.teyvat.hub.presentation.feature.event
 
 import java.text.SimpleDateFormat
 import java.util.Date

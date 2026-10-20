@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.team
+package com.teyvat.hub.presentation.feature.team
 
 import com.teyvat.hub.domain.character.Character
 import com.teyvat.hub.domain.team.SynergyInsight

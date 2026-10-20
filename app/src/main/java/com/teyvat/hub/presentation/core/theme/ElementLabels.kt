@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.theme
+package com.teyvat.hub.presentation.core.theme
 
 import androidx.annotation.StringRes
 import com.teyvat.hub.R

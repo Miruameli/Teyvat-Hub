@@ -1,4 +1,4 @@
-package com.teyvat.hub.shared
+package com.teyvat.hub.data
 
 /** Constants shared across layers so magic values live in one place. */
 object AppConstants {

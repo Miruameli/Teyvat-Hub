@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.team
+package com.teyvat.hub.presentation.presentation.feature.team
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

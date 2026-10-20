@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.event
+package com.teyvat.hub.presentation.feature.event
 
 import com.teyvat.hub.domain.event.EventKind
 import com.teyvat.hub.domain.event.EventStatus

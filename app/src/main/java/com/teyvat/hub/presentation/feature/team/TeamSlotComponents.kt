@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.team
+package com.teyvat.hub.presentation.feature.team
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.teyvat.hub.R
 import com.teyvat.hub.domain.character.Character
 import com.teyvat.hub.domain.team.SynergyInsight
-import com.teyvat.hub.presentation.theme.labelRes
+import com.teyvat.hub.presentation.presentation.core.theme.labelRes
 
 /** Heading above the party slots. */
 @Composable

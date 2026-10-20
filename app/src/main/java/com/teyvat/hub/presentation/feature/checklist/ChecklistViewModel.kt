@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.checklist
+package com.teyvat.hub.presentation.feature.checklist
 
 import javax.inject.Inject
 import javax.inject.Named

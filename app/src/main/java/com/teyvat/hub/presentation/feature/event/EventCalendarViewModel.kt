@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.event
+package com.teyvat.hub.presentation.feature.event
 
 import javax.inject.Inject
 import javax.inject.Named

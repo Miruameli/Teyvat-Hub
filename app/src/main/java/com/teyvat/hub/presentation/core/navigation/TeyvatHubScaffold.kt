@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.navigation
+package com.teyvat.hub.presentation.core.navigation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -16,11 +16,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.teyvat.hub.presentation.checklist.ChecklistScreen
-import com.teyvat.hub.presentation.event.EventCalendarScreen
-import com.teyvat.hub.presentation.roster.RosterScreen
-import com.teyvat.hub.presentation.settings.SettingsScreen
-import com.teyvat.hub.presentation.team.TeamBuilderScreen
+import com.teyvat.hub.presentation.presentation.feature.checklist.ChecklistScreen
+import com.teyvat.hub.presentation.presentation.feature.event.EventCalendarScreen
+import com.teyvat.hub.presentation.presentation.feature.roster.RosterScreen
+import com.teyvat.hub.presentation.presentation.feature.settings.SettingsScreen
+import com.teyvat.hub.presentation.presentation.feature.team.TeamBuilderScreen
 
 /**
  * Root scaffold hosting the five primary destinations.

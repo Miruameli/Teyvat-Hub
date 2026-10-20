@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.team
+package com.teyvat.hub.presentation.feature.team
 
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.event
+package com.teyvat.hub.presentation.feature.event
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.navigation
+package com.teyvat.hub.presentation.core.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle

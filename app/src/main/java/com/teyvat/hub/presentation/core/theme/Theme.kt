@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.theme
+package com.teyvat.hub.presentation.core.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
