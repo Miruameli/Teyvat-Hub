@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.teyvat.hub.R
 import com.teyvat.hub.domain.character.Character
 import com.teyvat.hub.domain.team.SynergyInsight
-import com.teyvat.hub.presentation.presentation.core.theme.labelRes
+import com.teyvat.hub.presentation.core.theme.labelRes
 
 /** Heading above the party slots. */
 @Composable

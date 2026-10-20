@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.presentation.feature.event
+package com.teyvat.hub.presentation.feature.event
 
 import com.teyvat.hub.data.content.seeding.EventSeedContent
 import com.teyvat.hub.data.mapper.toDomain

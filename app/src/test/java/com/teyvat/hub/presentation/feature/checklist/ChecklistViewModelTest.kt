@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.presentation.feature.checklist
+package com.teyvat.hub.presentation.feature.checklist
 
 import java.util.Calendar
 import java.util.TimeZone

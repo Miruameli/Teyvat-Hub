@@ -12,8 +12,8 @@ import coil3.SingletonImageLoader
 import coil3.disk.DiskCache
 import coil3.memory.MemoryCache
 import coil3.request.allowHardware
-import com.teyvat.hub.data.DatabaseSeeder
 import com.teyvat.hub.data.AppConstants
+import com.teyvat.hub.data.DatabaseSeeder
 import dagger.hilt.android.HiltAndroidApp
 import okio.Path.Companion.toOkioPath
 

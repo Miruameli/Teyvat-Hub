@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.presentation.feature.team
+package com.teyvat.hub.presentation.feature.team
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

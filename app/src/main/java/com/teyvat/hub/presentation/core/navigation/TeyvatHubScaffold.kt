@@ -16,11 +16,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.teyvat.hub.presentation.presentation.feature.checklist.ChecklistScreen
-import com.teyvat.hub.presentation.presentation.feature.event.EventCalendarScreen
-import com.teyvat.hub.presentation.presentation.feature.roster.RosterScreen
-import com.teyvat.hub.presentation.presentation.feature.settings.SettingsScreen
-import com.teyvat.hub.presentation.presentation.feature.team.TeamBuilderScreen
+import com.teyvat.hub.presentation.feature.checklist.ChecklistScreen
+import com.teyvat.hub.presentation.feature.event.EventCalendarScreen
+import com.teyvat.hub.presentation.feature.roster.RosterScreen
+import com.teyvat.hub.presentation.feature.settings.SettingsScreen
+import com.teyvat.hub.presentation.feature.team.TeamBuilderScreen
 
 /**
  * Root scaffold hosting the five primary destinations.

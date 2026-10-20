@@ -30,7 +30,7 @@ import coil3.compose.AsyncImage
 import com.teyvat.hub.R
 import com.teyvat.hub.data.remote.EnkaAsset
 import com.teyvat.hub.domain.character.Character
-import com.teyvat.hub.presentation.presentation.core.theme.labelRes
+import com.teyvat.hub.presentation.core.theme.labelRes
 
 /**
  * Character roster list with search and favorite filtering.
