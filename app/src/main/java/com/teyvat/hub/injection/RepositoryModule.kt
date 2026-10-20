@@ -2,8 +2,10 @@ package com.teyvat.hub.injection
 
 import com.teyvat.hub.application.CharacterRepository
 import com.teyvat.hub.application.ChecklistRepository
+import com.teyvat.hub.application.EventRepository
 import com.teyvat.hub.application.LocalCharacterRepository
 import com.teyvat.hub.application.LocalChecklistRepository
+import com.teyvat.hub.application.LocalEventRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -30,4 +32,10 @@ interface RepositoryModule {
     fun bindChecklistRepository(
         implementation: LocalChecklistRepository,
     ): ChecklistRepository
+
+    /** Room-backed event and banner windows. */
+    @Binds
+    fun bindEventRepository(
+        implementation: LocalEventRepository,
+    ): EventRepository
 }

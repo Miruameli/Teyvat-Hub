@@ -13,8 +13,9 @@ import javax.inject.Singleton
  * Seeds offline content on first launch.
  *
  * The app is offline-first, so the roster, checklist and events must exist in
- * local storage before any screen renders. Seeding is idempotent: the insert
- * uses REPLACE on stable ids, so it is safe to run on every launch.
+ * local storage before any screen renders. Character and checklist rows are
+ * written once because they carry user state; event rows are refreshed on
+ * every launch because their windows are relative to the current date.
  */
 @Singleton
 class DatabaseSeeder @Inject constructor(
@@ -26,7 +27,7 @@ class DatabaseSeeder @Inject constructor(
     suspend fun seedIfEmpty() {
         seedCharactersIfEmpty()
         seedChecklistIfEmpty()
-        seedEventsIfEmpty()
+        seedEvents()
     }
 
     private suspend fun seedCharactersIfEmpty() {
@@ -39,8 +40,15 @@ class DatabaseSeeder @Inject constructor(
         checklistDao.upsertAll(ChecklistSeedContent.all())
     }
 
-    private suspend fun seedEventsIfEmpty() {
-        if (eventDao.readAnyRow() != null) return
-        eventDao.upsertAll(EventSeedContent.all())
+    /**
+     * Refreshes the event rows on every launch.
+     *
+     * Events carry no user state, unlike checklist items, so overwriting them
+     * is safe. The refresh is what keeps the calendar populated: a one-shot
+     * seed would leave every row in the past as time passes, and a fresh
+     * install would inherit whatever date the rows were created with.
+     */
+    private suspend fun seedEvents() {
+        eventDao.upsertAll(EventSeedContent.all(System.currentTimeMillis()))
     }
 }

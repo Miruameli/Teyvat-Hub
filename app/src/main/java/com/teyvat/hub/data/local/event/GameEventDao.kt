@@ -48,8 +48,4 @@ interface GameEventDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertAll(events: List<GameEventEntity>)
-
-    /** One-shot read used by seeding, which only needs the current contents. */
-    @Query("SELECT * FROM events LIMIT 1")
-    suspend fun readAnyRow(): GameEventEntity?
 }
