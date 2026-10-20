@@ -1,4 +1,4 @@
-package com.teyvat.hub.data.seeding
+package com.teyvat.hub.data.content.seeding
 
 import com.teyvat.hub.data.local.checklist.ChecklistItemEntity
 

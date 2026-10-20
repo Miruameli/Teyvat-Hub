@@ -1,7 +1,7 @@
 package com.teyvat.hub.presentation.event
 
+import com.teyvat.hub.data.content.seeding.EventSeedContent
 import com.teyvat.hub.data.mapper.toDomain
-import com.teyvat.hub.data.seeding.EventSeedContent
 import org.junit.Assert.assertFalse
 import org.junit.Test
 
