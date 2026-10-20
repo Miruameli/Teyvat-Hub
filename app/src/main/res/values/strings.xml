@@ -34,4 +34,14 @@
     <string name="filter_all">Semua</string>
     <string name="filter_events_only">Event saja</string>
     <string name="filter_banners_only">Banner saja</string>
+
+    <!-- Teams -->
+    <string name="teams_title">Team Builder</string>
+    <string name="teams_current">Tim Saat Ini</string>
+    <string name="teams_empty_selection">Belum ada karakter dipilih.</string>
+    <string name="teams_name_label">Nama tim</string>
+    <string name="teams_save">Simpan Tim</string>
+    <string name="teams_remove">Hapus dari tim</string>
+    <string name="teams_pick_character">Pilih Karakter</string>
+    <string name="teams_synergy">Catatan Sinergi</string>
 </resources>
