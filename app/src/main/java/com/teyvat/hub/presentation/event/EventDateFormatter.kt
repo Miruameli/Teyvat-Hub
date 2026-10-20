@@ -17,19 +17,28 @@ interface EventDateFormatter {
     fun range(startsAt: Long, endsAt: Long?): String
 }
 
-/** Server-timezone formatter; the region language is Indonesian. */
+/**
+ * Server-timezone formatter using the Indonesian region language.
+ *
+ * [SimpleDateFormat] is not thread safe, so one instance is kept per thread
+ * instead of a single shared field; a shared instance would interleave
+ * partially formatted dates when two screens format concurrently.
+ */
 object DefaultEventDateFormatter : EventDateFormatter {
 
     private const val SERVER_ZONE = "Asia/Shanghai"
     private const val DAY_MONTH = "d MMM"
 
-    private val dayMonth = SimpleDateFormat(DAY_MONTH, Locale("in", "ID")).apply {
-        timeZone = TimeZone.getTimeZone(SERVER_ZONE)
+    private val formatters = ThreadLocal.withInitial {
+        SimpleDateFormat(DAY_MONTH, Locale.forLanguageTag("id-ID")).apply {
+            timeZone = TimeZone.getTimeZone(SERVER_ZONE)
+        }
     }
 
     override fun range(startsAt: Long, endsAt: Long?): String {
-        val start = dayMonth.format(Date(startsAt))
+        val formatter = formatters.get()
+        val start = formatter.format(Date(startsAt))
         if (endsAt == null) return "$start -"
-        return "$start - ${dayMonth.format(Date(endsAt))}"
+        return "$start - ${formatter.format(Date(endsAt))}"
     }
 }
