@@ -74,6 +74,22 @@ di [docs/runbook.md](docs/runbook.md).
 > sehingga salinan langsung ke penyimpanan bersama harus dijalankan dari
 > lingkungan Android/Termux.
 
+## Rilis
+
+Rilis terbaru ada di [Releases](https://github.com/Miruameli/Teyvat-Hub/releases).
+Setiap rilis memuat tiga berkas: binary APK, checksum SHA-256, dan SBOM
+CycloneDX 1.5 yang memuat seluruh dependensi.
+
+Periksa unduhan sebelumpasang:
+
+```bash
+sha256sum -c TeyvatHub-debug.apk.sha256
+```
+
+Rilis v1.0.0 **belum ditandatangani** GPG. Kunci signing adalah aset
+kredensial milik pemilik repositori, jadi penandatanganan menunggu
+penyediaan kunci tersebut; lihat [issue #17](https://github.com/Miruameli/Teyvat-Hub/issues/17).
+
 ## Struktur Direktori
 
 ```
