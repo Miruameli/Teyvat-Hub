@@ -21,6 +21,9 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/) dan
 - Layar kalender event dan banner yang membaca baris Room, memisahkan
   event berlangsung, akan datang, dan selesai berdasarkan jam perangkat
   (`EventRepository`, `EventCalendarViewModel`).
+- Layar team builder untuk memilih maksimal empat karakter, membaca catatan
+  sinergi, dan menyimpan tim secara lokal (`TeamRepository`,
+  `TeamBuilderViewModel`).
 - Aturan domain yang teruji: reset checklist harian/mingguan, peringkat
   pencarian, validasi tim, dan analisis sinergi tim.
 - Dokumentasi: README, CONTRIBUTING, SECURITY, LICENSE, CODE_OF_CONDUCT,
