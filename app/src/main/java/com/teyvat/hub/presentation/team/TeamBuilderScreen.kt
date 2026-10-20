@@ -1,6 +1,5 @@
 package com.teyvat.hub.presentation.team
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -8,8 +7,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ListItem
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -22,16 +19,18 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.teyvat.hub.R
-import com.teyvat.hub.domain.model.Character
 import com.teyvat.hub.domain.service.TeamValidation
-import com.teyvat.hub.presentation.team.saved.SavedTeamsList
-import com.teyvat.hub.presentation.team.saved.TeamTemplates
+import com.teyvat.hub.presentation.team.saved.SavedTeamRow
+import com.teyvat.hub.presentation.team.saved.SavedTeamsHeader
+import com.teyvat.hub.presentation.team.saved.TemplateRow
+import com.teyvat.hub.presentation.team.saved.TemplatesHeader
 
 /**
  * Team builder for up to four characters.
  *
- * The character picker and the synergy notes live in separate files so each
- * one stays readable; this file owns the flow between them.
+ * The whole screen is one scrolling list. Slots, the name field, the notes,
+ * the roster, and the stored teams are items of that single list, so no
+ * section can be pushed out of reach when the content grows.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,50 +42,63 @@ fun TeamBuilderScreen(
     Scaffold(
         topBar = { TopAppBar(title = { Text(stringResource(R.string.teams_title)) }) },
     ) { padding ->
-        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
-            SelectedTeamSlot(
-                selected = state.selected,
-                onRemove = viewModel::onCharacterToggled,
-            )
-
-            TextField(
-                value = state.teamName,
-                onValueChange = viewModel::onTeamNameChange,
-                label = { Text(stringResource(R.string.teams_name_label)) },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
-            )
-
-            if (state.validation is TeamValidation.Invalid) {
-                Text(
-                    text = (state.validation as TeamValidation.Invalid).reason,
-                    color = MaterialTheme.colorScheme.error,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(horizontal = 16.dp),
+        LazyColumn(modifier = Modifier.fillMaxSize().padding(padding)) {
+            item { TeamSlotsHeader() }
+            items(state.selected, key = { "slot-${it.id}" }) { character ->
+                SelectedTeamRow(
+                    character = character,
+                    onRemove = { viewModel.onCharacterToggled(character) },
                 )
             }
 
-            Button(
-                onClick = viewModel::onSaveTeam,
-                enabled = state.validation is TeamValidation.Valid,
-                modifier = Modifier.padding(16.dp),
-            ) {
-                Text(stringResource(R.string.teams_save))
+            item {
+                TextField(
+                    value = state.teamName,
+                    onValueChange = viewModel::onTeamNameChange,
+                    label = { Text(stringResource(R.string.teams_name_label)) },
+                    modifier = Modifier.fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                )
             }
 
-            SynergyNotes(insights = state.insights)
+            if (state.validation is TeamValidation.Invalid) {
+                item { ValidationError((state.validation as TeamValidation.Invalid).reason) }
+            }
 
-            SavedTeamsList(
-                savedTeams = state.savedTeams,
-                onDelete = viewModel::onDeleteTeam,
-            )
+            item {
+                Button(
+                    onClick = viewModel::onSaveTeam,
+                    enabled = state.validation is TeamValidation.Valid,
+                    modifier = Modifier.padding(16.dp),
+                ) {
+                    Text(stringResource(R.string.teams_save))
+                }
+            }
 
-            TeamTemplates(templates = state.templates)
+            item { SynergyNotes(insights = state.insights) }
 
-            CharacterPicker(
-                roster = state.roster,
-                selected = state.selected,
-                onToggle = viewModel::onCharacterToggled,
-            )
+            item { RosterHeader() }
+            items(state.roster, key = { "roster-${it.id}" }) { character ->
+                RosterRow(
+                    character = character,
+                    isSelected = state.selected.any { it.id == character.id },
+                    onToggle = { viewModel.onCharacterToggled(character) },
+                )
+            }
+
+            if (state.savedTeams.isNotEmpty()) {
+                item { SavedTeamsHeader() }
+                items(state.savedTeams, key = { "saved-${it.id}" }) { team ->
+                    SavedTeamRow(team = team, onDelete = { viewModel.onDeleteTeam(team.id) })
+                }
+            }
+
+            if (state.templates.isNotEmpty()) {
+                item { TemplatesHeader() }
+                items(state.templates, key = { "template-${it.id}" }) { team ->
+                    TemplateRow(team = team)
+                }
+            }
         }
     }
 }

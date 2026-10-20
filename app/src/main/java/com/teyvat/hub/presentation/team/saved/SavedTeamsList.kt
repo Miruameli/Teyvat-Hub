@@ -1,6 +1,5 @@
 package com.teyvat.hub.presentation.team.saved
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -23,56 +22,56 @@ import com.teyvat.hub.domain.model.Team
  * selection after saving, so the only way to see a team again is to read it
  * back from storage.
  */
-@Composable
-fun SavedTeamsList(
-    savedTeams: List<Team>,
-    onDelete: (String) -> Unit,
-) {
-    if (savedTeams.isEmpty()) return
 
+/** Heading above the saved teams. */
+@Composable
+fun SavedTeamsHeader() {
     Text(
         text = stringResource(R.string.teams_saved),
         style = MaterialTheme.typography.titleSmall,
         modifier = Modifier.padding(start = 16.dp, top = 12.dp),
     )
-
-    savedTeams.forEach { team ->
-        ListItem(
-            headlineContent = { Text(team.name) },
-            supportingContent = {
-                Text("${team.characterIds.size} karakter")
-            },
-            trailingContent = {
-                IconButton(onClick = { onDelete(team.id) }) {
-                    Icon(
-                        imageVector = Icons.Filled.Delete,
-                        contentDescription = stringResource(R.string.teams_delete),
-                    )
-                }
-            },
-        )
-    }
 }
 
-/** Built-in team templates shipped with the app. */
+/** One saved team with a delete action. */
 @Composable
-fun TeamTemplates(templates: List<Team>) {
-    if (templates.isEmpty()) return
+fun SavedTeamRow(
+    team: Team,
+    onDelete: () -> Unit,
+) {
+    ListItem(
+        headlineContent = { Text(team.name) },
+        supportingContent = {
+            Text("${team.characterIds.size} karakter")
+        },
+        trailingContent = {
+            IconButton(onClick = onDelete) {
+                Icon(
+                    imageVector = Icons.Filled.Delete,
+                    contentDescription = stringResource(R.string.teams_delete),
+                )
+            }
+        },
+    )
+}
 
+/** Heading above the built-in templates. */
+@Composable
+fun TemplatesHeader() {
     Text(
         text = stringResource(R.string.teams_templates),
         style = MaterialTheme.typography.titleSmall,
         modifier = Modifier.padding(start = 16.dp, top = 12.dp),
     )
+}
 
-    Column {
-        templates.forEach { team ->
-            ListItem(
-                headlineContent = { Text(team.name) },
-                supportingContent = {
-                    Text(team.synergyNotes.ifBlank { "${team.characterIds.size} karakter" })
-                },
-            )
-        }
-    }
+/** One built-in team template. */
+@Composable
+fun TemplateRow(team: Team) {
+    ListItem(
+        headlineContent = { Text(team.name) },
+        supportingContent = {
+            Text(team.synergyNotes.ifBlank { "${team.characterIds.size} karakter" })
+        },
+    )
 }

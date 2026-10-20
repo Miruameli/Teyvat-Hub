@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
@@ -17,49 +18,43 @@ import com.teyvat.hub.R
 import com.teyvat.hub.domain.model.Character
 import com.teyvat.hub.domain.service.SynergyInsight
 
-/**
- * The four party slots with the members currently assigned.
- *
- * The slot list is fixed at the in-game party size so the user can see at a
- * glance how many slots are still free.
- */
+/** Heading above the party slots. */
 @Composable
-fun SelectedTeamSlot(
-    selected: List<Character>,
-    onRemove: (Character) -> Unit,
+fun TeamSlotsHeader() {
+    SectionHeading(stringResource(R.string.teams_current))
+}
+
+/** One occupied party slot with a remove action. */
+@Composable
+fun SelectedTeamRow(
+    character: Character,
+    onRemove: () -> Unit,
 ) {
-    Text(
-        text = stringResource(R.string.teams_current),
-        style = MaterialTheme.typography.titleSmall,
-        modifier = Modifier.padding(start = 16.dp, top = 12.dp),
+    ListItem(
+        headlineContent = { Text(character.name) },
+        supportingContent = {
+            Text("${character.element.key} · ${character.role.key}")
+        },
+        trailingContent = {
+            IconButton(onClick = onRemove) {
+                Icon(
+                    imageVector = Icons.Filled.Close,
+                    contentDescription = stringResource(R.string.teams_remove),
+                )
+            }
+        },
     )
+}
 
-    if (selected.isEmpty()) {
-        Text(
-            text = stringResource(R.string.teams_empty_selection),
-            style = MaterialTheme.typography.bodySmall,
-            modifier = Modifier.padding(start = 16.dp),
-        )
-        return
-    }
-
-    selected.forEach { character ->
-        ListItem(
-            headlineContent = { Text(character.name) },
-            supportingContent = {
-                Text("${character.element.key} · ${character.role.key}")
-            },
-            trailingContent = {
-                IconButton(onClick = { onRemove(character) }) {
-                    Icon(
-                        imageVector = Icons.Filled.Close,
-                        contentDescription = stringResource(R.string.teams_remove),
-                    )
-                }
-            },
-            modifier = Modifier.padding(bottom = 4.dp),
-        )
-    }
+/** Reason the current selection cannot be saved. */
+@Composable
+fun ValidationError(reason: String) {
+    Text(
+        text = reason,
+        color = MaterialTheme.colorScheme.error,
+        style = MaterialTheme.typography.bodySmall,
+        modifier = Modifier.padding(horizontal = 16.dp),
+    )
 }
 
 /** Actionable notes about the current party composition. */
@@ -67,11 +62,7 @@ fun SelectedTeamSlot(
 fun SynergyNotes(insights: List<SynergyInsight>) {
     if (insights.isEmpty()) return
 
-    Text(
-        text = stringResource(R.string.teams_synergy),
-        style = MaterialTheme.typography.titleSmall,
-        modifier = Modifier.padding(start = 16.dp, top = 12.dp),
-    )
+    SectionHeading(stringResource(R.string.teams_synergy))
 
     Column(modifier = Modifier.padding(start = 16.dp)) {
         insights.forEach { insight ->
@@ -85,4 +76,40 @@ fun SynergyNotes(insights: List<SynergyInsight>) {
             )
         }
     }
+}
+
+/** Heading above the roster picker. */
+@Composable
+fun RosterHeader() {
+    SectionHeading(stringResource(R.string.teams_pick_character))
+}
+
+/** One roster entry with a selection checkbox. */
+@Composable
+fun RosterRow(
+    character: Character,
+    isSelected: Boolean,
+    onToggle: () -> Unit,
+) {
+    ListItem(
+        headlineContent = { Text(character.name) },
+        supportingContent = {
+            Text("${character.element.key} · ${character.role.key}")
+        },
+        leadingContent = {
+            Checkbox(
+                checked = isSelected,
+                onCheckedChange = { onToggle() },
+            )
+        },
+    )
+}
+
+@Composable
+private fun SectionHeading(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.titleSmall,
+        modifier = Modifier.padding(start = 16.dp, top = 12.dp),
+    )
 }
