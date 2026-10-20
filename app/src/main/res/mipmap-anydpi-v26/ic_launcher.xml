@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adaptive launcher icon. The foreground is kept inside the safe zone so no
+  part of the emblem is clipped by a circular or squircle launcher mask.
+
+  The monochrome layer is not declared here: it was introduced in API 33, so
+  it belongs in the mipmap-anydpi-v33 variant that overrides this file.
+-->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon>
