@@ -100,6 +100,36 @@ class TeamBuilderViewModelTest {
         assertTrue(state.selected.isEmpty())
     }
 
+    @Test
+    fun `a fifth character is refused because the party is full`() = runTest {
+        val viewModel = viewModel()
+        listOf("a", "b", "c", "d").forEach { viewModel.onCharacterToggled(character(it)) }
+        advanceUntilIdle()
+
+        viewModel.onCharacterToggled(character("e"))
+        advanceUntilIdle()
+
+        val state = viewModel.uiState.drop(1).first()
+        assertEquals(4, state.selected.size)
+        assertTrue(state.selected.none { it.id == "e" })
+    }
+
+    @Test
+    fun `removing a member frees a slot again`() = runTest {
+        val viewModel = viewModel()
+        listOf("a", "b", "c", "d").forEach { viewModel.onCharacterToggled(character(it)) }
+        advanceUntilIdle()
+
+        viewModel.onCharacterToggled(character("a"))
+        advanceUntilIdle()
+        viewModel.onCharacterToggled(character("e"))
+        advanceUntilIdle()
+
+        val state = viewModel.uiState.drop(1).first()
+        assertEquals(4, state.selected.size)
+        assertTrue(state.selected.any { it.id == "e" })
+    }
+
     private fun viewModel(): TeamBuilderViewModel {
         val teamRepository = object : TeamRepository {
             override fun observeSaved(): Flow<List<Team>> = flow { emit(emptyList()) }

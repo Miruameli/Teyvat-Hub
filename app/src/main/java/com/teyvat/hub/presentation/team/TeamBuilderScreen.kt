@@ -44,6 +44,9 @@ fun TeamBuilderScreen(
     ) { padding ->
         LazyColumn(modifier = Modifier.fillMaxSize().padding(padding)) {
             item { TeamSlotsHeader() }
+            if (state.selected.isEmpty()) {
+                item { EmptySelection() }
+            }
             items(state.selected, key = { "slot-${it.id}" }) { character ->
                 SelectedTeamRow(
                     character = character,

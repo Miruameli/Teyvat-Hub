@@ -1,6 +1,5 @@
 package com.teyvat.hub.presentation.team
 
-import com.teyvat.hub.domain.model.MAX_TEAM_SIZE
 import com.teyvat.hub.domain.model.Character
 import com.teyvat.hub.domain.model.Team
 import com.teyvat.hub.domain.service.SynergyInsight
@@ -11,6 +10,10 @@ import com.teyvat.hub.domain.service.TeamValidation
  *
  * [validation] carries the reason a team cannot be saved so the screen can
  * explain it instead of silently dropping the action.
+ *
+ * The party size limit lives in the domain layer
+ * ([com.teyvat.hub.domain.service.TeamValidator.canAdd]); it is deliberately
+ * not duplicated here, so the rule shown and the rule enforced stay the same.
  */
 data class TeamBuilderUiState(
     val selected: List<Character> = emptyList(),
@@ -21,7 +24,3 @@ data class TeamBuilderUiState(
     val validation: TeamValidation = TeamValidation.Valid,
     val insights: List<SynergyInsight> = emptyList(),
 )
-
-/** True when a character may be added to the current selection. */
-fun TeamBuilderUiState.canAdd(character: Character): Boolean =
-    selected.size < MAX_TEAM_SIZE && selected.none { it.id == character.id }

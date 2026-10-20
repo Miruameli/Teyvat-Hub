@@ -24,6 +24,16 @@ fun TeamSlotsHeader() {
     SectionHeading(stringResource(R.string.teams_current))
 }
 
+/** Shown when no character has been picked yet. */
+@Composable
+fun EmptySelection() {
+    Text(
+        text = stringResource(R.string.teams_empty_selection),
+        style = MaterialTheme.typography.bodySmall,
+        modifier = Modifier.padding(horizontal = 16.dp),
+    )
+}
+
 /** One occupied party slot with a remove action. */
 @Composable
 fun SelectedTeamRow(

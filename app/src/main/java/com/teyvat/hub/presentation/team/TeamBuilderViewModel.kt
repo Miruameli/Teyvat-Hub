@@ -60,13 +60,20 @@ class TeamBuilderViewModel @Inject constructor(
         initialValue = TeamBuilderUiState(),
     )
 
+    /**
+     * Adds or removes a character from the current selection.
+     *
+     * The party size is capped by the domain rule rather than here, so the
+     * limit cannot drift from the one the validator enforces when saving.
+     */
     fun onCharacterToggled(character: Character) {
         val current = selection.value
-        selection.value = if (current.any { it.id == character.id }) {
-            current.filterNot { it.id == character.id }
-        } else {
-            current + character
+        if (current.any { it.id == character.id }) {
+            selection.value = current.filterNot { it.id == character.id }
+            return
         }
+        if (!validator.canAdd(current)) return
+        selection.value = current + character
     }
 
     fun onTeamNameChange(value: String) {
