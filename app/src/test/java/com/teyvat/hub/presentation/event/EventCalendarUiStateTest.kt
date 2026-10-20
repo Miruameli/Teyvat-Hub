@@ -1,5 +1,7 @@
 package com.teyvat.hub.presentation.event
 
+import com.teyvat.hub.data.mapper.toDomain
+import com.teyvat.hub.data.seeding.EventSeedContent
 import com.teyvat.hub.domain.model.EventKind
 import com.teyvat.hub.domain.model.EventStatus
 import com.teyvat.hub.domain.model.GameEvent
@@ -127,6 +129,23 @@ class EventCalendarUiStateTest {
         )
 
         assertEquals("Hadiah resin", state.active.single().description)
+    }
+
+    @Test
+    fun `seeded content fills every section of the calendar`() {
+        val seeded = EventSeedContent.all(EventSeedContent.REFERENCE_NOW)
+            .map { it.toDomain() }
+
+        val state = buildEventCalendarState(
+            events = seeded,
+            now = EventSeedContent.REFERENCE_NOW,
+            formatter = formatter,
+        )
+
+        assertFalse("active section must not be empty", state.active.isEmpty())
+        assertFalse("upcoming section must not be empty", state.upcoming.isEmpty())
+        assertFalse("ended section must not be empty", state.ended.isEmpty())
+        assertFalse(state.isEmpty)
     }
 
     private fun event(

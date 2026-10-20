@@ -29,6 +29,9 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/) dan
 ### Changed
 - `MainActivity` dimigrasikan dari Java/AppCompat ke Kotlin + Jetpack Compose.
 - Batas Java/Kotlin diseragamkan ke 17 dan `compileSdk` dinaikkan ke 36.
+- Jendela event dan banner di-seed relatif terhadap waktu saat aplikasi
+  dibuka, bukan tanggal absolut, sehingga kalender selalu memuat event
+  berjalan, akan datang, dan selesai.
 
 ### Security
 - Tidak ada kredensial maupun secret dalam repositori; aset dimuat dari CDN
