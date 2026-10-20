@@ -30,6 +30,7 @@
     <string name="events_upcoming">Akan Datang</string>
     <string name="events_ended">Sudah Selesai</string>
     <string name="events_empty">Tidak ada event untuk filter ini.</string>
+    <string name="events_disclaimer">Jadwal event dapat berubah sewaktu-waktu. Lihat pengumuman resmi untuk konfirmasi.</string>
     <string name="filter_all">Semua</string>
     <string name="filter_events_only">Event saja</string>
     <string name="filter_banners_only">Banner saja</string>

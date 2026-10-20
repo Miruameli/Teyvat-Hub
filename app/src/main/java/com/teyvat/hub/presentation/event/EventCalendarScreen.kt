@@ -69,6 +69,7 @@ fun EventCalendarScreen(
                     item { SectionTitle(stringResource(R.string.events_ended)) }
                     items(state.ended, key = { it.id }) { row -> EventRowCard(row) }
                 }
+                item { DisclaimerText() }
             }
         }
     }
@@ -98,6 +99,16 @@ private fun SectionTitle(text: String) {
         text = text,
         style = MaterialTheme.typography.titleSmall,
         modifier = Modifier.padding(start = 16.dp, top = 12.dp),
+    )
+}
+
+/** Schedule caveat required by the product spec for the calendar screen. */
+@Composable
+private fun DisclaimerText() {
+    Text(
+        text = stringResource(R.string.events_disclaimer),
+        style = MaterialTheme.typography.bodySmall,
+        modifier = Modifier.padding(16.dp),
     )
 }
 
