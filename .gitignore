@@ -12,4 +12,6 @@ local.properties
 
 # Build outputs copied to the project root for manual transfer to a device.
 /TeyvatHub-debug.apk
+/TeyvatHub-debug.apk.sha256
+/TeyvatHub-debug.apk.sbom.json
 *.apk

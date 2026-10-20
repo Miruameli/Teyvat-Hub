@@ -15,6 +15,11 @@ sebagaimana adanya untuk menghindari terjemahan yang membingungkan.
 | **Sinergi** | Efek saling menguat antar karakter dalam satu tim, misalnya reaksi elemental |
 | **Reset harian** | Batas harian yang direset server setiap pukul 04.00 UTC+8 (waktu server resmi) |
 | **Farm** | Aktivitas mengumpulkan sumber daya berulang (domain, resin, boss) |
+| **Event** | Periode event dalam game dengan tanggal mulai dan, bila diumumkan, tanggal berakhir |
+| **Banner** | Periode wish banner; memakai aturan tampilan yang sama dengan event |
+| **Party** | Susunan karakter yang sedang dimainkan, maksimal empat anggota |
+| **Berlangsung** | Status event yang sudah mulai dan belum melewati tanggal berakhirnya |
+| **Akan datang** | Status event yang tanggal mulainya belum tercapai |
 
 ## Istilah Arsitektur
 
