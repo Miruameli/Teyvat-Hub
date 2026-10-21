@@ -14,8 +14,8 @@
     <string name="roster_empty">Tidak ada karakter yang cocok.</string>
     <string name="action_search">Cari karakter</string>
     <string name="filter_favorites">Favorit</string>
-    <string name="marker_favorite_on">&#9733;</string>
-    <string name="marker_favorite_off">&#9734;</string>
+    <string name="marker_favorite_on">Hapus dari favorit</string>
+    <string name="marker_favorite_off">Tambahkan ke favorit</string>
 
     <!-- Checklist -->
     <string name="checklist_title">Checklist Farming</string>

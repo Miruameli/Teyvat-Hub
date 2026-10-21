@@ -1,9 +1,9 @@
 package com.teyvat.hub.presentation.core.theme
 
+import java.io.File
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.io.File
 
 /**
  * Verifies the English translation is complete and really is a translation.

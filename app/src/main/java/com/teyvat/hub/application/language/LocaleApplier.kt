@@ -1,9 +1,9 @@
 package com.teyvat.hub.application.language
 
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.LocaleListCompat
 import javax.inject.Inject
 import javax.inject.Singleton
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 
 /**
  * Applies the chosen language to the running app.

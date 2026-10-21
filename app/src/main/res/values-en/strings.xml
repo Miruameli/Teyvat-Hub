@@ -18,8 +18,8 @@
     <string name="roster_empty">No character matches your search.</string>
     <string name="action_search">Search characters</string>
     <string name="filter_favorites">Favourites</string>
-    <string name="marker_favorite_on">&#9733;</string>
-    <string name="marker_favorite_off">&#9734;</string>
+    <string name="marker_favorite_on">Remove from favourites</string>
+    <string name="marker_favorite_off">Add to favourites</string>
 
     <!-- Checklist -->
     <string name="checklist_title">Farming Checklist</string>

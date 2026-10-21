@@ -72,18 +72,27 @@ fun ChecklistScreen(
             )
 
             LazyColumn(modifier = Modifier.fillMaxSize()) {
-                state.daily.forEach { item ->
-                    item(key = "daily-${item.id}") {
+                if (state.daily.isNotEmpty()) {
+                    item(key = "header-daily") {
+                        SectionHeader(stringResource(R.string.section_daily))
+                    }
+                    items(state.daily, key = { "daily-${it.id}" }) { item ->
                         ChecklistRow(item = item, onComplete = viewModel::onTaskCompleted)
                     }
                 }
-                state.weekly.forEach { item ->
-                    item(key = "weekly-${item.id}") {
+                if (state.weekly.isNotEmpty()) {
+                    item(key = "header-weekly") {
+                        SectionHeader(stringResource(R.string.section_weekly))
+                    }
+                    items(state.weekly, key = { "weekly-${it.id}" }) { item ->
                         ChecklistRow(item = item, onComplete = viewModel::onTaskCompleted)
                     }
                 }
-                state.custom.forEach { item ->
-                    item(key = "custom-${item.id}") {
+                if (state.custom.isNotEmpty()) {
+                    item(key = "header-custom") {
+                        SectionHeader(stringResource(R.string.section_custom))
+                    }
+                    items(state.custom, key = { "custom-${it.id}" }) { item ->
                         ChecklistRow(
                             item = item,
                             onComplete = viewModel::onTaskCompleted,
@@ -94,6 +103,16 @@ fun ChecklistScreen(
             }
         }
     }
+}
+
+/** Title above a group of farming tasks. */
+@Composable
+private fun SectionHeader(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.titleSmall,
+        modifier = Modifier.padding(start = 16.dp, top = 12.dp),
+    )
 }
 
 /** One farming task, with the delete action for the tasks the player added. */
