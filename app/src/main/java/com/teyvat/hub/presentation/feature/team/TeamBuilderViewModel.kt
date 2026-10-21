@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.teyvat.hub.application.CharacterRepository
-import com.teyvat.hub.application.TeamRepository
+import com.teyvat.hub.application.repository.CharacterRepository
+import com.teyvat.hub.application.repository.TeamRepository
 import com.teyvat.hub.domain.character.Character
 import com.teyvat.hub.domain.team.Team
 import com.teyvat.hub.domain.team.TeamSynergyAnalyzer

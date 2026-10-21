@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.teyvat.hub.application.ChecklistRepository
+import com.teyvat.hub.application.repository.ChecklistRepository
 import com.teyvat.hub.domain.checklist.ChecklistItem
 import com.teyvat.hub.domain.checklist.ChecklistResetCalculator
 import com.teyvat.hub.domain.checklist.ResetCadence

@@ -1,4 +1,4 @@
-package com.teyvat.hub.application
+package com.teyvat.hub.application.repository
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,13 +1,13 @@
 package com.teyvat.hub.injection
 
-import com.teyvat.hub.application.CharacterRepository
-import com.teyvat.hub.application.ChecklistRepository
-import com.teyvat.hub.application.EventRepository
-import com.teyvat.hub.application.LocalCharacterRepository
-import com.teyvat.hub.application.LocalChecklistRepository
-import com.teyvat.hub.application.LocalEventRepository
-import com.teyvat.hub.application.LocalTeamRepository
-import com.teyvat.hub.application.TeamRepository
+import com.teyvat.hub.application.repository.CharacterRepository
+import com.teyvat.hub.application.repository.ChecklistRepository
+import com.teyvat.hub.application.repository.EventRepository
+import com.teyvat.hub.application.repository.LocalCharacterRepository
+import com.teyvat.hub.application.repository.LocalChecklistRepository
+import com.teyvat.hub.application.repository.LocalEventRepository
+import com.teyvat.hub.application.repository.LocalTeamRepository
+import com.teyvat.hub.application.repository.TeamRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

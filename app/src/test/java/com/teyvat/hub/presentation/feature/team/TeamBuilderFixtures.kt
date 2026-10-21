@@ -2,8 +2,8 @@ package com.teyvat.hub.presentation.feature.team
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import com.teyvat.hub.application.CharacterRepository
-import com.teyvat.hub.application.TeamRepository
+import com.teyvat.hub.application.repository.CharacterRepository
+import com.teyvat.hub.application.repository.TeamRepository
 import com.teyvat.hub.domain.character.Character
 import com.teyvat.hub.domain.character.CharacterRole
 import com.teyvat.hub.domain.character.Element

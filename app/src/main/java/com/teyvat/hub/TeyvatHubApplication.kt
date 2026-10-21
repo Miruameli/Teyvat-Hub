@@ -12,6 +12,8 @@ import coil3.SingletonImageLoader
 import coil3.disk.DiskCache
 import coil3.memory.MemoryCache
 import coil3.request.allowHardware
+import com.teyvat.hub.application.language.LanguagePreference
+import com.teyvat.hub.application.language.LocaleApplier
 import com.teyvat.hub.data.AppConstants
 import com.teyvat.hub.data.DatabaseSeeder
 import dagger.hilt.android.HiltAndroidApp
@@ -30,12 +32,21 @@ class TeyvatHubApplication : Application(), SingletonImageLoader.Factory {
     @Inject
     lateinit var seeder: DatabaseSeeder
 
+    @Inject
+    lateinit var languagePreference: LanguagePreference
+
+    @Inject
+    lateinit var localeApplier: LocaleApplier
+
     private val appScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     override fun onCreate() {
         super.onCreate()
         // Content must exist before the first screen reads it.
         appScope.launch { seeder.seedIfEmpty() }
+        // The stored language is applied on every start so the first screen
+        // already shows the chosen language.
+        appScope.launch { localeApplier.apply(languagePreference.read()) }
     }
 
     /**

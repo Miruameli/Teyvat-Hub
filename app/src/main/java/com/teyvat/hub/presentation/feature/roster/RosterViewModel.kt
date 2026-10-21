@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.teyvat.hub.application.CharacterRepository
+import com.teyvat.hub.application.repository.CharacterRepository
 import com.teyvat.hub.domain.character.Character
 import dagger.hilt.android.lifecycle.HiltViewModel
 
