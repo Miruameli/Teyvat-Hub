@@ -6,14 +6,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import com.teyvat.hub.application.ChecklistRepository
 import com.teyvat.hub.domain.checklist.ChecklistItem
 import com.teyvat.hub.domain.checklist.ChecklistResetCalculator
 import com.teyvat.hub.domain.checklist.ResetCadence
@@ -46,10 +44,10 @@ class ChecklistViewModelTest {
     fun `tasks are grouped by cadence`() = runTest {
         val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
         val items = listOf(
-            item("a", ResetCadence.DAILY),
-            item("b", ResetCadence.WEEKLY),
-            item("c", ResetCadence.DAILY),
-            item("d", ResetCadence.NONE, isCustom = true),
+            checklistItem("a", ResetCadence.DAILY),
+            checklistItem("b", ResetCadence.WEEKLY),
+            checklistItem("c", ResetCadence.DAILY),
+            checklistItem("d", ResetCadence.NONE, isCustom = true),
         )
         val viewModel = viewModelWith(resetCalculator, items = items)
 
@@ -73,8 +71,8 @@ class ChecklistViewModelTest {
         }.timeInMillis
 
         val items = listOf(
-            item("done", ResetCadence.DAILY, completedAt = now),
-            item("pending", ResetCadence.DAILY, completedAt = null),
+            checklistItem("done", ResetCadence.DAILY, completedAt = now),
+            checklistItem("pending", ResetCadence.DAILY, completedAt = null),
         )
         val viewModel = viewModelWith(resetCalculator, items = items, timeProvider = { now })
 
@@ -87,7 +85,7 @@ class ChecklistViewModelTest {
     @Test
     fun `never completed custom task stays visible`() = runTest {
         val resetCalculator = ChecklistResetCalculator(TimeZone.getTimeZone("Asia/Shanghai"))
-        val items = listOf(item("todo", ResetCadence.NONE, isCustom = true))
+        val items = listOf(checklistItem("todo", ResetCadence.NONE, isCustom = true))
         val viewModel = viewModelWith(resetCalculator, items = items)
 
         advanceUntilIdle()
@@ -125,27 +123,9 @@ class ChecklistViewModelTest {
         items: List<ChecklistItem>,
         onAdd: (String) -> Unit = {},
         timeProvider: () -> Long = { System.currentTimeMillis() },
-    ): ChecklistViewModel {
-        val repository = object : ChecklistRepository {
-            override fun observePending() = flow { emit(items) }
-            override fun observeAll() = flow { emit(items) }
-            override suspend fun markCompleted(id: String, at: Long) = Unit
-            override suspend fun addCustomTask(title: String) { onAdd(title) }
-            override suspend fun delete(id: String) = Unit
-        }
-        return ChecklistViewModel(repository, resetCalculator, timeProvider)
-    }
-
-    private fun item(
-        id: String,
-        cadence: ResetCadence,
-        completedAt: Long? = null,
-        isCustom: Boolean = false,
-    ) = ChecklistItem(
-        id = id,
-        title = id,
-        cadence = cadence,
-        lastCompletedAt = completedAt,
-        isCustom = isCustom,
+    ): ChecklistViewModel = ChecklistViewModel(
+        repository = fakeChecklistRepository(items, onAdd),
+        resetCalculator = resetCalculator,
+        timeProvider = timeProvider,
     )
 }
