@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.feature.team
+package com.teyvat.hub.presentation.feature.team.saved
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
