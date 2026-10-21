@@ -18,10 +18,26 @@ kecepatan.
 - Satu file satu tanggung jawab.
 - Maksimal **150 baris** per file; besarnya itu harus dipecah.
 - Maksimal **5 file langsung** per folder dan maksimal **5 subfolder**.
+- Pembagian paket mengikuti **domain fungsional**, bukan tipe file: `domain/`
+  berisi satu folder per domain, `presentation/feature/` satu folder per layar.
+- Arah ketergantungan lapisan: `presentation` → `application` → `domain`, dan
+  `data` → `domain`. Layar tidak boleh mengimpor lapisan `data` secara
+  langsung.
 - Tidak ada circular dependency antar-lapis.
 - Baris kosong maksimal satu secara berurutan; tanpa trailing whitespace.
 - Komentar menjelaskan **mengapa**, bukan memparafrasekan kode.
 - Commit mengikuti Conventional Commit: subject imperatif maksimal 72 karakter.
+
+Aturan di atas diperiksa otomatis:
+
+```bash
+node scripts/check-structure.mjs
+```
+
+Skrip itu melaporkan folder yang melewati batas, berkas yang melewati batas
+panjang, lapisan yang mengimpor lapisan yang tidak boleh disentuh, dan
+`package` yang tidak cocok dengan lokasi foldernya. Job **Structure Check**
+menjalankannya pada setiap pull request.
 
 ## Alur Kerja
 
@@ -34,6 +50,7 @@ kecepatan.
 ./gradlew :app:testDebugUnitTest   # unit test
 ./gradlew :app:lintDebug           # lint
 ./gradlew :app:assembleDebug       # build
+node scripts/check-structure.mjs    # aturan struktural
 ```
 
 5. Buka pull request yang menautkan issue, lengkapi ringkasan, alasan, dan dampak.
