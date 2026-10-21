@@ -28,7 +28,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import com.teyvat.hub.R
-import com.teyvat.hub.data.remote.EnkaAsset
+import com.teyvat.hub.application.EnkaAsset
 import com.teyvat.hub.domain.character.Character
 import com.teyvat.hub.presentation.core.theme.labelRes
 

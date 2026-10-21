@@ -1,4 +1,4 @@
-package com.teyvat.hub.data.remote
+package com.teyvat.hub.application
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
