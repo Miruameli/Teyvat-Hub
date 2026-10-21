@@ -21,6 +21,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.teyvat.hub.BuildConfig
 import com.teyvat.hub.R
 import com.teyvat.hub.application.language.AppLanguage
+import com.teyvat.hub.presentation.core.theme.labelRes
 
 /**
  * Settings hub for language, data attribution, privacy, and the disclaimer.

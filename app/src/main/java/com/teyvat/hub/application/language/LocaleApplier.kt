@@ -1,12 +1,9 @@
 package com.teyvat.hub.application.language
 
-import javax.inject.Inject
-import javax.inject.Singleton
-import android.content.Context
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
-import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Applies the chosen language to the running app.
@@ -16,9 +13,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
  * app supports, from 7 upwards.
  */
 @Singleton
-class LocaleApplier @Inject constructor(
-    @ApplicationContext private val context: Context,
-) {
+class LocaleApplier @Inject constructor() {
 
     /**
      * Applies [language] to every activity of the app.
@@ -44,17 +39,5 @@ class LocaleApplier @Inject constructor(
         if (platform.isEmpty) return fallback
         val tag = platform[0]?.toLanguageTag().orEmpty()
         return AppLanguage.fromTag(tag.takeWhile { it != '-' }.ifEmpty { null })
-    }
-
-    /**
-     * The locale the app is running with, read from the configuration.
-     *
-     * It is what the resources actually follow, so it is used to check that
-     * the applied locale took effect.
-     */
-    fun activeLocale(): String {
-        val configuration: Configuration = context.resources.configuration
-        val locales = configuration.locales
-        return if (locales.isEmpty) "" else locales[0]?.toLanguageTag().orEmpty()
     }
 }
