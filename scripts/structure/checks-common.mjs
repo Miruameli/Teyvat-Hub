@@ -83,3 +83,32 @@ export function lineCount(text) {
 export function projectPath(path) {
   return relative(".", path);
 }
+
+/** The package root every layer sits under. */
+const PACKAGE_PREFIX = "com.teyvat.hub";
+
+/**
+ * The layer a package belongs to.
+ *
+ * The layer is the segment right after the package root, so
+ * com.teyvat.hub.presentation.feature.roster belongs to presentation.
+ */
+export function layerOf(packageName) {
+  if (!packageName.startsWith(PACKAGE_PREFIX)) return null;
+  const rest = packageName.slice(PACKAGE_PREFIX.length + 1);
+  if (rest === "") return null;
+  const layer = rest.split(".")[0];
+  return LAYERS.has(layer) ? layer : null;
+}
+
+/**
+ * The layer an imported symbol belongs to.
+ *
+ * A symbol outside the package root, such as a library class, has no layer.
+ */
+export function layerOfImport(statement) {
+  if (!statement.startsWith(`import ${PACKAGE_PREFIX}.`)) return null;
+  const rest = statement.slice(`import ${PACKAGE_PREFIX}.`.length);
+  const layer = rest.split(".")[0];
+  return LAYERS.has(layer) ? layer : null;
+}
