@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      The window background in the night theme. It matches the dark
+      background of the theme, so the app never flashes a light rectangle
+      before the first frame.
+    -->
+    <color name="window_background">#FF0E1526</color>
+</resources>

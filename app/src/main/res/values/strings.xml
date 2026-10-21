@@ -23,6 +23,7 @@
     <string name="section_weekly">Mingguan</string>
     <string name="section_custom">Tugas Sendiri</string>
     <string name="action_add_task">Tambah tugas sendiri</string>
+    <string name="checklist_delete_task">Hapus tugas</string>
 
     <!-- Events -->
     <string name="events_title">Event &amp; Banner</string>

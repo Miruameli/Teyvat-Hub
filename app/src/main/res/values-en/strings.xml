@@ -27,6 +27,7 @@
     <string name="section_weekly">Weekly</string>
     <string name="section_custom">Your own tasks</string>
     <string name="action_add_task">Add your own task</string>
+    <string name="checklist_delete_task">Delete task</string>
 
     <!-- Events -->
     <string name="events_title">Events &amp; Banners</string>

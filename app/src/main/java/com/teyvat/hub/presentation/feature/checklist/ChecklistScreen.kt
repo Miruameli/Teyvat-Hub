@@ -6,8 +6,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
@@ -26,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.teyvat.hub.R
-import com.teyvat.hub.domain.checklist.ChecklistItem
+import com.teyvat.hub.domain.model.ChecklistItem
 
 /**
  * Daily, weekly, and custom farming tasks.
@@ -47,23 +51,6 @@ fun ChecklistScreen(
         topBar = { TopAppBar(title = { Text(stringResource(R.string.checklist_title)) }) },
     ) { padding ->
         Column(modifier = Modifier.fillMaxSize().padding(padding)) {
-            ChecklistSection(
-                title = stringResource(R.string.section_daily),
-                items = state.daily,
-                onComplete = viewModel::onTaskCompleted,
-            )
-            ChecklistSection(
-                title = stringResource(R.string.section_weekly),
-                items = state.weekly,
-                onComplete = viewModel::onTaskCompleted,
-            )
-            ChecklistSection(
-                title = stringResource(R.string.section_custom),
-                items = state.custom,
-                onComplete = viewModel::onTaskCompleted,
-                onDelete = viewModel::onDeleteTask,
-            )
-
             TextField(
                 value = customDraft,
                 onValueChange = { customDraft = it },
@@ -76,43 +63,63 @@ fun ChecklistScreen(
                             customDraft = ""
                         },
                     ) {
-                        Text("+")
+                        Icon(
+                            imageVector = Icons.Filled.Add,
+                            contentDescription = stringResource(R.string.action_add_task),
+                        )
                     }
                 },
             )
+
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                state.daily.forEach { item ->
+                    item(key = "daily-${item.id}") {
+                        ChecklistRow(item = item, onComplete = viewModel::onTaskCompleted)
+                    }
+                }
+                state.weekly.forEach { item ->
+                    item(key = "weekly-${item.id}") {
+                        ChecklistRow(item = item, onComplete = viewModel::onTaskCompleted)
+                    }
+                }
+                state.custom.forEach { item ->
+                    item(key = "custom-${item.id}") {
+                        ChecklistRow(
+                            item = item,
+                            onComplete = viewModel::onTaskCompleted,
+                            onDelete = { viewModel.onDeleteTask(item) },
+                        )
+                    }
+                }
+            }
         }
     }
 }
 
+/** One farming task, with the delete action for the tasks the player added. */
 @Composable
-private fun ChecklistSection(
-    title: String,
-    items: List<ChecklistItem>,
+private fun ChecklistRow(
+    item: ChecklistItem,
     onComplete: (ChecklistItem) -> Unit,
-    onDelete: (ChecklistItem) -> Unit = {},
+    onDelete: (() -> Unit)? = null,
 ) {
-    if (items.isEmpty()) return
-    Text(
-        text = title,
-        style = MaterialTheme.typography.titleSmall,
-        modifier = Modifier.padding(start = 16.dp, top = 12.dp),
-    )
-    LazyColumn(modifier = Modifier.fillMaxWidth()) {
-        items(items, key = { it.id }) { item ->
-            ListItem(
-                headlineContent = { Text(item.title) },
-                leadingContent = {
-                    Checkbox(
-                        checked = false,
-                        onCheckedChange = { onComplete(item) },
-                    )
-                },
-                trailingContent = {
-                    if (item.isCustom) {
-                        IconButton(onClick = { onDelete(item) }) { Text("×") }
-                    }
-                },
+    ListItem(
+        headlineContent = { Text(item.title) },
+        leadingContent = {
+            Checkbox(
+                checked = false,
+                onCheckedChange = { onComplete(item) },
             )
-        }
-    }
+        },
+        trailingContent = {
+            if (onDelete != null) {
+                IconButton(onClick = onDelete) {
+                    Icon(
+                        imageVector = Icons.Filled.Delete,
+                        contentDescription = stringResource(R.string.checklist_delete_task),
+                    )
+                }
+            }
+        },
+    )
 }

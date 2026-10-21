@@ -71,6 +71,41 @@ class SearchRankerTest {
         assertEquals(listOf("Raiden Kazuha"), result.map { it.item })
     }
 
+    @Test
+    fun `a hyphen ends a word`() {
+        val result = ranker.rank("sword", listOf("Favonius Sword", "Albedo"))
+
+        assertEquals("Favonius Sword", result.first().item)
+    }
+
+    @Test
+    fun `an apostrophe ends a word`() {
+        val result = ranker.rank("hu", listOf("Hu Tao", "Albedo"))
+
+        assertEquals("Hu Tao", result.first().item)
+    }
+
+    @Test
+    fun `a word that is longer than the query matches on its prefix`() {
+        val result = ranker.rank("albe", listOf("Albedo", "Kazuha"))
+
+        assertEquals("Albedo", result.single().item)
+    }
+
+    @Test
+    fun `a name that is only a separator does not match`() {
+        val result = ranker.rank("a", listOf("---", "Albedo"))
+
+        assertEquals(listOf("Albedo"), result.map { it.item })
+    }
+
+    @Test
+    fun `a trailing separator does not produce an empty match`() {
+        val result = ranker.rank("al", listOf("Albedo "))
+
+        assertEquals(listOf("Albedo "), result.map { it.item })
+    }
+
     private companion object {
         const val SUBSTRING_QUALITY = 2
     }
