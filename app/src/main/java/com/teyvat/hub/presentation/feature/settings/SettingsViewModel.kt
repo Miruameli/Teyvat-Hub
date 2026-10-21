@@ -35,7 +35,11 @@ class SettingsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            _uiState.value = SettingsUiState(language = preference.read())
+            // The platform is asked first, because a player can also change
+            // the language from the system settings. The stored preference is
+            // the fallback for a platform that has no locale set.
+            val stored = preference.read()
+            _uiState.value = SettingsUiState(language = localeApplier.current(stored))
         }
     }
 

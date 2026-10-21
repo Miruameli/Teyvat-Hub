@@ -38,7 +38,6 @@
     <!-- Settings -->
     <string name="settings_title">Pengaturan</string>
     <string name="settings_language">Bahasa</string>
-    <string name="settings_language_value">Indonesia (bawaan aplikasi)</string>
     <string name="language_indonesian">Bahasa Indonesia</string>
     <string name="language_english">English</string>
     <string name="settings_version">Versi Aplikasi</string>
