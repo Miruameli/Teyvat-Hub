@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.feature.roster
+package com.teyvat.hub.presentation.feature.library.roster
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

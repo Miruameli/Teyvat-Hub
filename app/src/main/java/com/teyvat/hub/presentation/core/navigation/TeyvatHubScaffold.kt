@@ -18,16 +18,18 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.teyvat.hub.presentation.feature.checklist.ChecklistScreen
 import com.teyvat.hub.presentation.feature.event.EventCalendarScreen
-import com.teyvat.hub.presentation.feature.roster.RosterScreen
+import com.teyvat.hub.presentation.feature.library.roster.RosterScreen
+import com.teyvat.hub.presentation.feature.library.weapon.WeaponLibraryScreen
 import com.teyvat.hub.presentation.feature.settings.SettingsScreen
 import com.teyvat.hub.presentation.feature.team.TeamBuilderScreen
 
 /**
- * Root scaffold hosting the five primary destinations.
+ * Root scaffold hosting the primary destinations.
  *
  * Navigation uses a single NavHost with a flat route per tab; back stack is
  * collapsed to the start destination so returning from a tab never walks the
- * user through every screen they already left.
+ * user through every screen they already left. The bottom bar is drawn from
+ * Destination.entries, so a new tab appears once its entry exists.
  */
 @Composable
 fun TeyvatHubScaffold() {
@@ -76,6 +78,7 @@ fun TeyvatHubScaffold() {
         ) {
             composable(Destination.ROSTER.route) { RosterScreen() }
             composable(Destination.CHECKLIST.route) { ChecklistScreen() }
+            composable(Destination.WEAPONS.route) { WeaponLibraryScreen() }
             composable(Destination.TEAMS.route) { TeamBuilderScreen() }
             composable(Destination.EVENTS.route) { EventCalendarScreen() }
             composable(Destination.SETTINGS.route) { SettingsScreen() }

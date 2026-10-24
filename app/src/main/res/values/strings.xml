@@ -118,4 +118,10 @@
     <string name="weapon_bow">Busur</string>
     <string name="weapon_catalyst">Katalis</string>
     <string name="weapon_unknown">Senjata</string>
+
+    <!-- Weapon library -->
+    <string name="tab_weapons">Senjata</string>
+    <string name="weapons_title">Senjata</string>
+    <string name="weapons_empty">Belum ada senjata.</string>
+    <string name="weapon_summary_line">ATK dasar %1$d · %2$s %3$s</string>
 </resources>

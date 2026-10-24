@@ -122,4 +122,10 @@
     <string name="weapon_bow">Bow</string>
     <string name="weapon_catalyst">Catalyst</string>
     <string name="weapon_unknown">Weapon</string>
+
+    <!-- Weapon library -->
+    <string name="tab_weapons">Weapons</string>
+    <string name="weapons_title">Weapons</string>
+    <string name="weapons_empty">No weapons yet.</string>
+    <string name="weapon_summary_line">Base ATK %1$d · %2$s %3$s</string>
 </resources>

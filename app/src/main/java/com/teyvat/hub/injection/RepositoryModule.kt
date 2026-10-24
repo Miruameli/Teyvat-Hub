@@ -7,7 +7,9 @@ import com.teyvat.hub.application.repository.LocalCharacterRepository
 import com.teyvat.hub.application.repository.LocalChecklistRepository
 import com.teyvat.hub.application.repository.LocalEventRepository
 import com.teyvat.hub.application.repository.LocalTeamRepository
+import com.teyvat.hub.application.repository.LocalWeaponRepository
 import com.teyvat.hub.application.repository.TeamRepository
+import com.teyvat.hub.application.repository.WeaponRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -46,4 +48,10 @@ interface RepositoryModule {
     fun bindTeamRepository(
         implementation: LocalTeamRepository,
     ): TeamRepository
+
+    /** Room-backed weapon list, seeded from the bundled JSON. */
+    @Binds
+    fun bindWeaponRepository(
+        implementation: LocalWeaponRepository,
+    ): WeaponRepository
 }

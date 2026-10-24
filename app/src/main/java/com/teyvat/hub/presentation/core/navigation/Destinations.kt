@@ -1,11 +1,13 @@
 package com.teyvat.hub.presentation.core.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.Build
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.FavoriteBorder
@@ -27,6 +29,7 @@ enum class Destination(
 ) {
     ROSTER("roster", com.teyvat.hub.R.string.tab_roster, Icons.Filled.Person, Icons.Outlined.Person),
     CHECKLIST("checklist", com.teyvat.hub.R.string.tab_checklist, Icons.Filled.CheckCircle, Icons.Outlined.CheckCircle),
+    WEAPONS("weapons", com.teyvat.hub.R.string.tab_weapons, Icons.Filled.Build, Icons.Outlined.Build),
     TEAMS("teams", com.teyvat.hub.R.string.tab_teams, Icons.Filled.Favorite, Icons.Outlined.FavoriteBorder),
     EVENTS("events", com.teyvat.hub.R.string.tab_events, Icons.Filled.DateRange, Icons.Outlined.DateRange),
     SETTINGS("settings", com.teyvat.hub.R.string.tab_settings, Icons.Filled.Settings, Icons.Outlined.Settings),

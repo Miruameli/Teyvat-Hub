@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.feature.roster
+package com.teyvat.hub.presentation.feature.library.roster
 
 import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi

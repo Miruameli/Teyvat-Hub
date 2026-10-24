@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.feature.roster
+package com.teyvat.hub.presentation.feature.library.roster
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

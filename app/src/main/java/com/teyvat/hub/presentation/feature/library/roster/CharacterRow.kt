@@ -1,4 +1,4 @@
-package com.teyvat.hub.presentation.feature.roster
+package com.teyvat.hub.presentation.feature.library.roster
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,8 +23,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.teyvat.hub.R
-import com.teyvat.hub.application.repository.EnkaAsset
 import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.presentation.core.avatar.EnkaAsset
 import com.teyvat.hub.presentation.core.theme.labelRes
 
 /**
