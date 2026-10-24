@@ -102,13 +102,47 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      # Signing inputs arrive from GitHub Secrets. When the secrets are absent
+      # the build stays unsigned rather than silently using a debug key.
       - name: Build release APK
+        env:
+          TEYVAT_KEYSTORE_PATH: ${{ secrets.TEYVAT_KEYSTORE_PATH }}
+          TEYVAT_KEYSTORE_PASSWORD: ${{ secrets.TEYVAT_KEYSTORE_PASSWORD }}
+          TEYVAT_KEY_ALIAS: ${{ secrets.TEYVAT_KEY_ALIAS }}
+          TEYVAT_KEY_PASSWORD: ${{ secrets.TEYVAT_KEY_PASSWORD }}
         run: ./gradlew :app:assembleRelease --no-daemon
+
+      # An unsigned release APK means the signing secrets are not configured
+      # yet, which is a documented state; a signature that exists but is
+      # invalid means something actually went wrong and must fail the build.
+      - name: Verify the APK signature
+        env:
+          TEYVAT_KEYSTORE_PATH: ${{ secrets.TEYVAT_KEYSTORE_PATH }}
+        run: |
+          APK=$(ls app/build/outputs/apk/release/*.apk | head -1)
+          # apksigner is not on PATH by default; it ships with build-tools,
+          # which the SDK setup step installs.
+          APKSIGNER="${ANDROID_HOME:-$ANDROID_SDK_ROOT}/build-tools/36.0.0/apksigner"
+          if [ ! -x "$APKSIGNER" ]; then
+            APKSIGNER=$(ls "$ANDROID_HOME"/build-tools/*/apksigner 2>/dev/null | tail -1)
+          fi
+          if [ -z "$APKSIGNER" ] || [ ! -x "$APKSIGNER" ]; then
+            echo "::warning::apksigner not found, signature not verified"
+            exit 0
+          fi
+          if "$APKSIGNER" verify --print-certs "$APK"; then
+            echo "release APK is signed and verifiable"
+          elif [ -z "$TEYVAT_KEYSTORE_PATH" ]; then
+            echo "::notice::no signing secrets configured, APK stays unsigned"
+          else
+            echo "::error::signing secrets are configured but the APK is not signed"
+            exit 1
+          fi
 
       - name: Upload release APK
         uses: actions/upload-artifact@v4
         with:
-          name: TeyvatHub-release-unsigned-apk
+          name: TeyvatHub-release-apk
           path: app/build/outputs/apk/release/*.apk
           retention-days: 30
 

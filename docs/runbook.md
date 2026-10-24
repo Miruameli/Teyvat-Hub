@@ -103,15 +103,75 @@ baru mengikat versi yang menuntut compileSdk 37 dan build akan gagal.
 
 ## Update Konten Game
 
-Konten disimpan sebagai seed di `app/src/main/java/com/teyvat/hub/data/`:
+Karakter dan senjata dibaca dari bundel JSON, bukan dari seed di kode:
 
-- `CharacterSeedContent.kt`
-- `ChecklistSeedContent.kt`
-- `EventSeedContent.kt`
+- `app/src/main/assets/characters/characters.json`
+- `app/src/main/assets/weapons/weapons.json`
+- `app/src/main/assets/elements/elements.json`
+- `app/src/main/assets/regions/regions.json`
 
-Perubahan konten dilakukan di file-file tersebut agar tiap update berupa diff
-yang mudah direview. Id baris bersifat stabil sehingga riwayat selesai pengguna
-tidak hilang saat konten diperbarui.
+`DatabaseSeeder` menyusunnya ke Room saat aplikasi pertama berjalan, dan
+hanya menambah baris yang belum ada. Efeknya: mengubah isi bundel adalah diff
+konten, bukan kompilasi, dan riwayat pengguna — termasuk favorit — tetap utuh.
+Baris dengan key yang tidak dikenal **dibuang**, bukan ditulis di bawah nilai
+fallback, karena karakter dengan elemen yang salah adalah cacat yang terlihat
+pemain.
+
+Checklist, event, dan template tim tetap seed hardcoded di
+`app/src/main/java/com/teyvat/hub/data/content/seeding/`, karena tidak punya
+padanan JSON. Template tim wajib memakai id yang benar-benar ada di bundel;
+member yang merujuk karakter tidak ada akan tampil sebagai slot rusak.
+
+## Menandatangani Rilis APK
+
+Build release memakai keystore yang disimiap sebagai rahasia. Keystore dan kata
+kuncinya **tidak boleh** masuk repositori.
+
+Input yang dibaca `app/build.gradle.kts`, dari environment atau properti Gradle:
+
+| Nama | Environment | Properti Gradle |
+| --- | --- | --- |
+| Jalur keystore | `TEYVAT_KEYSTORE_PATH` | `teyvat.keystore.path` |
+| Kata kunci store | `TEYVAT_KEYSTORE_PASSWORD` | `teyvat.keystore.password` |
+| Alias key | `TEYVAT_KEY_ALIAS` | `teyvat.key.alias` |
+| Kata kunci key | `TEYVAT_KEY_PASSWORD` | `teyvat.key.password` |
+
+Keempatnya wajib ada bersamaan. Kalau ada yang kosong, build release tetap
+berjalan tetapi **tetap tanpa tanda tangan** — tidak ada fallback ke key debug,
+karena artefak yang terlihat seperti rilis tetapi tidak dapat diverifikasi lebih
+berbahaya daripada artefak yang jujur belum ditandatangani.
+
+Untuk CI, simpan keempat nilai di GitHub Secrets:
+
+```bash
+gh secret set TEYVAT_KEYSTORE_PATH -b"app/release.keystore"
+gh secret set TEYVAT_KEYSTORE_PASSWORD        # isi diminta interaktif
+gh secret set TEYVAT_KEY_ALIAS -b"teyvat-release"
+gh secret set TEYVAT_KEY_PASSWORD             # isi diminta interaktif
+```
+
+Isi keystore-nya sendiri harus diunggah sebagai artefak rahasia terpisah
+(atau ditulis ulang dari sumber pemilik repositori) karena secret teks tidak
+cocok untuk berkas biner.
+
+Memperbarui keystore:
+
+1. Buat keystore baru di luar repo, misalnya `~/.keystores/teyvat-release.jks`:
+
+   ```bash
+   keytool -genkeypair -v -keystore ~/.keystores/teyvat-release.jks \
+     -alias teyvat-release -keyalg RSA -keysize 2048 -validity 10000
+   ```
+
+2. Verifikasi tanda tangan hasil build sebelum dipublikasikan:
+
+   ```bash
+   apksigner verify --print-certs --verbose \
+     app/build/outputs/apk/release/app-release.apk
+   ```
+
+3. Perbarui nilai secret yang berubah, lalu picu ulang run CI. APK rilis yang
+   tanda tangannya tidak dapat diverifikasi tidak dipublikasikan.
 
 ## Migrasi Skema Database
 
