@@ -23,7 +23,7 @@ import com.teyvat.hub.presentation.core.theme.colorSwatch
  * identity without another request, which keeps a row readable offline.
  */
 @Composable
-private fun AvatarFallback(character: Character) {
+internal fun AvatarFallback(character: Character) {
     Box(
         modifier = Modifier
             .size(56.dp)
