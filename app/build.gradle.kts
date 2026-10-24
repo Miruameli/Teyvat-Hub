@@ -5,6 +5,32 @@ plugins {
     alias(libs.plugins.hilt)
 }
 
+/**
+ * Release signing inputs, read from the environment or Gradle properties.
+ *
+ * There is deliberately no fallback and no committed keystore: an unsigned
+ * release build is a visible, reviewable state, while a build that silently
+ * signs with a debug key looks release-shaped and cannot be verified. CI
+ * injects these from GitHub Secrets; a local build supplies them through
+ * `~/.gradle/gradle.properties` or `-P` flags.
+ */
+val keystorePath: String? = providers.environmentVariable("TEYVAT_KEYSTORE_PATH")
+    .orNull ?: findProperty("teyvat.keystore.path") as String?
+val keystorePassword: String? = providers.environmentVariable("TEYVAT_KEYSTORE_PASSWORD")
+    .orNull ?: findProperty("teyvat.keystore.password") as String?
+val keyAlias: String? = providers.environmentVariable("TEYVAT_KEY_ALIAS")
+    .orNull ?: findProperty("teyvat.key.alias") as String?
+val keyPassword: String? = providers.environmentVariable("TEYVAT_KEY_PASSWORD")
+    .orNull ?: findProperty("teyvat.key.password") as String?
+
+/** True only when all four inputs are present, so a partial set fails loudly. */
+val hasReleaseSigning = listOf(
+    keystorePath,
+    keystorePassword,
+    keyAlias,
+    keyPassword,
+).none { it.isNullOrBlank() }
+
 android {
     namespace = "com.teyvat.hub"
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -19,6 +45,17 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        if (hasReleaseSigning) {
+            create("release") {
+                storeFile = file(keystorePath!!)
+                storePassword = keystorePassword
+                keyAlias = keyAlias
+                keyPassword = keyPassword
+            }
+        }
+    }
+
     buildTypes {
         debug {
             isMinifyEnabled = false
@@ -30,6 +67,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            // Without the signing inputs the release build stays unsigned
+            // rather than falling back to a debug key.
+            if (hasReleaseSigning) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 
