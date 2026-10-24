@@ -45,7 +45,8 @@ internal class RecordingTeamRepository : TeamRepository {
 internal class EmptyCharacterRepository : CharacterRepository {
     override fun observeRoster(): Flow<List<Character>> = flow { emit(emptyList()) }
     override fun observeFavorites(): Flow<List<Character>> = flow { emit(emptyList()) }
-    override fun search(query: String): Flow<List<Character>> = flow { emit(emptyList()) }
+    override fun search(query: String, limit: Int): Flow<List<Character>> =
+        flow { emit(emptyList()) }
     override suspend fun toggleFavorite(id: String) = Unit
 }
 

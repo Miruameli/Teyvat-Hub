@@ -67,7 +67,7 @@ class SettingsViewModelTest {
 
     @Test
     fun `choosing a language stores it and applies it`() = runTest {
-        every { preference.read() } returns AppLanguage.INDONESIAN
+        coEvery { preference.read() } returns AppLanguage.INDONESIAN
         every { localeApplier.current(AppLanguage.INDONESIAN) } returns AppLanguage.INDONESIAN
         coEvery { preference.write(any()) } returns Unit
         every { localeApplier.apply(any()) } returns Unit
