@@ -100,5 +100,6 @@ class AssetContentMapperTest {
         baseAttack = 44,
         subStat = "energy_recharge",
         subStatValue = "6.7%",
+        passive = "CRIT hits have a 60% chance to generate an Elemental Orb.",
     )
 }
