@@ -46,6 +46,7 @@ Job **Release Package** menyusun satu paket berisi APK, checksum, dan SBOM:
 | `TeyvatHub-debug.apk` | binary debug |
 | `TeyvatHub-debug.apk.sha256` | checksum SHA-256 untuk verifikasi unduhan |
 | `TeyvatHub-debug.apk.sbom.json` | SBOM CycloneDX 1.5 |
+| `TeyvatHub-debug.apk.sig` | tanda tangan GPG terpisah, hanya bila kunci sudah dikonfigurasi |
 
 SBOM dibuat oleh `scripts/generate-sbom.mjs` dari `gradle/libs.versions.toml`,
 yang sudah mem-pin setiap versi secara eksak. Karena sumbernya file di repo,
@@ -59,6 +60,42 @@ Untuk memperbarui SBOM secara lokal:
 ```bash
 node scripts/generate-sbom.mjs ./sbom.json
 ```
+
+## Verifikasi Paket Rilis
+
+Setiap paket rilis memuat APK, checksum SHA-256, SBOM, dan — kalau kunci GPG
+sudah dikonfigurasi — tanda tangan terpisah. Verifikasi checksum terlebih
+dahulu, lalu tanda tangannya:
+
+```bash
+sha256sum -c TeyvatHub-debug.apk.sha256
+gpg --verify TeyvatHub-debug.apk.sig TeyvatHub-debug.apk
+```
+
+Kalau kunci rilis belum dikonfigurasi, berkas `.sig` tidak dibuat dan CI
+memberi `::notice::`, bukan tanda tangan palsu. Rilis yang demikian hanya
+dapat diverifikasi lewat checksum.
+
+Mengonfigurasi kunci:
+
+1. Buat kunci rilis di luar repositori, lalu ekspor kunci privatnya:
+
+   ```bash
+   gpg --full-generate-key          # RSA 3072, tanpa expiry, atau sesuai kebijakan
+   gpg --armor --export-secret-keys <KEY_ID>    # isi untuk secret teks
+   ```
+
+2. Simpan dua secret: `TEYVAT_GPG_PRIVATE_KEY` berisi keluaran ekspor di
+   atas, dan `TEYVAT_GPG_KEY_ID` berisi id panjang kunci:
+
+   ```bash
+   gh secret set TEYVAT_GPG_PRIVATE_KEY   # tempel keluaran ekspor
+   gh secret set TEYVAT_GPG_KEY_ID -b"0123456789ABCDEF0123456789ABCDEF01234567"
+   ```
+
+3. Publikasikan kunci **publik** kembali supaya pengguna dapat memverifikasi.
+   Tanpa itu, tanda tangan tidak membuktikan apa-apa: gpg hanya menyatakan
+   bahwa berkas ditandatangani oleh kunci yang fingerprint-nya tidak dikenal.
 
 ## Logo Aplikasi
 

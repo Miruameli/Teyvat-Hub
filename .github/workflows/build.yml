@@ -187,6 +187,33 @@ jobs:
           cat TeyvatHub-debug.apk.sha256
           ls -lh TeyvatHub-debug.apk TeyvatHub-debug.apk.sbom.json TeyvatHub-debug.apk.sha256
 
+      # The signing key is owner material. When the secret is absent the
+      # package is published unsigned rather than with a bogus signature, and
+      # the notice says exactly that.
+      - name: Import the signing key
+        if: ${{ secrets.TEYVAT_GPG_PRIVATE_KEY != '' }}
+        env:
+          TEYVAT_GPG_PRIVATE_KEY: ${{ secrets.TEYVAT_GPG_PRIVATE_KEY }}
+          TEYVAT_GPG_KEY_ID: ${{ secrets.TEYVAT_GPG_KEY_ID }}
+        run: |
+          printf '%s\n' "$TEYVAT_GPG_PRIVATE_KEY" | gpg --batch --import
+          echo "${TEYVAT_GPG_KEY_ID}:6:" | gpg --import-ownertrust
+          gpg --list-secret-keys --keyid-format LONG
+
+      - name: Sign the release package
+        env:
+          TEYVAT_GPG_KEY_ID: ${{ secrets.TEYVAT_GPG_KEY_ID }}
+        run: |
+          if [ -z "$TEYVAT_GPG_KEY_ID" ]; then
+            echo "::notice::no GPG key configured, package is published unsigned"
+            exit 0
+          fi
+          gpg --batch --yes --detach-sign --armor \
+            --local-user "$TEYVAT_GPG_KEY_ID" --output TeyvatHub-debug.apk.sig \
+            TeyvatHub-debug.apk
+          gpg --batch --verify TeyvatHub-debug.apk.sig TeyvatHub-debug.apk
+          echo "signature created and verified locally"
+
       - name: Upload release package
         uses: actions/upload-artifact@v4
         with:
@@ -195,6 +222,7 @@ jobs:
             TeyvatHub-debug.apk
             TeyvatHub-debug.apk.sha256
             TeyvatHub-debug.apk.sbom.json
+            TeyvatHub-debug.apk.sig
           retention-days: 30
 
   lint:
