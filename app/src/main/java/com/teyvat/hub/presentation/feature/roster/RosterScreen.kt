@@ -95,7 +95,6 @@ private fun CharacterRow(
 ) {
     Card(
         modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
-        onClick = onToggleFavorite,
     ) {
         Row(
             modifier = Modifier.padding(12.dp),
