@@ -1,4 +1,4 @@
-package com.teyvat.hub.application.repository
+package com.teyvat.hub.presentation.core.avatar
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
