@@ -15,8 +15,26 @@ import org.junit.Test
  */
 class EnglishTranslationTest {
 
-    private val source = File("app/src/main/res/values/strings.xml")
-    private val translation = File("app/src/main/res/values-en/strings.xml")
+    private val source = moduleFile("src/main/res/values/strings.xml")
+    private val translation = moduleFile("src/main/res/values-en/strings.xml")
+
+    /**
+     * Find a file inside this module, whatever directory the test runs from.
+     *
+     * Gradle runs unit tests with the module directory as the working
+     * directory on some setups and the repository root on others, so a
+     * relative path is not reliable. Walking up until the path exists makes
+     * the test independent of that choice.
+     */
+    private fun moduleFile(relativePath: String): File {
+        var dir: File? = File("").absoluteFile
+        while (dir != null) {
+            val candidate = File(dir, relativePath)
+            if (candidate.exists()) return candidate
+            dir = dir.parentFile
+        }
+        throw IllegalStateException("cannot locate $relativePath from ${File("").absolutePath}")
+    }
 
     @Test
     fun `every indonesian string has an english counterpart`() {

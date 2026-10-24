@@ -60,9 +60,9 @@
     <string name="language_english">English</string>
     <string name="settings_version">App Version</string>
     <string name="settings_data_source">Data Sources</string>
-    <string name="settings_data_source_value">Character and asset data from the Enka Network; event dates may change at any time.</string>
+    <string name="settings_data_source_value">Character, weapon, and event data ships inside the app, so the main features work without internet. Avatar images are fetched from the Enka Network; if the network fails, cards fall back to the element colour.</string>
     <string name="settings_privacy">Privacy Policy</string>
-    <string name="settings_privacy_value">All data is stored locally on your device. No account, no tracking, and no data is sent to our servers.</string>
+    <string name="settings_privacy_value">Your saved teams and tasks stay on this device. No account, no tracking, and no data is sent to our servers.</string>
     <string name="settings_disclaimer">Teyvat Hub is a fan-made project and is not affiliated with HoYoverse. Genshin Impact is a trademark of HoYoverse. Every guide is for information only and may change with game updates.</string>
 
     <!-- Elements -->

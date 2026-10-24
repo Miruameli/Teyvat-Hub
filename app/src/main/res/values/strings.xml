@@ -43,9 +43,9 @@
     <string name="language_english">English</string>
     <string name="settings_version">Versi Aplikasi</string>
     <string name="settings_data_source">Sumber Data</string>
-    <string name="settings_data_source_value">Data karakter dan aset dari Enka Network; jadwal event dapat berubah sewaktu-waktu.</string>
+    <string name="settings_data_source_value">Data karakter, senjata, dan event ada di dalam aplikasi, jadi fitur utama tetap jalan tanpa internet. Gambar avatar diambil dari Enka Network; jika jaringan bermasalah, kartu memakai warna elemen sebagai pengganti.</string>
     <string name="settings_privacy">Kebijakan Privasi</string>
-    <string name="settings_privacy_value">Semua data tersimpan lokal di perangkat. Tidak ada akun, tidak ada pelacakan, tidak ada data yang dikirim ke server kami.</string>
+    <string name="settings_privacy_value">Tim dan checklist yang kamu simpan tetap berada di perangkat ini. Tidak ada akun, tidak ada pelacakan, tidak ada data yang dikirim ke server kami.</string>
     <string name="settings_disclaimer">Teyvat Hub adalah proyek fan-made dan tidak berafiliasi dengan HoYoverse. Genshin Impact adalah merek dagang HoYoverse. Semua panduan bersifat informasional dan dapat berubah mengikuti pembaruan game.</string>
 
     <!-- Teams -->

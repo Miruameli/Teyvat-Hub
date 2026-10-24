@@ -104,6 +104,7 @@ private fun CharacterRow(
                 model = EnkaAsset.avatarSide(character.name),
                 contentDescription = character.name,
                 modifier = Modifier.size(56.dp),
+                error = { AvatarFallback(character) },
             )
             Spacer(modifier = Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {

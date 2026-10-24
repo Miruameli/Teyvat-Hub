@@ -1,6 +1,7 @@
 package com.teyvat.hub.presentation.core.theme
 
 import androidx.compose.ui.graphics.Color
+import com.teyvat.hub.domain.character.Element
 
 /**
  * The colour palette of Teyvat Hub.
@@ -36,3 +37,21 @@ val TeyvatDaylight = Color(0xFFF6F7FB)
 
 /** The light surface of cards in the light theme. */
 val TeyvatDaylightRaised = Color(0xFFFFFFFF)
+
+/**
+ * The colour of every element, used as an avatar fallback when the network
+ * cannot deliver a portrait.
+ *
+ * Element identity is carried by colour in the game itself, so a player who
+ * is offline can still read a row by its colour even without the image.
+ */
+fun Element.colorSwatch(): Color = when (this) {
+    Element.ANEMO -> Color(0xFF74C2A8)
+    Element.GEO -> Color(0xFFD2A155)
+    Element.ELECTRO -> Color(0xFF9A7BD1)
+    Element.DENDRO -> Color(0xFF8FBF5A)
+    Element.HYDRO -> Color(0xFF4FA5E0)
+    Element.PYRO -> Color(0xFFE0644B)
+    Element.CRYO -> Color(0xFF6FC9DE)
+    Element.PHYSICAL -> Color(0xFF9BA3AF)
+}
