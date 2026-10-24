@@ -3,6 +3,7 @@ package com.teyvat.hub.data
 import javax.inject.Inject
 import javax.inject.Singleton
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import com.teyvat.hub.data.content.AssetContentLoader
 import com.teyvat.hub.data.content.seeding.ChecklistSeedContent
 import com.teyvat.hub.data.content.seeding.EventSeedContent
@@ -31,7 +32,7 @@ import com.teyvat.hub.data.mapper.toRegionNames
  */
 @Singleton
 class DatabaseSeeder @Inject constructor(
-    private val context: Context,
+    @ApplicationContext private val context: Context,
     private val characterDao: CharacterDao,
     private val weaponDao: WeaponDao,
     private val checklistDao: ChecklistDao,
