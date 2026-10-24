@@ -81,10 +81,13 @@ fun TemplatesHeader() {
 @Composable
 fun TemplateRow(team: Team) {
     val notes = team.synergyInsights()
+    // Resolved here, in the composable context: joinToString's lambda is not
+    // composable, so a stringResource call inside it would not compile.
+    val headlines = notes.map { stringResource(it.rule.headlineRes()) }
     ListItem(
         headlineContent = { Text(team.name) },
         supportingContent = {
-            if (notes.isEmpty()) {
+            if (headlines.isEmpty()) {
                 Text(
                     stringResource(
                         R.string.teams_member_count,
@@ -92,7 +95,7 @@ fun TemplateRow(team: Team) {
                     ),
                 )
             } else {
-                Text(notes.joinToString(separator = "; ") { stringResource(it.rule.headlineRes()) })
+                Text(headlines.joinToString(separator = "; "))
             }
         },
     )

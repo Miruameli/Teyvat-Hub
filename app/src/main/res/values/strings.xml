@@ -63,6 +63,10 @@
     <string name="teams_templates">Template Tim</string>
     <string name="teams_delete">Hapus tim</string>
     <string name="teams_member_count">%1$d karakter</string>
+    <string name="teams_invalid_empty">Tim minimal berisi satu karakter</string>
+    <string name="teams_invalid_too_large">Tim maksimal %1$d karakter</string>
+    <string name="teams_invalid_duplicate">Karakter tidak boleh ganda dalam tim</string>
+    <string name="teams_invalid_no_name">Nama tim tidak boleh kosong</string>
 
     <!-- Synergi tim -->
     <string name="synergy_vaporize_headline">Reaksi Vaporize aktif</string>

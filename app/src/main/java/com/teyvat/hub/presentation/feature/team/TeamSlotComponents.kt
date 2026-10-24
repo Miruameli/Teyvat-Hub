@@ -1,6 +1,5 @@
 package com.teyvat.hub.presentation.feature.team
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -16,9 +15,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.teyvat.hub.R
 import com.teyvat.hub.domain.character.Character
-import com.teyvat.hub.domain.team.SynergyInsight
-import com.teyvat.hub.presentation.core.theme.detailRes
-import com.teyvat.hub.presentation.core.theme.headlineRes
 import com.teyvat.hub.presentation.core.theme.labelRes
 
 /** Heading above the party slots. */
@@ -63,45 +59,6 @@ fun SelectedTeamRow(
             }
         },
     )
-}
-
-/** Reason the current selection cannot be saved. */
-@Composable
-fun ValidationError(reason: String) {
-    Text(
-        text = reason,
-        color = MaterialTheme.colorScheme.error,
-        style = MaterialTheme.typography.bodySmall,
-        modifier = Modifier.padding(horizontal = 16.dp),
-    )
-}
-
-/**
- * Actionable notes about the current party composition.
- *
- * Each note is a domain rule; the wording is resolved here so the notes
- * follow the language chosen in settings rather than the language the
- * rules were written in.
- */
-@Composable
-fun SynergyNotes(insights: List<SynergyInsight>) {
-    if (insights.isEmpty()) return
-
-    SectionHeading(stringResource(R.string.teams_synergy))
-
-    Column(modifier = Modifier.padding(start = 16.dp)) {
-        insights.forEach { insight ->
-            val rule = insight.rule
-            Text(
-                text = stringResource(rule.headlineRes()),
-                style = MaterialTheme.typography.bodyMedium,
-            )
-            Text(
-                text = stringResource(rule.detailRes()),
-                style = MaterialTheme.typography.bodySmall,
-            )
-        }
-    }
 }
 
 /** Heading above the roster picker. */

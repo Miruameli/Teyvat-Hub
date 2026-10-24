@@ -5,7 +5,9 @@ import com.teyvat.hub.R
 import com.teyvat.hub.domain.character.CharacterRole
 import com.teyvat.hub.domain.character.Element
 import com.teyvat.hub.domain.character.WeaponType
+import com.teyvat.hub.domain.team.MAX_TEAM_SIZE
 import com.teyvat.hub.domain.team.SynergyRule
+import com.teyvat.hub.domain.team.TeamInvalidRule
 
 /**
  * Player facing labels for the domain enums.
@@ -84,3 +86,24 @@ fun SynergyRule.headlineRes(): Int = SYNERGY_RULES[this]?.first ?: R.string.syne
 /** Explanation wording for a team note. */
 @StringRes
 fun SynergyRule.detailRes(): Int = SYNERGY_RULES[this]?.second ?: R.string.synergy_no_reaction_detail
+
+/**
+ * Wording for a rule that stopped a team from being saved.
+ *
+ * The size rule carries a number, so its resource takes an argument and the
+ * screen supplies the party limit the domain actually enforces.
+ */
+private val INVALID_RULES: Map<TeamInvalidRule, Int> = mapOf(
+    TeamInvalidRule.EMPTY to R.string.teams_invalid_empty,
+    TeamInvalidRule.TOO_LARGE to R.string.teams_invalid_too_large,
+    TeamInvalidRule.DUPLICATE_MEMBER to R.string.teams_invalid_duplicate,
+    TeamInvalidRule.NO_NAME to R.string.teams_invalid_no_name,
+)
+
+/** Player facing reason a team cannot be saved. */
+@StringRes
+fun TeamInvalidRule.messageRes(): Int =
+    INVALID_RULES[this] ?: R.string.teams_invalid_empty
+
+/** The party limit the size rule reports, so wording and rules cannot drift. */
+val MAX_PARTY_SIZE: Int = MAX_TEAM_SIZE

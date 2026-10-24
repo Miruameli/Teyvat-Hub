@@ -55,6 +55,10 @@
     <string name="teams_templates">Team Templates</string>
     <string name="teams_delete">Delete team</string>
     <string name="teams_member_count">%1$d characters</string>
+    <string name="teams_invalid_empty">A team needs at least one character</string>
+    <string name="teams_invalid_too_large">A team holds at most %1$d characters</string>
+    <string name="teams_invalid_duplicate">A team cannot contain the same character twice</string>
+    <string name="teams_invalid_no_name">The team needs a name</string>
 
     <!-- Team synergy -->
     <string name="synergy_vaporize_headline">Vaporize reaction active</string>

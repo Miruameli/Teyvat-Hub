@@ -2,10 +2,24 @@ package com.teyvat.hub.domain.team
 
 import com.teyvat.hub.domain.character.Character
 
+/**
+ * Which rule stopped a team from being saved.
+ *
+ * The domain reports the rule and presentation supplies the wording, so the
+ * reason is readable in the language the player chose and the rules stay
+ * testable without locale data.
+ */
+enum class TeamInvalidRule {
+    EMPTY,
+    TOO_LARGE,
+    DUPLICATE_MEMBER,
+    NO_NAME,
+}
+
 /** Outcome of validating a team before it is saved. */
 sealed interface TeamValidation {
     data object Valid : TeamValidation
-    data class Invalid(val reason: String) : TeamValidation
+    data class Invalid(val rule: TeamInvalidRule) : TeamValidation
 }
 
 /**
@@ -17,20 +31,13 @@ sealed interface TeamValidation {
  */
 class TeamValidator {
 
-    fun validate(team: Team): TeamValidation {
-        if (team.characterIds.isEmpty()) {
-            return TeamValidation.Invalid("Tim minimal berisi satu karakter")
-        }
-        if (team.characterIds.size > MAX_TEAM_SIZE) {
-            return TeamValidation.Invalid("Tim maksimal $MAX_TEAM_SIZE karakter")
-        }
-        if (team.characterIds.distinct().size != team.characterIds.size) {
-            return TeamValidation.Invalid("Karakter tidak boleh ganda dalam tim")
-        }
-        if (team.name.isBlank()) {
-            return TeamValidation.Invalid("Nama tim tidak boleh kosong")
-        }
-        return TeamValidation.Valid
+    fun validate(team: Team): TeamValidation = when {
+        team.characterIds.isEmpty() -> TeamValidation.Invalid(TeamInvalidRule.EMPTY)
+        team.characterIds.size > MAX_TEAM_SIZE -> TeamValidation.Invalid(TeamInvalidRule.TOO_LARGE)
+        team.characterIds.distinct().size != team.characterIds.size ->
+            TeamValidation.Invalid(TeamInvalidRule.DUPLICATE_MEMBER)
+        team.name.isBlank() -> TeamValidation.Invalid(TeamInvalidRule.NO_NAME)
+        else -> TeamValidation.Valid
     }
 
     /** True when a character may still be added to the current selection. */
