@@ -10,6 +10,7 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import com.teyvat.hub.domain.character.Element
+import com.teyvat.hub.domain.team.SynergyRule
 import com.teyvat.hub.domain.team.TeamValidation
 import org.junit.After
 import org.junit.Assert.assertEquals
