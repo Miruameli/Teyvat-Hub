@@ -94,8 +94,13 @@ fun RosterRow(
     )
 }
 
+/**
+ * Heading above a section of the builder.
+ *
+ * Internal because the feedback composables in this folder reuse it.
+ */
 @Composable
-private fun SectionHeading(text: String) {
+internal fun SectionHeading(text: String) {
     Text(
         text = text,
         style = MaterialTheme.typography.titleSmall,

@@ -41,6 +41,7 @@
     <string name="filter_banners_only">Banners only</string>
     <string name="kind_event">Event</string>
     <string name="kind_banner">Banner</string>
+    <string name="event_meta">%1$s · %2$s</string>
 
     <!-- Teams -->
     <string name="teams_title">Team Builder</string>
