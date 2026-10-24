@@ -35,6 +35,8 @@
     <string name="filter_all">Semua</string>
     <string name="filter_events_only">Event saja</string>
     <string name="filter_banners_only">Banner saja</string>
+    <string name="kind_event">Event</string>
+    <string name="kind_banner">Banner</string>
 
     <!-- Settings -->
     <string name="settings_title">Pengaturan</string>

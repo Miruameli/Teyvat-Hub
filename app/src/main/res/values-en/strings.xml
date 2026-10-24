@@ -39,6 +39,8 @@
     <string name="filter_all">All</string>
     <string name="filter_events_only">Events only</string>
     <string name="filter_banners_only">Banners only</string>
+    <string name="kind_event">Event</string>
+    <string name="kind_banner">Banner</string>
 
     <!-- Teams -->
     <string name="teams_title">Team Builder</string>
