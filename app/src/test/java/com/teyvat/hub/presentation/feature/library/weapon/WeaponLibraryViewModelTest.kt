@@ -66,12 +66,12 @@ class WeaponLibraryViewModelTest {
 
     @Test
     fun `choosing a family narrows the list to that family`() = runTest {
-        val state = viewModel.uiState.first { it.weapons.isNotEmpty() }.also {
-            viewModel.onTypeSelected(WeaponType.BOW)
-        }
+        viewModel.uiState.first { it.weapons.isNotEmpty() }
+
+        viewModel.onTypeSelected(WeaponType.BOW)
         val narrowed = viewModel.uiState.first { it.typeFilter != null }
 
-        assertEquals(WeaponType.BOW, state.typeFilter)
+        assertEquals(WeaponType.BOW, narrowed.typeFilter)
         assertEquals(1, narrowed.weapons.size)
         assertEquals(WeaponType.BOW, narrowed.weapons.single().type)
     }
