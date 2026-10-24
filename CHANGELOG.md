@@ -30,13 +30,15 @@ team builder, kalender event, dan pengaturan.
   `TeamBuilderViewModel`).
 - Layar pengaturan berisi atribusi sumber data, kebijakan privasi, versi
   aplikasi, dan disclaimer.
+- Pilihan bahasa di layar pengaturan: Bahasa Indonesia dan Inggris, disimpan
+  di perangkat dan berlaku sejak Android 7 ke atas.
 - Aturan domain yang teruji: reset checklist harian/mingguan, peringkat
   pencarian, validasi tim, dan analisis sinergi tim.
 - Ikon launcher berupa emblem Anemo, sebagai adaptive icon (API 26+), varian
   bertema (API 33+), dan PNG hasil render (API 24-25).
 - Paket rilis berisi binary APK, checksum SHA-256, dan SBOM CycloneDX 1.5.
 - Dokumentasi: README, CONTRIBUTING, SECURITY, LICENSE, CODE_OF_CONDUCT,
-  glosarium, runbook, dan lima ADR.
+  glosarium, runbook, dan enam ADR.
 
 ### Changed
 - `MainActivity` dimigrasikan dari Java/AppCompat ke Kotlin + Jetpack Compose.

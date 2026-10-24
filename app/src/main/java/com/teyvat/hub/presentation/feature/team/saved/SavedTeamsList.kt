@@ -14,6 +14,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.teyvat.hub.R
 import com.teyvat.hub.domain.team.Team
+import com.teyvat.hub.domain.team.synergyInsights
+import com.teyvat.hub.presentation.core.theme.headlineRes
 
 /**
  * Teams the player already saved, with a delete action.
@@ -42,7 +44,12 @@ fun SavedTeamRow(
     ListItem(
         headlineContent = { Text(team.name) },
         supportingContent = {
-            Text("${team.characterIds.size} karakter")
+            Text(
+                stringResource(
+                    R.string.teams_member_count,
+                    team.characterIds.size,
+                ),
+            )
         },
         trailingContent = {
             IconButton(onClick = onDelete) {
@@ -65,13 +72,31 @@ fun TemplatesHeader() {
     )
 }
 
-/** One built-in team template. */
+/**
+ * One built-in team template.
+ *
+ * The notes are the synergy rules resolved to words in the current language,
+ * so a template reads the same way as a team the player saved themselves.
+ */
 @Composable
 fun TemplateRow(team: Team) {
+    val notes = team.synergyInsights()
+    // Resolved here, in the composable context: joinToString's lambda is not
+    // composable, so a stringResource call inside it would not compile.
+    val headlines = notes.map { stringResource(it.rule.headlineRes()) }
     ListItem(
         headlineContent = { Text(team.name) },
         supportingContent = {
-            Text(team.synergyNotes.ifBlank { "${team.characterIds.size} karakter" })
+            if (headlines.isEmpty()) {
+                Text(
+                    stringResource(
+                        R.string.teams_member_count,
+                        team.characterIds.size,
+                    ),
+                )
+            } else {
+                Text(headlines.joinToString(separator = "; "))
+            }
         },
     )
 }

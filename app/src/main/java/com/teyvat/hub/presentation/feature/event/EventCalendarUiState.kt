@@ -1,5 +1,7 @@
 package com.teyvat.hub.presentation.feature.event
 
+import androidx.annotation.StringRes
+import com.teyvat.hub.R
 import com.teyvat.hub.domain.event.EventKind
 import com.teyvat.hub.domain.event.EventStatus
 import com.teyvat.hub.domain.event.GameEvent
@@ -7,8 +9,8 @@ import com.teyvat.hub.domain.event.GameEvent
 /**
  * Calendar state split by lifecycle plus the active kind filter.
  *
- * [rangeLabel] and [kindLabel] are pre-resolved UI strings so composables never
- * touch platform date formats; this keeps the state renderable in tests.
+ * [EventRow.rangeLabel] is a pre-resolved date range so composables never
+ * touch platform date formats, which keeps the state renderable in tests.
  */
 data class EventCalendarUiState(
     val active: List<EventRow> = emptyList(),
@@ -18,12 +20,18 @@ data class EventCalendarUiState(
     val isEmpty: Boolean = true,
 )
 
-/** One event row with display-ready fields and its resolved lifecycle. */
+/**
+ * One event row with display-ready fields and its resolved lifecycle.
+ *
+ * [kindLabelRes] is a string resource id rather than a resolved string: the
+ * screen resolves it, so the row follows the language the player chose and
+ * the state builder stays free of platform resources.
+ */
 data class EventRow(
     val id: String,
     val title: String,
     val description: String,
-    val kindLabel: String,
+    @StringRes val kindLabelRes: Int,
     val rangeLabel: String,
     val status: EventStatus,
 )
@@ -51,10 +59,11 @@ private fun GameEvent.toRow(now: Long, formatter: EventDateFormatter): EventRow 
         id = id,
         title = title,
         description = description,
-        kindLabel = if (kind == EventKind.BANNER) BANNER_LABEL else EVENT_LABEL,
+        kindLabelRes = if (kind == EventKind.BANNER) {
+            R.string.kind_banner
+        } else {
+            R.string.kind_event
+        },
         rangeLabel = formatter.range(startsAt, endsAt),
         status = statusAt(now),
     )
-
-private const val EVENT_LABEL = "Event"
-private const val BANNER_LABEL = "Banner"

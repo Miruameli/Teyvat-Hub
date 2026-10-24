@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Matches the Compose dark surface so no white flash appears at cold start. -->
-    <color name="window_background">#FF12101C</color>
+    <!--
+      The window background shown before the first Compose frame. It matches
+      the light background of the theme, so a light launcher never shows a
+      dark rectangle for a moment. The night variant lives in values-night.
+    -->
+    <color name="window_background">#FFF6F7FB</color>
 </resources>

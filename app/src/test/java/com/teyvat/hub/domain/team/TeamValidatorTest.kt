@@ -1,6 +1,7 @@
 package com.teyvat.hub.domain.team
 
 import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.domain.character.CharacterRole
 import com.teyvat.hub.domain.character.Element
 import com.teyvat.hub.domain.character.Rarity
 import com.teyvat.hub.domain.character.WeaponType

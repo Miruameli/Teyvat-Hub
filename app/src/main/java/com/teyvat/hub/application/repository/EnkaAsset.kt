@@ -1,4 +1,4 @@
-package com.teyvat.hub.application
+package com.teyvat.hub.application.repository
 
 /**
  * Resolves a character name to an optimized Genshin asset URL on the Enka CDN.

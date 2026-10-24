@@ -5,42 +5,66 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 
-/** Brand purple used for primary interactive elements. */
-private val TeyvatPurple = Color(0xFF7B4DFF)
-
-/** Deeper purple for surfaces in dark theme. */
-private val TeyvatPurpleDark = Color(0xFF4A2BB0)
-
-/** Accent teal highlighting elemental reactions and checklist progress. */
-private val TeyvatTeal = Color(0xFF35D6C3)
-
+/** The colour scheme of the app in the light theme. */
 private val LightColors = lightColorScheme(
-    primary = TeyvatPurple,
-    secondary = TeyvatTeal,
+    primary = TeyvatTealDeep,
+    onPrimary = TeyvatDaylightRaised,
+    primaryContainer = TeyvatTealPale,
+    onPrimaryContainer = TeyvatNightDeep,
+    secondary = TeyvatNight,
+    onSecondary = TeyvatDaylightRaised,
+    secondaryContainer = TeyvatDaylightRaised,
+    onSecondaryContainer = TeyvatNight,
+    tertiary = TeyvatGold,
+    onTertiary = TeyvatNightDeep,
+    background = TeyvatDaylight,
+    onBackground = TeyvatNight,
+    surface = TeyvatDaylightRaised,
+    onSurface = TeyvatNight,
+    surfaceVariant = TeyvatDaylight,
+    onSurfaceVariant = TeyvatNightRaised,
+    outline = TeyvatTealDeep,
 )
 
+/** The colour scheme of the app in the dark theme. */
 private val DarkColors = darkColorScheme(
     primary = TeyvatTeal,
-    secondary = TeyvatPurple,
-    surface = TeyvatPurpleDark,
+    onPrimary = TeyvatNightDeep,
+    primaryContainer = TeyvatTealDeep,
+    onPrimaryContainer = TeyvatTealPale,
+    secondary = TeyvatTealPale,
+    onSecondary = TeyvatNightDeep,
+    secondaryContainer = TeyvatNightRaised,
+    onSecondaryContainer = TeyvatTealPale,
+    tertiary = TeyvatGold,
+    onTertiary = TeyvatNightDeep,
+    background = TeyvatNightDeep,
+    onBackground = TeyvatTealPale,
+    surface = TeyvatNight,
+    onSurface = TeyvatTealPale,
+    surfaceVariant = TeyvatNightRaised,
+    onSurfaceVariant = TeyvatTealPale,
+    outline = TeyvatTeal,
 )
 
 /**
  * Root theme of the application.
  *
- * Follows the system dark/light setting so that night-time farming sessions do
- * not flash a bright screen, which matters for a game companion app.
+ * Follows the system dark or light setting so that night-time farming
+ * sessions do not flash a bright screen, which matters for a game companion
+ * app. The colours, the type scale, and the corner radii all come from this
+ * folder, so a screen never picks its own.
  */
 @Composable
 fun TeyvatHubTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {
-    val colorScheme = if (darkTheme) DarkColors else LightColors
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = if (darkTheme) DarkColors else LightColors,
+        typography = TeyvatTypography,
+        shapes = TeyvatShapes,
         content = content,
     )
 }

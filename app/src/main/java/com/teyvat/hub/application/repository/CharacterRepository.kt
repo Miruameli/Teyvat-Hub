@@ -1,4 +1,4 @@
-package com.teyvat.hub.application
+package com.teyvat.hub.application.repository
 
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,8 +18,22 @@ import com.teyvat.hub.domain.character.SearchRanker
 interface CharacterRepository {
     fun observeRoster(): Flow<List<Character>>
     fun observeFavorites(): Flow<List<Character>>
-    fun search(query: String): Flow<List<Character>>
+
+    /**
+     * The characters that match [query], best match first.
+     *
+     * [limit] caps how many are returned. The screen shows every match, so
+     * the cap is generous enough not to hide a character the player is
+     * looking for.
+     */
+    fun search(query: String, limit: Int = DEFAULT_SEARCH_LIMIT): Flow<List<Character>>
+
     suspend fun toggleFavorite(id: String)
+
+    companion object {
+        /** Enough for the whole roster today, with room to grow. */
+        const val DEFAULT_SEARCH_LIMIT = 50
+    }
 }
 
 @Singleton
@@ -37,9 +51,9 @@ class LocalCharacterRepository @Inject constructor(
     override fun observeFavorites(): Flow<List<Character>> =
         dao.observeFavorites().map { rows -> rows.map { it.toDomain() } }
 
-    override fun search(query: String): Flow<List<Character>> =
+    override fun search(query: String, limit: Int): Flow<List<Character>> =
         dao.observeAll().map { rows ->
-            ranker.rank(query, rows.map { it.toDomain() }).map { it.item }
+            ranker.rank(query, rows.map { it.toDomain() }, limit = limit).map { it.item }
         }
 
     override suspend fun toggleFavorite(id: String) {

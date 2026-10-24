@@ -1,5 +1,6 @@
 package com.teyvat.hub.presentation.feature.event
 
+import com.teyvat.hub.R
 import com.teyvat.hub.domain.event.EventKind
 import com.teyvat.hub.domain.event.EventStatus
 import com.teyvat.hub.domain.event.GameEvent
@@ -104,7 +105,7 @@ class EventCalendarUiStateTest {
         val row = state.active.single()
         assertEquals("Desc", row.description)
         assertEquals("range", row.rangeLabel)
-        assertEquals("Event", row.kindLabel)
+        assertEquals(R.string.kind_event, row.kindLabelRes)
     }
 
     @Test
@@ -115,7 +116,7 @@ class EventCalendarUiStateTest {
             formatter = formatter,
         )
 
-        assertEquals("Banner", state.active.single().kindLabel)
+        assertEquals(R.string.kind_banner, state.active.single().kindLabelRes)
     }
 
     @Test

@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.teyvat.hub.application.CharacterRepository
-import com.teyvat.hub.application.TeamRepository
+import com.teyvat.hub.application.repository.CharacterRepository
+import com.teyvat.hub.application.repository.TeamRepository
 import com.teyvat.hub.domain.character.Character
 import com.teyvat.hub.domain.team.Team
 import com.teyvat.hub.domain.team.TeamSynergyAnalyzer
@@ -92,8 +92,10 @@ class TeamBuilderViewModel @Inject constructor(
                             id = "team-" + System.currentTimeMillis(),
                             name = name,
                             characterIds = members.map { it.id },
-                            synergyNotes = analyzer.analyze(members)
-                                .joinToString(separator = "; ") { it.headline },
+                            // Rule names, not wording: the saved row then reads in
+                            // whatever language the player picks next time.
+                            synergyRules = analyzer.analyze(members)
+                                .map { it.rule.name },
                         ),
                     )
                     selection.value = emptyList()

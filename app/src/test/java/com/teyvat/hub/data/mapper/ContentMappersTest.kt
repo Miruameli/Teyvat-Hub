@@ -63,7 +63,7 @@ class ContentMappersTest {
             id = "t1",
             name = "Vaporize",
             characterIds = listOf("a", "b", "c", "d"),
-            synergyNotes = "Pyro + Hydro",
+            synergyRules = listOf("VAPORIZE", "HAS_HEALER"),
             isTemplate = true,
         )
 

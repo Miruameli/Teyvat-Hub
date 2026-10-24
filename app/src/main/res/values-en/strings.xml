@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  English strings. Every string in values/strings.xml has a counterpart here,
+  so switching the language never leaves a label in the previous language.
+-->
+<resources>
+    <string name="app_name">Teyvat Hub</string>
+
+    <!-- Bottom navigation tabs -->
+    <string name="tab_roster">Characters</string>
+    <string name="tab_checklist">Checklist</string>
+    <string name="tab_teams">Teams</string>
+    <string name="tab_events">Events</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Roster -->
+    <string name="roster_title">Characters</string>
+    <string name="roster_empty">No character matches your search.</string>
+    <string name="action_search">Search characters</string>
+    <string name="filter_favorites">Favourites</string>
+    <string name="marker_favorite_on">Remove from favourites</string>
+    <string name="marker_favorite_off">Add to favourites</string>
+
+    <!-- Checklist -->
+    <string name="checklist_title">Farming Checklist</string>
+    <string name="section_daily">Daily</string>
+    <string name="section_weekly">Weekly</string>
+    <string name="section_custom">Your own tasks</string>
+    <string name="action_add_task">Add your own task</string>
+    <string name="checklist_delete_task">Delete task</string>
+
+    <!-- Events -->
+    <string name="events_title">Events &amp; Banners</string>
+    <string name="events_active">Running Now</string>
+    <string name="events_upcoming">Coming Up</string>
+    <string name="events_ended">Finished</string>
+    <string name="events_empty">No events for this filter.</string>
+    <string name="events_disclaimer">Event dates may change at any time. Check the official announcements.</string>
+    <string name="filter_all">All</string>
+    <string name="filter_events_only">Events only</string>
+    <string name="filter_banners_only">Banners only</string>
+    <string name="kind_event">Event</string>
+    <string name="kind_banner">Banner</string>
+    <string name="event_meta">%1$s · %2$s</string>
+
+    <!-- Teams -->
+    <string name="teams_title">Team Builder</string>
+    <string name="teams_current">Current Team</string>
+    <string name="teams_empty_selection">No character picked yet.</string>
+    <string name="teams_name_label">Team name</string>
+    <string name="teams_save">Save Team</string>
+    <string name="teams_remove">Remove from team</string>
+    <string name="teams_pick_character">Pick a Character</string>
+    <string name="teams_synergy">Synergy Notes</string>
+    <string name="teams_saved">Saved Teams</string>
+    <string name="teams_templates">Team Templates</string>
+    <string name="teams_delete">Delete team</string>
+    <string name="teams_member_count">%1$d characters</string>
+    <string name="teams_invalid_empty">A team needs at least one character</string>
+    <string name="teams_invalid_too_large">A team holds at most %1$d characters</string>
+    <string name="teams_invalid_duplicate">A team cannot contain the same character twice</string>
+    <string name="teams_invalid_no_name">The team needs a name</string>
+
+    <!-- Team synergy -->
+    <string name="synergy_vaporize_headline">Vaporize reaction active</string>
+    <string name="synergy_vaporize_detail">Pyro paired with Hydro gives a large damage bonus.</string>
+    <string name="synergy_melt_headline">Melt reaction active</string>
+    <string name="synergy_melt_detail">Cryo followed by Pyro increases attack damage.</string>
+    <string name="synergy_bloom_headline">Bloom reaction active</string>
+    <string name="synergy_bloom_detail">Hydro plus Dendro gives continuous area damage.</string>
+    <string name="synergy_no_reaction_headline">No main reaction yet</string>
+    <string name="synergy_no_reaction_detail">Add different elements to unlock an elemental reaction.</string>
+    <string name="synergy_has_healer_headline">Healer available</string>
+    <string name="synergy_has_healer_detail">The team has sustain, which suits long fights.</string>
+    <string name="synergy_has_shield_headline">Shield available</string>
+    <string name="synergy_has_shield_detail">A shield relieves HP pressure even without a healer.</string>
+    <string name="synergy_no_sustain_headline">No sustain</string>
+    <string name="synergy_no_sustain_detail">Consider a healer or a shield to stay alive.</string>
+    <string name="synergy_too_many_dps_headline">Too many DPS</string>
+    <string name="synergy_too_many_dps_detail">Drop a DPS and add support for steadier damage.</string>
+    <string name="synergy_balanced_roles_headline">Balanced roles</string>
+    <string name="synergy_balanced_roles_detail">The role mix supports consistent damage.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
+    <string name="language_english">English</string>
+    <string name="settings_version">App Version</string>
+    <string name="settings_data_source">Data Sources</string>
+    <string name="settings_data_source_value">Character, weapon, and event data ships inside the app, so the main features work without internet. Avatar images are fetched from the Enka Network; if the network fails, cards fall back to the element colour.</string>
+    <string name="settings_privacy">Privacy Policy</string>
+    <string name="settings_privacy_value">Your saved teams and tasks stay on this device. No account, no tracking, and no data is sent to our servers.</string>
+    <string name="settings_disclaimer">Teyvat Hub is a fan-made project and is not affiliated with HoYoverse. Genshin Impact is a trademark of HoYoverse. Every guide is for information only and may change with game updates.</string>
+
+    <!-- Elements -->
+    <string name="element_anemo">Anemo</string>
+    <string name="element_geo">Geo</string>
+    <string name="element_electro">Electro</string>
+    <string name="element_dendro">Dendro</string>
+    <string name="element_hydro">Hydro</string>
+    <string name="element_pyro">Pyro</string>
+    <string name="element_cryo">Cryo</string>
+    <string name="element_physical">Physical</string>
+    <string name="element_unknown">Element</string>
+    <string name="element_role_pair">%1$s · %2$s</string>
+    <string name="element_region_pair">%1$s - %2$s</string>
+
+    <!-- Roles -->
+    <string name="role_main_dps">Main DPS</string>
+    <string name="role_sub_dps">Sub DPS</string>
+    <string name="role_support">Support</string>
+    <string name="role_shield">Shield</string>
+    <string name="role_healer">Healer</string>
+    <string name="role_utility">Utility</string>
+    <string name="role_unknown">Role</string>
+
+    <!-- Weapons -->
+    <string name="weapon_sword">Sword</string>
+    <string name="weapon_claymore">Claymore</string>
+    <string name="weapon_polearm">Polearm</string>
+    <string name="weapon_bow">Bow</string>
+    <string name="weapon_catalyst">Catalyst</string>
+    <string name="weapon_unknown">Weapon</string>
+</resources>

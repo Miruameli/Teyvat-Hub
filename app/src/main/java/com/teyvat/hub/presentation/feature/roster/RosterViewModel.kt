@@ -1,50 +1,72 @@
 package com.teyvat.hub.presentation.feature.roster
 
 import javax.inject.Inject
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.teyvat.hub.application.CharacterRepository
+import com.teyvat.hub.application.repository.CharacterRepository
 import com.teyvat.hub.domain.character.Character
+import com.teyvat.hub.domain.character.Element
+import com.teyvat.hub.domain.character.RosterFilter
+import com.teyvat.hub.domain.character.matching
 import dagger.hilt.android.lifecycle.HiltViewModel
 
-/** Roster list state: filtered characters plus search text. */
+/** Roster list state: filtered characters plus how they are narrowed. */
 data class RosterUiState(
     val characters: List<Character> = emptyList(),
     val query: String = "",
     val onlyFavorites: Boolean = false,
+    val element: Element? = null,
 )
 
 /**
  * Drives the character roster screen.
  *
- * Keeps only the query in this class; all content lives in the repository so
- * the same flow survives configuration changes and process death.
+ * The search goes through the repository so the ranking rules live in one
+ * place. Every narrowing is then applied through one domain filter, so a
+ * search, an element, and the favourites filter can never disagree about
+ * which characters are shown.
  */
+@OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
 class RosterViewModel @Inject constructor(
     private val repository: CharacterRepository,
 ) : ViewModel() {
 
     private val query = MutableStateFlow("")
+    private val element = MutableStateFlow<Element?>(null)
     private val onlyFavorites = MutableStateFlow(false)
 
+    private val characters = combine(query, element, onlyFavorites) { searchQuery, elementFilter, favourites ->
+        RosterFilter(searchQuery, elementFilter, favourites)
+    }.flatMapLatest { filter ->
+        val source = if (filter.query.isBlank()) {
+            repository.observeRoster()
+        } else {
+            repository.search(filter.query)
+        }
+        source.map { list -> list.matching(filter) }
+    }
+
     val uiState: StateFlow<RosterUiState> = combine(
-        repository.observeRoster(),
-        repository.observeFavorites(),
+        characters,
         query,
+        element,
         onlyFavorites,
-    ) { all, favorites, searchQuery, showFavorites ->
-        val base = if (showFavorites) favorites else all
+    ) { list, searchQuery, elementFilter, favourites ->
         RosterUiState(
-            characters = filterByQuery(base, searchQuery),
+            characters = list,
             query = searchQuery,
-            onlyFavorites = showFavorites,
+            element = elementFilter,
+            onlyFavorites = favourites,
         )
     }.stateIn(
         scope = viewModelScope,
@@ -56,20 +78,16 @@ class RosterViewModel @Inject constructor(
         query.value = value
     }
 
+    /** Sets the element filter; passing the active element again clears it. */
+    fun onElementFilterChange(value: Element?) {
+        element.value = if (element.value == value) null else value
+    }
+
     fun onToggleFavoritesOnly(value: Boolean) {
         onlyFavorites.value = value
     }
 
     fun onToggleFavorite(character: Character) {
         viewModelScope.launch { repository.toggleFavorite(character.id) }
-    }
-
-    private fun filterByQuery(
-        characters: List<Character>,
-        searchQuery: String,
-    ): List<Character> {
-        if (searchQuery.isBlank()) return characters
-        val needle = searchQuery.trim().lowercase()
-        return characters.filter { it.name.lowercase().contains(needle) }
     }
 }

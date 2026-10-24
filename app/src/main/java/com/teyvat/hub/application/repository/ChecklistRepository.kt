@@ -1,4 +1,4 @@
-package com.teyvat.hub.application
+package com.teyvat.hub.application.repository
 
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -8,6 +8,7 @@ import com.teyvat.hub.data.local.checklist.ChecklistDao
 import com.teyvat.hub.data.mapper.toDomain
 import com.teyvat.hub.data.mapper.toEntity
 import com.teyvat.hub.domain.checklist.ChecklistItem
+import com.teyvat.hub.domain.checklist.ResetCadence
 
 /**
  * Single source of truth for farming tasks.

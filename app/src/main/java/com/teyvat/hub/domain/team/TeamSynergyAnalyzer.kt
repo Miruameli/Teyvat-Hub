@@ -4,11 +4,28 @@ import com.teyvat.hub.domain.character.Character
 import com.teyvat.hub.domain.character.CharacterRole
 import com.teyvat.hub.domain.character.Element
 
-/** Insight about one team, surfaced on the team builder screen. */
-data class SynergyInsight(
-    val headline: String,
-    val detail: String,
-)
+/**
+ * Which rule a team note comes from.
+ *
+ * The domain decides the rule and never the wording: presentation resolves
+ * each rule to text in the language the player chose, and tests can assert
+ * on the rule instead of on a sentence that would have to be rewritten for
+ * every translation.
+ */
+enum class SynergyRule {
+    NO_REACTION,
+    VAPORIZE,
+    MELT,
+    BLOOM,
+    HAS_HEALER,
+    HAS_SHIELD,
+    NO_SUSTAIN,
+    TOO_MANY_DPS,
+    BALANCED_ROLES,
+}
+
+/** A checkable observation about one team, before it is worded for the player. */
+data class SynergyInsight(val rule: SynergyRule)
 
 /**
  * Derives practical notes about a team from its element spread and roles.
@@ -30,66 +47,32 @@ class TeamSynergyAnalyzer {
 
     private fun describeReaction(members: List<Character>): SynergyInsight {
         val elements = members.map { it.element }.toSet()
-        return when {
-            PYRO in elements && HYDRO in elements ->
-                SynergyInsight(
-                    headline = "Reaksi Vaporize aktif",
-                    detail = "Pasangan Pyro + Hydro memberi bonus kerusakan besar.",
-                )
-            PYRO in elements && CRYO in elements ->
-                SynergyInsight(
-                    headline = "Reaksi Melt aktif",
-                    detail = "Cryo diikuti Pyro meningkatkan kerusakan serangan.",
-                )
-            HYDRO in elements && DENDRO in elements ->
-                SynergyInsight(
-                    headline = "Reaksi Bloom aktif",
-                    detail = "Hydro + Dendro memberi kerusakan area berkelanjutan.",
-                )
-            else ->
-                SynergyInsight(
-                    headline = "Belum ada reaksi utama",
-                    detail = "Tambahkan elemen berbeda untuk membuka reaksi elemental.",
-                )
+        val rule = when {
+            PYRO in elements && HYDRO in elements -> SynergyRule.VAPORIZE
+            PYRO in elements && CRYO in elements -> SynergyRule.MELT
+            HYDRO in elements && DENDRO in elements -> SynergyRule.BLOOM
+            else -> SynergyRule.NO_REACTION
         }
+        return SynergyInsight(rule)
     }
 
     private fun describeSupport(members: List<Character>): SynergyInsight {
         val roles = members.map { it.role }.toSet()
-        return when {
-            CharacterRole.HEALER in roles ->
-                SynergyInsight(
-                    headline = "Penyembuh tersedia",
-                    detail = "Tim punya sustain sehingga cocok untuk konten panjang.",
-                )
-            CharacterRole.SHIELD in roles ->
-                SynergyInsight(
-                    headline = "Perisai tersedia",
-                    detail = "Perisai mengurangi tekanan HP walau tanpa penyembih.",
-                )
-            else ->
-                SynergyInsight(
-                    headline = "Tanpa sustain",
-                    detail = "Pertimbangkan penyembih atau perisai untuk bertahan hidup.",
-                )
+        val rule = when {
+            HEALER in roles -> SynergyRule.HAS_HEALER
+            SHIELD in roles -> SynergyRule.HAS_SHIELD
+            else -> SynergyRule.NO_SUSTAIN
         }
+        return SynergyInsight(rule)
     }
 
     private fun describeRoleSpread(members: List<Character>): SynergyInsight {
         val dpsCount = members.count {
             it.role == CharacterRole.MAIN_DPS || it.role == CharacterRole.SUB_DPS
         }
-        return if (dpsCount >= 3) {
-            SynergyInsight(
-                headline = "Terlalu banyak DPS",
-                detail = "Kurangi DPS dan tambahkan dukungan agar kerusakan lebih stabil.",
-            )
-        } else {
-            SynergyInsight(
-                headline = "Peran seimbang",
-                detail = "Kombinasi peran mendukung kerusakan yang konsisten.",
-            )
-        }
+        return SynergyInsight(
+            if (dpsCount >= 3) SynergyRule.TOO_MANY_DPS else SynergyRule.BALANCED_ROLES,
+        )
     }
 
     private companion object {
@@ -97,5 +80,7 @@ class TeamSynergyAnalyzer {
         val HYDRO = Element.HYDRO
         val CRYO = Element.CRYO
         val DENDRO = Element.DENDRO
+        val HEALER = CharacterRole.HEALER
+        val SHIELD = CharacterRole.SHIELD
     }
 }

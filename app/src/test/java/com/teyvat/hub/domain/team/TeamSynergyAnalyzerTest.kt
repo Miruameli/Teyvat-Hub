@@ -37,7 +37,7 @@ class TeamSynergyAnalyzerTest {
 
         val insights = analyzer.analyze(team)
 
-        assertTrue(insights.any { it.headline.contains("Vaporize") })
+        assertTrue(insights.any { it.rule == SynergyRule.VAPORIZE })
     }
 
     @Test
@@ -49,7 +49,7 @@ class TeamSynergyAnalyzerTest {
 
         val insights = analyzer.analyze(team)
 
-        assertTrue(insights.any { it.headline.contains("Bloom") })
+        assertTrue(insights.any { it.rule == SynergyRule.BLOOM })
     }
 
     @Test
@@ -58,7 +58,7 @@ class TeamSynergyAnalyzerTest {
 
         val insights = analyzer.analyze(team)
 
-        assertTrue(insights.any { it.headline.contains("Penyembuh") })
+        assertTrue(insights.any { it.rule == SynergyRule.HAS_HEALER })
     }
 
     @Test
@@ -67,7 +67,7 @@ class TeamSynergyAnalyzerTest {
 
         val insights = analyzer.analyze(team)
 
-        assertTrue(insights.any { it.headline.contains("Tanpa sustain") })
+        assertTrue(insights.any { it.rule == SynergyRule.NO_SUSTAIN })
     }
 
     @Test
@@ -81,7 +81,7 @@ class TeamSynergyAnalyzerTest {
 
         val insights = analyzer.analyze(team)
 
-        assertTrue(insights.any { it.headline.contains("Terlalu banyak DPS") })
+        assertTrue(insights.any { it.rule == SynergyRule.TOO_MANY_DPS })
     }
 
     @Test

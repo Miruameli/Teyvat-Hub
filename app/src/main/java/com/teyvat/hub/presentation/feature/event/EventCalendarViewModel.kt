@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.teyvat.hub.application.EventRepository
+import com.teyvat.hub.application.repository.EventRepository
 import com.teyvat.hub.domain.event.EventKind
 import dagger.hilt.android.lifecycle.HiltViewModel
 

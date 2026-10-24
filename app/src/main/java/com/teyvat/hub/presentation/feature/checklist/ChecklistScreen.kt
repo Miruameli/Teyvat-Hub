@@ -6,8 +6,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
@@ -47,23 +51,6 @@ fun ChecklistScreen(
         topBar = { TopAppBar(title = { Text(stringResource(R.string.checklist_title)) }) },
     ) { padding ->
         Column(modifier = Modifier.fillMaxSize().padding(padding)) {
-            ChecklistSection(
-                title = stringResource(R.string.section_daily),
-                items = state.daily,
-                onComplete = viewModel::onTaskCompleted,
-            )
-            ChecklistSection(
-                title = stringResource(R.string.section_weekly),
-                items = state.weekly,
-                onComplete = viewModel::onTaskCompleted,
-            )
-            ChecklistSection(
-                title = stringResource(R.string.section_custom),
-                items = state.custom,
-                onComplete = viewModel::onTaskCompleted,
-                onDelete = viewModel::onDeleteTask,
-            )
-
             TextField(
                 value = customDraft,
                 onValueChange = { customDraft = it },
@@ -76,43 +63,82 @@ fun ChecklistScreen(
                             customDraft = ""
                         },
                     ) {
-                        Text("+")
+                        Icon(
+                            imageVector = Icons.Filled.Add,
+                            contentDescription = stringResource(R.string.action_add_task),
+                        )
                     }
                 },
             )
+
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                if (state.daily.isNotEmpty()) {
+                    item(key = "header-daily") {
+                        SectionHeader(stringResource(R.string.section_daily))
+                    }
+                    items(state.daily, key = { "daily-${it.id}" }) { item ->
+                        ChecklistRow(item = item, onComplete = viewModel::onTaskCompleted)
+                    }
+                }
+                if (state.weekly.isNotEmpty()) {
+                    item(key = "header-weekly") {
+                        SectionHeader(stringResource(R.string.section_weekly))
+                    }
+                    items(state.weekly, key = { "weekly-${it.id}" }) { item ->
+                        ChecklistRow(item = item, onComplete = viewModel::onTaskCompleted)
+                    }
+                }
+                if (state.custom.isNotEmpty()) {
+                    item(key = "header-custom") {
+                        SectionHeader(stringResource(R.string.section_custom))
+                    }
+                    items(state.custom, key = { "custom-${it.id}" }) { item ->
+                        ChecklistRow(
+                            item = item,
+                            onComplete = viewModel::onTaskCompleted,
+                            onDelete = { viewModel.onDeleteTask(item) },
+                        )
+                    }
+                }
+            }
         }
     }
 }
 
+/** Title above a group of farming tasks. */
 @Composable
-private fun ChecklistSection(
-    title: String,
-    items: List<ChecklistItem>,
-    onComplete: (ChecklistItem) -> Unit,
-    onDelete: (ChecklistItem) -> Unit = {},
-) {
-    if (items.isEmpty()) return
+private fun SectionHeader(text: String) {
     Text(
-        text = title,
+        text = text,
         style = MaterialTheme.typography.titleSmall,
         modifier = Modifier.padding(start = 16.dp, top = 12.dp),
     )
-    LazyColumn(modifier = Modifier.fillMaxWidth()) {
-        items(items, key = { it.id }) { item ->
-            ListItem(
-                headlineContent = { Text(item.title) },
-                leadingContent = {
-                    Checkbox(
-                        checked = false,
-                        onCheckedChange = { onComplete(item) },
-                    )
-                },
-                trailingContent = {
-                    if (item.isCustom) {
-                        IconButton(onClick = { onDelete(item) }) { Text("×") }
-                    }
-                },
+}
+
+/** One farming task, with the delete action for the tasks the player added. */
+@Composable
+private fun ChecklistRow(
+    item: ChecklistItem,
+    onComplete: (ChecklistItem) -> Unit,
+    onDelete: (() -> Unit)? = null,
+) {
+    ListItem(
+        headlineContent = { Text(item.title) },
+        leadingContent = {
+            Checkbox(
+                checked = false,
+                onCheckedChange = { onComplete(item) },
             )
-        }
-    }
+        },
+        trailingContent = {
+            if (onDelete != null) {
+                IconButton(onClick = onDelete) {
+                    Icon(
+                        imageVector = Icons.Filled.Delete,
+                        contentDescription = stringResource(R.string.checklist_delete_task),
+                    )
+                }
+            }
+        },
+    )
 }

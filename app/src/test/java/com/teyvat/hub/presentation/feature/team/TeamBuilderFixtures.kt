@@ -2,8 +2,8 @@ package com.teyvat.hub.presentation.feature.team
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import com.teyvat.hub.application.CharacterRepository
-import com.teyvat.hub.application.TeamRepository
+import com.teyvat.hub.application.repository.CharacterRepository
+import com.teyvat.hub.application.repository.TeamRepository
 import com.teyvat.hub.domain.character.Character
 import com.teyvat.hub.domain.character.CharacterRole
 import com.teyvat.hub.domain.character.Element
@@ -45,7 +45,8 @@ internal class RecordingTeamRepository : TeamRepository {
 internal class EmptyCharacterRepository : CharacterRepository {
     override fun observeRoster(): Flow<List<Character>> = flow { emit(emptyList()) }
     override fun observeFavorites(): Flow<List<Character>> = flow { emit(emptyList()) }
-    override fun search(query: String): Flow<List<Character>> = flow { emit(emptyList()) }
+    override fun search(query: String, limit: Int): Flow<List<Character>> =
+        flow { emit(emptyList()) }
     override suspend fun toggleFavorite(id: String) = Unit
 }
 

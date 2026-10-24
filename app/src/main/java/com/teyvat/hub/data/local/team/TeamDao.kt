@@ -15,6 +15,10 @@ import androidx.room.Query
  * Member ids are stored as a delimiter-joined string because teams are always
  * read whole and are capped at four members by the domain layer; a join table
  * would add a migration path for no query we need.
+ *
+ * Synergy rules are joined the same way for the same reason: they are names,
+ * never sentences, so the wording is resolved when the row is displayed and a
+ * language change reaches teams that were saved earlier.
  */
 @Entity(tableName = "teams")
 data class TeamEntity(
@@ -29,8 +33,8 @@ data class TeamEntity(
     @ColumnInfo(name = "member_ids")
     val memberIds: String,
 
-    @ColumnInfo(name = "synergy_notes")
-    val synergyNotes: String,
+    @ColumnInfo(name = "synergy_rules")
+    val synergyRules: String,
 
     @ColumnInfo(name = "is_template", defaultValue = "0")
     val isTemplate: Boolean,

@@ -1,4 +1,4 @@
-package com.teyvat.hub.application
+package com.teyvat.hub.application.repository
 
 import javax.inject.Inject
 import javax.inject.Singleton

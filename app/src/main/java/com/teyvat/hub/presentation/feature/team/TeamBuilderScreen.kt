@@ -65,7 +65,7 @@ fun TeamBuilderScreen(
             }
 
             if (state.validation is TeamValidation.Invalid) {
-                item { ValidationError((state.validation as TeamValidation.Invalid).reason) }
+                item { ValidationError((state.validation as TeamValidation.Invalid).rule) }
             }
 
             item {

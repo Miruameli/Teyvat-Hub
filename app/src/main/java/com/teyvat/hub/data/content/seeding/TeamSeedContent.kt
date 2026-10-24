@@ -17,14 +17,14 @@ object TeamSeedContent {
             id = "template-vapor",
             name = "Tim Uap Panas",
             memberIds = "xiangling,xingqiu,bennett,albedo",
-            synergyNotes = "Vaporize dan support pyro",
+            synergyRules = "VAPORIZE,HAS_HEALER,BALANCED_ROLES",
             isTemplate = true,
         ),
         TeamEntity(
             id = "template-national",
             name = "Tim Nasional",
             memberIds = "xiangling,xingqiu,bennett,raiden",
-            synergyNotes = "Akselerasi rotasi skill",
+            synergyRules = "VAPORIZE,HAS_HEALER,TOO_MANY_DPS",
             isTemplate = true,
         ),
     )

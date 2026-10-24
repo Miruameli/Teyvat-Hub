@@ -27,6 +27,9 @@ jobs:
       - name: Check the structural rules
         run: node scripts/check-structure.mjs
 
+      - name: Test the structure checks
+        run: node --test scripts/structure/tests/*.test.mjs
+
   build:
     name: Build Debug APK
     runs-on: ubuntu-latest

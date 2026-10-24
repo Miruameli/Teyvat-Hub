@@ -36,6 +36,10 @@ class TeyvatHubApplication : Application(), SingletonImageLoader.Factory {
         super.onCreate()
         // Content must exist before the first screen reads it.
         appScope.launch { seeder.seedIfEmpty() }
+        // The language is not applied here. AppCompat restores it while the
+        // activity is being attached, which happens before the first frame;
+        // applying it later would show the previous language for a moment and
+        // then recreate the activity.
     }
 
     /**

@@ -1,9 +1,9 @@
 package com.teyvat.hub.presentation.feature.checklist
 
-import com.teyvat.hub.application.ChecklistRepository
+import kotlinx.coroutines.flow.flow
+import com.teyvat.hub.application.repository.ChecklistRepository
 import com.teyvat.hub.domain.checklist.ChecklistItem
 import com.teyvat.hub.domain.checklist.ResetCadence
-import kotlinx.coroutines.flow.flow
 
 /**
  * Shared fixtures for the checklist tests.

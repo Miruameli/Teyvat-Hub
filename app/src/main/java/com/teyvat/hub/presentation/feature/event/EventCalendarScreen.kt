@@ -81,7 +81,13 @@ private fun EventRowCard(row: EventRow) {
         headlineContent = { Text(row.title) },
         supportingContent = {
             Column {
-                Text("${row.kindLabel} · ${row.rangeLabel}")
+                Text(
+                    stringResource(
+                        R.string.event_meta,
+                        stringResource(row.kindLabelRes),
+                        row.rangeLabel,
+                    ),
+                )
                 if (row.description.isNotBlank()) {
                     Text(
                         text = row.description,

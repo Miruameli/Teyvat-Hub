@@ -14,8 +14,8 @@
     <string name="roster_empty">Tidak ada karakter yang cocok.</string>
     <string name="action_search">Cari karakter</string>
     <string name="filter_favorites">Favorit</string>
-    <string name="marker_favorite_on">&#9733;</string>
-    <string name="marker_favorite_off">&#9734;</string>
+    <string name="marker_favorite_on">Hapus dari favorit</string>
+    <string name="marker_favorite_off">Tambahkan ke favorit</string>
 
     <!-- Checklist -->
     <string name="checklist_title">Checklist Farming</string>
@@ -23,6 +23,7 @@
     <string name="section_weekly">Mingguan</string>
     <string name="section_custom">Tugas Sendiri</string>
     <string name="action_add_task">Tambah tugas sendiri</string>
+    <string name="checklist_delete_task">Hapus tugas</string>
 
     <!-- Events -->
     <string name="events_title">Event &amp; Banner</string>
@@ -34,16 +35,20 @@
     <string name="filter_all">Semua</string>
     <string name="filter_events_only">Event saja</string>
     <string name="filter_banners_only">Banner saja</string>
+    <string name="kind_event">Event</string>
+    <string name="kind_banner">Banner</string>
+    <string name="event_meta">%1$s · %2$s</string>
 
     <!-- Settings -->
     <string name="settings_title">Pengaturan</string>
     <string name="settings_language">Bahasa</string>
-    <string name="settings_language_value">Indonesia (bawaan aplikasi)</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
+    <string name="language_english">English</string>
     <string name="settings_version">Versi Aplikasi</string>
     <string name="settings_data_source">Sumber Data</string>
-    <string name="settings_data_source_value">Data karakter dan aset dari Enka Network; jadwal event dapat berubah sewaktu-waktu.</string>
+    <string name="settings_data_source_value">Data karakter, senjata, dan event ada di dalam aplikasi, jadi fitur utama tetap jalan tanpa internet. Gambar avatar diambil dari Enka Network; jika jaringan bermasalah, kartu memakai warna elemen sebagai pengganti.</string>
     <string name="settings_privacy">Kebijakan Privasi</string>
-    <string name="settings_privacy_value">Semua data tersimpan lokal di perangkat. Tidak ada akun, tidak ada pelacakan, tidak ada data yang dikirim ke server kami.</string>
+    <string name="settings_privacy_value">Tim dan checklist yang kamu simpan tetap berada di perangkat ini. Tidak ada akun, tidak ada pelacakan, tidak ada data yang dikirim ke server kami.</string>
     <string name="settings_disclaimer">Teyvat Hub adalah proyek fan-made dan tidak berafiliasi dengan HoYoverse. Genshin Impact adalah merek dagang HoYoverse. Semua panduan bersifat informasional dan dapat berubah mengikuti pembaruan game.</string>
 
     <!-- Teams -->
@@ -58,6 +63,31 @@
     <string name="teams_saved">Tim Tersimpan</string>
     <string name="teams_templates">Template Tim</string>
     <string name="teams_delete">Hapus tim</string>
+    <string name="teams_member_count">%1$d karakter</string>
+    <string name="teams_invalid_empty">Tim minimal berisi satu karakter</string>
+    <string name="teams_invalid_too_large">Tim maksimal %1$d karakter</string>
+    <string name="teams_invalid_duplicate">Karakter tidak boleh ganda dalam tim</string>
+    <string name="teams_invalid_no_name">Nama tim tidak boleh kosong</string>
+
+    <!-- Synergi tim -->
+    <string name="synergy_vaporize_headline">Reaksi Vaporize aktif</string>
+    <string name="synergy_vaporize_detail">Pasangan Pyro + Hydro memberi bonus kerusakan besar.</string>
+    <string name="synergy_melt_headline">Reaksi Melt aktif</string>
+    <string name="synergy_melt_detail">Cryo diikuti Pyro meningkatkan kerusakan serangan.</string>
+    <string name="synergy_bloom_headline">Reaksi Bloom aktif</string>
+    <string name="synergy_bloom_detail">Hydro + Dendro memberi kerusakan area berkelanjutan.</string>
+    <string name="synergy_no_reaction_headline">Belum ada reaksi utama</string>
+    <string name="synergy_no_reaction_detail">Tambahkan elemen berbeda untuk membuka reaksi elemental.</string>
+    <string name="synergy_has_healer_headline">Penyembuh tersedia</string>
+    <string name="synergy_has_healer_detail">Tim punya sustain sehingga cocok untuk konten panjang.</string>
+    <string name="synergy_has_shield_headline">Perisai tersedia</string>
+    <string name="synergy_has_shield_detail">Perisai mengurangi tekanan HP walau tanpa penyembih.</string>
+    <string name="synergy_no_sustain_headline">Tanpa sustain</string>
+    <string name="synergy_no_sustain_detail">Pertimbangkan penyembih atau perisai untuk bertahan hidup.</string>
+    <string name="synergy_too_many_dps_headline">Terlalu banyak DPS</string>
+    <string name="synergy_too_many_dps_detail">Kurangi DPS dan tambahkan dukungan agar kerusakan lebih stabil.</string>
+    <string name="synergy_balanced_roles_headline">Peran seimbang</string>
+    <string name="synergy_balanced_roles_detail">Kombinasi peran mendukung kerusakan yang konsisten.</string>
 
     <!-- Elements -->
     <string name="element_anemo">Anemo</string>

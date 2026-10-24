@@ -1,6 +1,5 @@
 package com.teyvat.hub.presentation.feature.team
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -16,7 +15,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.teyvat.hub.R
 import com.teyvat.hub.domain.character.Character
-import com.teyvat.hub.domain.team.SynergyInsight
 import com.teyvat.hub.presentation.core.theme.labelRes
 
 /** Heading above the party slots. */
@@ -63,38 +61,6 @@ fun SelectedTeamRow(
     )
 }
 
-/** Reason the current selection cannot be saved. */
-@Composable
-fun ValidationError(reason: String) {
-    Text(
-        text = reason,
-        color = MaterialTheme.colorScheme.error,
-        style = MaterialTheme.typography.bodySmall,
-        modifier = Modifier.padding(horizontal = 16.dp),
-    )
-}
-
-/** Actionable notes about the current party composition. */
-@Composable
-fun SynergyNotes(insights: List<SynergyInsight>) {
-    if (insights.isEmpty()) return
-
-    SectionHeading(stringResource(R.string.teams_synergy))
-
-    Column(modifier = Modifier.padding(start = 16.dp)) {
-        insights.forEach { insight ->
-            Text(
-                text = insight.headline,
-                style = MaterialTheme.typography.bodyMedium,
-            )
-            Text(
-                text = insight.detail,
-                style = MaterialTheme.typography.bodySmall,
-            )
-        }
-    }
-}
-
 /** Heading above the roster picker. */
 @Composable
 fun RosterHeader() {
@@ -128,8 +94,13 @@ fun RosterRow(
     )
 }
 
+/**
+ * Heading above a section of the builder.
+ *
+ * Internal because the feedback composables in this folder reuse it.
+ */
 @Composable
-private fun SectionHeading(text: String) {
+internal fun SectionHeading(text: String) {
     Text(
         text = text,
         style = MaterialTheme.typography.titleSmall,

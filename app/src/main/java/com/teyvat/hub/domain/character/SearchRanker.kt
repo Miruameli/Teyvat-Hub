@@ -10,6 +10,10 @@ data class SearchHit<T>(val item: T, val score: Int)
  * prefix match, then substring anywhere, then fuzzy prefix on each token.
  * Fuzzy matching uses a plain edit-distance ratio so it needs no library and
  * produces the same ordering on every run.
+ *
+ * The fuzzy step reads the words of a name without splitting it. Splitting
+ * would allocate an array and a string for every word of every candidate, and
+ * the search box re-ranks on every keystroke.
  */
 class SearchRanker<T>(
     private val nameSelector: (T) -> String,
@@ -30,13 +34,13 @@ class SearchRanker<T>(
         val normalizedQuery = query.trim().lowercase()
         if (normalizedQuery.isEmpty()) return emptyList()
 
-        return candidates
-            .mapNotNull { candidate ->
-                val score = score(nameSelector(candidate), normalizedQuery)
-                if (score < minScore) null else SearchHit(candidate, score)
-            }
-            .sortedWith(compareByDescending<SearchHit<T>> { it.score })
-            .take(limit)
+        val hits = ArrayList<SearchHit<T>>()
+        for (candidate in candidates) {
+            val score = score(nameSelector(candidate), normalizedQuery)
+            if (score >= minScore) hits.add(SearchHit(candidate, score))
+        }
+        hits.sortByDescending { it.score }
+        return if (hits.size <= limit) hits else hits.subList(0, limit).toList()
     }
 
     private fun score(name: String, query: String): Int {
@@ -50,13 +54,41 @@ class SearchRanker<T>(
         }
     }
 
-    /** True when the query is a prefix of any word in the name. */
+    /**
+     * True when the query is a prefix of any word in the name, or a word in
+     * the name is a prefix of the query.
+     *
+     * The words are read in place, so nothing is allocated for a name that
+     * does not match.
+     */
     private fun isFuzzyPrefix(query: String, name: String): Boolean {
         if (query.isEmpty()) return false
-        return name.split(' ', '-', '\'').any { word ->
-            word.startsWith(query) || query.startsWith(word)
+        var wordStart = 0
+        while (wordStart < name.length) {
+            var wordEnd = wordStart
+            while (wordEnd < name.length && !isBoundary(name[wordEnd])) {
+                wordEnd += 1
+            }
+            if (wordMatches(query, name, wordStart, wordEnd)) return true
+            wordStart = wordEnd + 1
         }
+        return false
     }
+
+    /** Compares the query with the word between [start] and [end]. */
+    private fun wordMatches(query: String, name: String, start: Int, end: Int): Boolean {
+        val length = end - start
+        if (length == 0) return false
+        val shorter = minOf(length, query.length)
+        for (offset in 0 until shorter) {
+            if (name[start + offset] != query[offset]) return false
+        }
+        return length <= query.length
+    }
+
+    /** True for the characters that end a word. */
+    private fun isBoundary(character: Char): Boolean =
+        character == ' ' || character == '-' || character == '\''
 
     private companion object {
         const val EXACT = 4
