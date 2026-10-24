@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.teyvat.hub.R
-import com.teyvat.hub.domain.model.ChecklistItem
+import com.teyvat.hub.domain.checklist.ChecklistItem
 
 /**
  * Daily, weekly, and custom farming tasks.

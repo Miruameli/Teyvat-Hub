@@ -28,7 +28,7 @@ jobs:
         run: node scripts/check-structure.mjs
 
       - name: Test the structure checks
-        run: node --test "scripts/structure/tests/*.test.mjs"
+        run: node --test scripts/structure/tests/*.test.mjs
 
   build:
     name: Build Debug APK
