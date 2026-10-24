@@ -13,6 +13,10 @@ interface CharacterDao {
     @Query("SELECT * FROM characters ORDER BY name ASC")
     fun observeAll(): Flow<List<CharacterEntity>>
 
+    /** Ids already stored, so seeding can add a bundle's new rows only. */
+    @Query("SELECT id FROM characters")
+    suspend fun findAllIds(): List<String>
+
     @Query("SELECT * FROM characters WHERE is_favorite = 1 ORDER BY name ASC")
     fun observeFavorites(): Flow<List<CharacterEntity>>
 
@@ -21,9 +25,6 @@ interface CharacterDao {
 
     @Query("SELECT * FROM characters WHERE name LIKE '%' || :query || '%' ORDER BY name ASC")
     suspend fun search(query: String): List<CharacterEntity>
-
-    @Query("SELECT COUNT(*) FROM characters")
-    suspend fun countRows(): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertAll(characters: List<CharacterEntity>)
