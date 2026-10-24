@@ -55,8 +55,10 @@ class EnglishTranslationTest {
 
     private fun valueOf(file: File, name: String): String? {
         val content = file.readText()
-        val match = Regex("<string name=\"$name\"[^>]*>(.*?)</string>", RegexOption.DOT_MATCH_ALL)
-            .find(content)
+        val match = Regex(
+            "<string name=\"$name\"[^>]*>(.*?)</string>",
+            RegexOption.DOT_MATCHES_ALL,
+        ).find(content)
         return match?.groupValues?.get(1)
     }
 }

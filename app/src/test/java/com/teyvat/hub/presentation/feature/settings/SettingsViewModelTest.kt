@@ -45,7 +45,7 @@ class SettingsViewModelTest {
 
     @Test
     fun `the platform locale wins over the stored preference`() = runTest {
-        every { preference.read() } returns AppLanguage.INDONESIAN
+        coEvery { preference.read() } returns AppLanguage.INDONESIAN
         every { localeApplier.current(AppLanguage.INDONESIAN) } returns AppLanguage.ENGLISH
 
         val viewModel = viewModel()
@@ -56,7 +56,7 @@ class SettingsViewModelTest {
 
     @Test
     fun `the stored preference is used when the platform has no locale`() = runTest {
-        every { preference.read() } returns AppLanguage.INDONESIAN
+        coEvery { preference.read() } returns AppLanguage.INDONESIAN
         every { localeApplier.current(AppLanguage.INDONESIAN) } returns AppLanguage.INDONESIAN
 
         val viewModel = viewModel()
