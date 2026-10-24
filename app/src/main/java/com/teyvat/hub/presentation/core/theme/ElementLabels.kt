@@ -50,21 +50,40 @@ private val WEAPON_LABELS: Map<WeaponType, Int> = mapOf(
 )
 
 /**
- * Wording for each team note rule.
+ * Headline and explanation for each team note rule.
  *
- * The analyzer reports the rule and never the sentence, so a note reads in
- * the chosen language instead of the Indonesian the rules were written in.
+ * The parenthesised pair matters: `a to b to c` groups as `(a to b) to c`,
+ * which infers a map of pairs to a single value instead of a map to a pair,
+ * and the compiler rejects it.
  */
 private val SYNERGY_RULES: Map<SynergyRule, Pair<Int, Int>> = mapOf(
-    SynergyRule.VAPORIZE to R.string.synergy_vaporize_headline to R.string.synergy_vaporize_detail,
-    SynergyRule.MELT to R.string.synergy_melt_headline to R.string.synergy_melt_detail,
-    SynergyRule.BLOOM to R.string.synergy_bloom_headline to R.string.synergy_bloom_detail,
-    SynergyRule.NO_REACTION to R.string.synergy_no_reaction_headline to R.string.synergy_no_reaction_detail,
-    SynergyRule.HAS_HEALER to R.string.synergy_has_healer_headline to R.string.synergy_has_healer_detail,
-    SynergyRule.HAS_SHIELD to R.string.synergy_has_shield_headline to R.string.synergy_has_shield_detail,
-    SynergyRule.NO_SUSTAIN to R.string.synergy_no_sustain_headline to R.string.synergy_no_sustain_detail,
-    SynergyRule.TOO_MANY_DPS to R.string.synergy_too_many_dps_headline to R.string.synergy_too_many_dps_detail,
-    SynergyRule.BALANCED_ROLES to R.string.synergy_balanced_roles_headline to R.string.synergy_balanced_roles_detail,
+    SynergyRule.VAPORIZE to (
+        R.string.synergy_vaporize_headline to R.string.synergy_vaporize_detail
+        ),
+    SynergyRule.MELT to (
+        R.string.synergy_melt_headline to R.string.synergy_melt_detail
+        ),
+    SynergyRule.BLOOM to (
+        R.string.synergy_bloom_headline to R.string.synergy_bloom_detail
+        ),
+    SynergyRule.NO_REACTION to (
+        R.string.synergy_no_reaction_headline to R.string.synergy_no_reaction_detail
+        ),
+    SynergyRule.HAS_HEALER to (
+        R.string.synergy_has_healer_headline to R.string.synergy_has_healer_detail
+        ),
+    SynergyRule.HAS_SHIELD to (
+        R.string.synergy_has_shield_headline to R.string.synergy_has_shield_detail
+        ),
+    SynergyRule.NO_SUSTAIN to (
+        R.string.synergy_no_sustain_headline to R.string.synergy_no_sustain_detail
+        ),
+    SynergyRule.TOO_MANY_DPS to (
+        R.string.synergy_too_many_dps_headline to R.string.synergy_too_many_dps_detail
+        ),
+    SynergyRule.BALANCED_ROLES to (
+        R.string.synergy_balanced_roles_headline to R.string.synergy_balanced_roles_detail
+        ),
 )
 
 /** Player facing element name, for example "Pyro". */

@@ -2,10 +2,12 @@ package com.teyvat.hub.presentation.feature.roster
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -21,6 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.teyvat.hub.R
+import com.teyvat.hub.domain.character.Element
+import com.teyvat.hub.presentation.core.theme.labelRes
 
 /**
  * Character roster list with search and favorite filtering.
@@ -53,6 +57,20 @@ fun RosterScreen(
                     },
                     label = { Text(stringResource(R.string.filter_favorites)) },
                 )
+            }
+            // One chip per element, so narrowing the roster is a single tap
+            // and the active element is always visible.
+            LazyRow(
+                modifier = Modifier.padding(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                items(Element.entries, key = { it.name }) { element ->
+                    FilterChip(
+                        selected = state.element == element,
+                        onClick = { viewModel.onElementFilterChange(element) },
+                        label = { Text(stringResource(element.labelRes())) },
+                    )
+                }
             }
             if (state.characters.isEmpty()) {
                 Text(

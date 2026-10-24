@@ -1,6 +1,5 @@
 package com.teyvat.hub.data.content
 
-import java.lang.reflect.Type
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import android.content.Context

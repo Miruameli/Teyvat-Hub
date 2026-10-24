@@ -88,10 +88,38 @@ class RosterViewModelTest {
         assertTrue(state.characters.all { it.isFavorite })
     }
 
-    private fun character(id: String, isFavorite: Boolean) = Character(
+    /**
+     * Choosing the active element again clears it.
+     *
+     * This is an interaction rule owned by the view model: the filter rules
+     * themselves are tested in [com.teyvat.hub.domain.character.RosterFilterTest].
+     */
+    @Test
+    fun `choosing the active element again clears the filter`() = runTest {
+        val viewModel = RosterViewModel(
+            FakeCharacterRepository(
+                listOf(
+                    character("pyro-one", element = Element.PYRO),
+                    character("cryo-one", element = Element.CRYO),
+                ),
+            ),
+        )
+
+        viewModel.onElementFilterChange(Element.PYRO)
+        viewModel.onElementFilterChange(Element.PYRO)
+        val state = viewModel.uiState.first { it.element == null && it.characters.size == 2 }
+
+        assertEquals(2, state.characters.size)
+    }
+
+    private fun character(
+        id: String,
+        element: Element = Element.PYRO,
+        isFavorite: Boolean = false,
+    ) = Character(
         id = id,
         name = id,
-        element = Element.PYRO,
+        element = element,
         weaponType = WeaponType.SWORD,
         rarity = Rarity.FIVE,
         region = "Mondstadt",
