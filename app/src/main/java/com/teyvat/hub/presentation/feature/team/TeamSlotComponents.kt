@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.dp
 import com.teyvat.hub.R
 import com.teyvat.hub.domain.character.Character
 import com.teyvat.hub.domain.team.SynergyInsight
+import com.teyvat.hub.presentation.core.theme.detailRes
+import com.teyvat.hub.presentation.core.theme.headlineRes
 import com.teyvat.hub.presentation.core.theme.labelRes
 
 /** Heading above the party slots. */
@@ -74,7 +76,13 @@ fun ValidationError(reason: String) {
     )
 }
 
-/** Actionable notes about the current party composition. */
+/**
+ * Actionable notes about the current party composition.
+ *
+ * Each note is a domain rule; the wording is resolved here so the notes
+ * follow the language chosen in settings rather than the language the
+ * rules were written in.
+ */
 @Composable
 fun SynergyNotes(insights: List<SynergyInsight>) {
     if (insights.isEmpty()) return
@@ -83,12 +91,13 @@ fun SynergyNotes(insights: List<SynergyInsight>) {
 
     Column(modifier = Modifier.padding(start = 16.dp)) {
         insights.forEach { insight ->
+            val rule = insight.rule
             Text(
-                text = insight.headline,
+                text = stringResource(rule.headlineRes()),
                 style = MaterialTheme.typography.bodyMedium,
             )
             Text(
-                text = insight.detail,
+                text = stringResource(rule.detailRes()),
                 style = MaterialTheme.typography.bodySmall,
             )
         }

@@ -54,6 +54,27 @@
     <string name="teams_saved">Saved Teams</string>
     <string name="teams_templates">Team Templates</string>
     <string name="teams_delete">Delete team</string>
+    <string name="teams_member_count">%1$d characters</string>
+
+    <!-- Team synergy -->
+    <string name="synergy_vaporize_headline">Vaporize reaction active</string>
+    <string name="synergy_vaporize_detail">Pyro paired with Hydro gives a large damage bonus.</string>
+    <string name="synergy_melt_headline">Melt reaction active</string>
+    <string name="synergy_melt_detail">Cryo followed by Pyro increases attack damage.</string>
+    <string name="synergy_bloom_headline">Bloom reaction active</string>
+    <string name="synergy_bloom_detail">Hydro plus Dendro gives continuous area damage.</string>
+    <string name="synergy_no_reaction_headline">No main reaction yet</string>
+    <string name="synergy_no_reaction_detail">Add different elements to unlock an elemental reaction.</string>
+    <string name="synergy_has_healer_headline">Healer available</string>
+    <string name="synergy_has_healer_detail">The team has sustain, which suits long fights.</string>
+    <string name="synergy_has_shield_headline">Shield available</string>
+    <string name="synergy_has_shield_detail">A shield relieves HP pressure even without a healer.</string>
+    <string name="synergy_no_sustain_headline">No sustain</string>
+    <string name="synergy_no_sustain_detail">Consider a healer or a shield to stay alive.</string>
+    <string name="synergy_too_many_dps_headline">Too many DPS</string>
+    <string name="synergy_too_many_dps_detail">Drop a DPS and add support for steadier damage.</string>
+    <string name="synergy_balanced_roles_headline">Balanced roles</string>
+    <string name="synergy_balanced_roles_detail">The role mix supports consistent damage.</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>

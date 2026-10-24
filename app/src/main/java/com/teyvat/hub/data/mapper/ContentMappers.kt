@@ -6,7 +6,6 @@ import com.teyvat.hub.data.local.team.TeamEntity
 import com.teyvat.hub.domain.checklist.ChecklistItem
 import com.teyvat.hub.domain.checklist.ResetCadence
 import com.teyvat.hub.domain.event.EventKind
-import com.teyvat.hub.domain.event.EventStatus
 import com.teyvat.hub.domain.event.GameEvent
 import com.teyvat.hub.domain.team.Team
 
@@ -40,7 +39,7 @@ fun TeamEntity.toDomain(): Team = Team(
     id = id,
     name = name,
     characterIds = memberIds.split(MEMBER_SEPARATOR).filter { it.isNotBlank() },
-    synergyNotes = synergyNotes,
+    synergyRules = synergyRules.split(MEMBER_SEPARATOR).filter { it.isNotBlank() },
     isTemplate = isTemplate,
 )
 
@@ -48,7 +47,7 @@ fun Team.toEntity(): TeamEntity = TeamEntity(
     id = id,
     name = name,
     memberIds = characterIds.joinToString(separator = MEMBER_SEPARATOR),
-    synergyNotes = synergyNotes,
+    synergyRules = synergyRules.joinToString(separator = MEMBER_SEPARATOR),
     isTemplate = isTemplate,
 )
 
@@ -64,5 +63,8 @@ fun GameEventEntity.toDomain(): GameEvent = GameEvent(
 fun String.toEventKind(): EventKind =
     EventKind.entries.firstOrNull { it.key == this } ?: EventKind.EVENT
 
-/** Delimiter used to persist a team's member ids in one column. */
+/**
+ * Delimiter used to persist a team's member ids and its synergy rule names
+ * in one column each. Rule names never contain the separator.
+ */
 private const val MEMBER_SEPARATOR = ","

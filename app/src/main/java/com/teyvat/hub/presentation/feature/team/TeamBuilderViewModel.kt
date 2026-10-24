@@ -92,8 +92,10 @@ class TeamBuilderViewModel @Inject constructor(
                             id = "team-" + System.currentTimeMillis(),
                             name = name,
                             characterIds = members.map { it.id },
-                            synergyNotes = analyzer.analyze(members)
-                                .joinToString(separator = "; ") { it.headline },
+                            // Rule names, not wording: the saved row then reads in
+                            // whatever language the player picks next time.
+                            synergyRules = analyzer.analyze(members)
+                                .map { it.rule.name },
                         ),
                     )
                     selection.value = emptyList()

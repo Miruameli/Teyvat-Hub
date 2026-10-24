@@ -108,6 +108,6 @@ class TeamBuilderViewModelTest {
         advanceUntilIdle()
 
         val state = viewModel.uiState.drop(1).first()
-        assertTrue(state.insights.any { it.headline.contains("Vaporize") })
+        assertTrue(state.insights.any { it.rule == SynergyRule.VAPORIZE })
     }
 }

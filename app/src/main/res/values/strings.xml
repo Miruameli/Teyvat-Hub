@@ -62,6 +62,27 @@
     <string name="teams_saved">Tim Tersimpan</string>
     <string name="teams_templates">Template Tim</string>
     <string name="teams_delete">Hapus tim</string>
+    <string name="teams_member_count">%1$d karakter</string>
+
+    <!-- Synergi tim -->
+    <string name="synergy_vaporize_headline">Reaksi Vaporize aktif</string>
+    <string name="synergy_vaporize_detail">Pasangan Pyro + Hydro memberi bonus kerusakan besar.</string>
+    <string name="synergy_melt_headline">Reaksi Melt aktif</string>
+    <string name="synergy_melt_detail">Cryo diikuti Pyro meningkatkan kerusakan serangan.</string>
+    <string name="synergy_bloom_headline">Reaksi Bloom aktif</string>
+    <string name="synergy_bloom_detail">Hydro + Dendro memberi kerusakan area berkelanjutan.</string>
+    <string name="synergy_no_reaction_headline">Belum ada reaksi utama</string>
+    <string name="synergy_no_reaction_detail">Tambahkan elemen berbeda untuk membuka reaksi elemental.</string>
+    <string name="synergy_has_healer_headline">Penyembuh tersedia</string>
+    <string name="synergy_has_healer_detail">Tim punya sustain sehingga cocok untuk konten panjang.</string>
+    <string name="synergy_has_shield_headline">Perisai tersedia</string>
+    <string name="synergy_has_shield_detail">Perisai mengurangi tekanan HP walau tanpa penyembih.</string>
+    <string name="synergy_no_sustain_headline">Tanpa sustain</string>
+    <string name="synergy_no_sustain_detail">Pertimbangkan penyembih atau perisai untuk bertahan hidup.</string>
+    <string name="synergy_too_many_dps_headline">Terlalu banyak DPS</string>
+    <string name="synergy_too_many_dps_detail">Kurangi DPS dan tambahkan dukungan agar kerusakan lebih stabil.</string>
+    <string name="synergy_balanced_roles_headline">Peran seimbang</string>
+    <string name="synergy_balanced_roles_detail">Kombinasi peran mendukung kerusakan yang konsisten.</string>
 
     <!-- Elements -->
     <string name="element_anemo">Anemo</string>
