@@ -40,4 +40,4 @@ keamanan data pengguna di perangkat, dan keaslian artefak rilis.
 
 ## Versi yang Didukung
 
-Hanya rilis terbaru pada branch `main` yang mendapatkan perbaikan keamanan.
+Hanya rilis terbaru pada branch `master` yang mendapatkan perbaikan keamanan.
